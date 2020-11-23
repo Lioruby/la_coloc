@@ -1,19 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :colocations, except: [:index, :destroy] do
-    resources :users, except: :destroy do
-      resources :preferences, except: [:destroy]
-      resources :assignations, only: :show
-    end
-
-    resources :assignations, only: [:index]
-
-    resources :tasks, except: [:destroy]
-
-  end
-
-  resources :tasks, only: :destroy
+  resources :colocations, except: [:new, :index, :destroy]
+  resources :assignations, only: [:index, :show]
+  resources :tasks
+  resources :preferences, except: [:create, :new, :destroy]
 
   root to: 'pages#home'
 end
