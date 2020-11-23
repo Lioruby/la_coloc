@@ -1,0 +1,2 @@
+class Colocation < ApplicationRecord
+end
