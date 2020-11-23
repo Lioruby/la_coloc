@@ -23,7 +23,7 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
-import "bootstrap";
+import '../stylesheets/application.scss';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
