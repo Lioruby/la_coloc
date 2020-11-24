@@ -1,3 +1,12 @@
 <h1> <%= @colocation.name %> </h1>
+<h3>Voila les tâches ! A qui le tour? </h3>
+
+
+
+  <% @colocation.users.each do | user | %>
+
+    <%= user.first_name %>
+    <%= image_tag "toto.jpeg", class:"border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+  <% end %>
 
 <%= render 'shared/navigation_footer' %>
