@@ -20,6 +20,10 @@
           <%= link_to 'Connexion', new_user_session_path, class: "block text-gray-200 font-semibold p-1 ml-4 rounded hover:bg-gray-900" %>
           <%= link_to "S'inscrire", new_user_registration_path, class: "block text-gray-200 font-semibold p-1 ml-4 rounded hover:bg-gray-900" %>
         </div>
+      <% else %>
+        <div id="myLinks" class="bg-gray-800 block hidden">
+          <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class: "block text-gray-200 font-semibold p-1 ml-4 rounded hover:bg-gray-900" %>
+        </div>
       <% end %>
     </div>
 </header>
