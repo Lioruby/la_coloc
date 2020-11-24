@@ -24,7 +24,6 @@ require("channels")
 
 // External imports
 import '../stylesheets/application.scss';
-import { clickOnBurger } from '../components/hide_nav'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -32,5 +31,4 @@ import { clickOnBurger } from '../components/hide_nav'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
- clickOnBurger();
 });
