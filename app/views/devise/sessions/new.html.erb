@@ -1,4 +1,4 @@
-<div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
+<div class="bg-gray-800 px-8 py-4 h-screen">
 
 
 
@@ -13,14 +13,14 @@
                   input_html: { autocomplete: "email" },
                   label: 'Email',
                     placeholder: 'Email',
-                    input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                    input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-full" },
                     label_html: { class: 'text-gray-700 text-sm' } %>
       <%= f.input :password,
                   required: false,
                   input_html: { autocomplete: "current-password" },
                   label: 'Mot de passe',
                     placeholder: 'Mot de passe',
-                    input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                    input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-full" },
                     label_html: { class: 'text-gray-700 text-sm' } %>
       <%= f.input :remember_me, as: :boolean,
                   input_html: { class: "m-2" },
