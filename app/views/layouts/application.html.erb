@@ -13,12 +13,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body class="bg-gray-200 lg:bg-red-200 ">
+  <body class="bg-gray-200">
 
     <%= render 'shared/flashes' %>
-    <div class="px-8 py-10">
     <%= render 'shared/navbar' %>
       <%= yield %>
-    </div>
   </body>
 </html>
+
+
