@@ -1,5 +1,5 @@
 class ColocationsController < ApplicationController
-  before_action :find_colocation, only: [:update, :edit]
+  before_action :find_colocation, only: [:update, :edit, :show]
 
   def new
     @colocation = Colocation.new
@@ -20,7 +20,6 @@ class ColocationsController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
