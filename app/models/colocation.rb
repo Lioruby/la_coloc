@@ -1,4 +1,4 @@
 class Colocation < ApplicationRecord
-  has_many :users
-  has_many :tasks
+  has_many :users, dependent: :destroy
+  has_many :tasks, dependent: :destroy
 end

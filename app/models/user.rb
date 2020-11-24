@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :colocation
   has_one_attached :photo
+
+  belongs_to :colocation
+  has_many :preferences, dependent: :destroy
+  has_many :assignations, dependent: :destroy
 end
