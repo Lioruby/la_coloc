@@ -1,20 +1,37 @@
-<h2>Log in</h2>
+<div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
+
+
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+  <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
+    <h2 class="text-center font-bold text-xl text-gray-800">Connexion</h2>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <div class="text-left">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  label: 'Email',
+                    placeholder: 'Email',
+                    input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                    label_html: { class: 'text-gray-700 text-sm' } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" },
+                  label: 'Mot de passe',
+                    placeholder: 'Mot de passe',
+                    input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                    label_html: { class: 'text-gray-700 text-sm' } %>
+      <%= f.input :remember_me, as: :boolean,
+                  input_html: { class: "m-2" },
+                  label_html: { class: "text-gray-500" } if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Se connecter", class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm m-5" %>
+    </div>
+    <%= render "devise/shared/links" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
