@@ -3,7 +3,7 @@
   <div class="w-screen px-4 py-2 bg-gray-800 text-white fixed bottom-0">
     <div class="flex justify-around">
       <div>
-        <%= link_to 'colocation_path' do  %>
+        <%= link_to colocation_path(current_colocation) do  %>
           <i class="icon fas fa-home"></i>
         <% end %>
       </div>
@@ -13,12 +13,12 @@
         <% end %>
       </div>
       <div>
-        <%= link_to 'new_task_path' do  %>
+        <%= link_to new_task_path(current_colocation) do  %>
           <i class="icon fas fa-align-left"></i>
         <% end %>
       </div>
       <div>
-        <%= link_to 'history_path' do  %>
+        <%= link_to assignations_path do  %>
           <i class="icon fas fa-history"></i>
         <% end %>
       </div>
