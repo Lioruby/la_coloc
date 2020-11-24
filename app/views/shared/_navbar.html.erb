@@ -1,19 +1,28 @@
 
 
-<header class="flex items-end justify-between px-4 py-2 bg-gray-800">
-
-  <div class="flex items-end">
-    <%= image_tag "nav_img.svg", class:"w-12 bg-gray-800" %>
-    <h1 class="text-white text-lg uppercase font-semibold tracking-wide pl-4">La Coloc</h1>
-  </div>
-
-
-  <div >
-    <button type="button" class="block text-white hover:text-white focus:text-white focus:outline-none">
-      <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
-  </div>
-
+<header class="bg-gray-800">
+    <div id="topnav" class="flex items-center justify-between px-4 py-2 ">
+      <div class="flex items-end">
+        <%= link_to root_path do   %>
+          <%= image_tag "nav_img.svg", class:"w-12 bg-gray-800" %>
+        <% end %>
+        <h1 class="text-white text-lg uppercase font-semibold tracking-wide pl-4">La Coloc</h1>
+      </div>
+      <div>
+        <button type="button" class="text-white overflow-hidden hover:text-white focus:text-white focus:outline-none">
+          <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class=" text-left pb-4">
+      <% if !user_signed_in? %>
+        <div id="myLinks" class="bg-gray-800 block hidden">
+          <%= link_to 'Connexion', new_user_session_path, class: "block text-gray-200 font-semibold p-1 ml-4 rounded hover:bg-gray-900" %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: "block text-gray-200 font-semibold p-1 ml-4 rounded hover:bg-gray-900" %>
+        </div>
+      <% end %>
+    </div>
 </header>
+
