@@ -1,1 +1,27 @@
-<h1>Coucou</h1>
+
+<div class="bg-gray-800 flex justify-center h-48">
+  <div class="flex flex-col text-center text-white">
+    <h1 class="pt-14 pb-12 font-bold text-2xl  tracking-wide">Profil</h1>
+    <%= image_tag "toto.jpeg", class:"border-solid border-2 border-blue-200 w-24 h-24 rounded-full" %>
+    <span class="pt-2 text-black font-bold text-xs uppercase tracking-wide"><%= current_user.first_name %></span>
+  </div>
+</div>
+
+<div class="flex flex-col text-center pt-28 pb-8 px-24 gap-4">
+  <div>
+    <h4 class="bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Vaisselle</h4>
+  </div>
+
+  <div>
+    <h4 class="bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Cuisine</h4>
+  </div>
+
+  <div>
+    <h4 class="bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Ménage</h4>
+  </div>
+
+  <div>
+    <h4 class="bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Courses</h4>
+  </div>
+</div>
+
