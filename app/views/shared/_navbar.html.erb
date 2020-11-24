@@ -1,9 +1,11 @@
 
 
-<header class="flex items-end justify-between px-4 py-2 bg-gray-800">
+<header class="flex items-end justify-between px-4 py-2 bg-gray-800 fixed top-0 w-screen">
 
   <div class="flex items-end">
-    <%= image_tag "nav_img.svg", class:"w-12 bg-gray-800" %>
+    <%= link_to root_path do  %>
+      <%= image_tag "nav_img.svg", class:"w-12 bg-gray-800" %>
+    <% end %>
     <h1 class="text-white text-lg uppercase font-semibold tracking-wide pl-4">La Coloc</h1>
   </div>
 
