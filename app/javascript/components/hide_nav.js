@@ -5,7 +5,7 @@ const hiddenNav = () => {
 
 
 const clickOnBurger = () => {
-  document.querySelector('button').addEventListener('click', (e) => {
+  document.getElementById('burger').addEventListener('click', (e) => {
     hiddenNav();
   })
 };
