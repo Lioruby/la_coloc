@@ -10,29 +10,26 @@
       <div class="text-left">
         <%= f.input :first_name,
         label: 'Prénom',
-        placeholder: 'ex: Jean-Michel',
-        input_html: { class: "block bg-gray-100 px-4 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+        placeholder: 'Jean-Michel',
+        input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
         label_html: { class: 'text-gray-700 text-sm' } %>
       <%= f.input :email,
                   autofocus: true,
-                  input_html: { autocomplete: "email" },
                   label: 'Email',
-                  placeholder: 'Email',
-                  input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                  placeholder: 'jean.michel@gmail.com',
+                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' }%>
       <%= f.input :password,
                   hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" },
                   label: 'Mot de passe',
-                  placeholder: 'Mot de passe',
-                  input_html: { class: "block bg-gray-100 px-2 py-2 text-sm border border-gray-200 rounded w-80" },
+                  placeholder: '••••••••• ',
+                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' },
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
       <%= f.input :password_confirmation,
-                  input_html: { autocomplete: "new-password" },
                   label: 'Confirmation mot de passe',
-                  placeholder: 'Confirmation du mot de passe',
-                  input_html: { class: "block bg-gray-100 px-2 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                  placeholder: '•••••••••',
+                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' } %>
 
       </div>
