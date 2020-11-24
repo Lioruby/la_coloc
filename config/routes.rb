@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :assignations, only: [:index, :show]
   resources :tasks
   resources :preferences, except: [:create, :new, :destroy]
+  resources :users, only: :show
 
   root to: 'pages#home'
 end

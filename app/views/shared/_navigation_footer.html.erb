@@ -1,0 +1,32 @@
+<br>
+<footer>
+  <div class="w-screen px-4 py-2 bg-gray-800 text-white fixed bottom-0">
+    <div class="flex justify-around">
+      <div>
+        <%= link_to 'colocation_path' do  %>
+          <i class="icon fas fa-home"></i>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'chat_path' do  %>
+          <i class="icon far fa-comment-alt"></i>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'new_task_path' do  %>
+          <i class="icon fas fa-align-left"></i>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to 'history_path' do  %>
+          <i class="icon fas fa-history"></i>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to user_path(current_user) do  %>
+          <i class="icon far fa-user"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,31 @@
+
+<div class="bg-gray-800 flex justify-center h-64">
+  <div class="flex flex-col text-center text-white rounded-lg">
+    <h1 class="pt-24 pb-12 font-bold text-2xl  tracking-wide">Profil</h1>
+    <%= image_tag "toto.jpeg", class:"border-solid border-2 border-blue-200 w-36 h-36 rounded-full" %>
+    <span class="pt-2 text-black font-bold text-xs uppercase tracking-wide"><%= current_user.first_name %></span>
+  </div>
+</div>
+
+<div class="pt-24 px-4">
+</div>
+<div class="flex flex-col text-center pt-2 pb-8 px-24 gap-4">
+  <div>
+    <h4 class="border-solid border-2 border-yellow-500 hover:bg-yellow-600 bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Vaisselle</h4>
+  </div>
+
+  <div>
+    <h4 class="border-solid border-2 border-yellow-500 hover:bg-yellow-600 bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Cuisine</h4>
+  </div>
+
+  <div>
+    <h4 class="border-solid border-2 border-yellow-500 hover:bg-yellow-600 bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Ménage</h4>
+  </div>
+
+  <div>
+    <h4 class="border-solid border-2 border-yellow-500 hover:bg-yellow-600 bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">Courses</h4>
+  </div>
+</div>
+
+
+<%= render 'shared/navigation_footer' %>

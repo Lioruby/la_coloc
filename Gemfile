@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "pundit", "~> 2.1"
 
 gem "amazing_print", "~> 1.2"
+
+gem "cloudinary", "~> 1.18"

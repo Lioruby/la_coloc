@@ -32,5 +32,5 @@ import { clickOnBurger } from '../components/hide_nav'
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
- clickOnBurger();
+  clickOnBurger();
 });
