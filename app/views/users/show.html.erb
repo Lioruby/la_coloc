@@ -2,7 +2,7 @@
 <div class="bg-gray-800 flex justify-center h-64">
   <div class="flex flex-col text-center text-white rounded-lg">
     <h1 class="pt-24 pb-12 font-bold text-2xl  tracking-wide">Profil</h1>
-    <%= image_tag "toto.jpeg", class:"border-solid border-2 border-blue-200 w-36 h-36 rounded-full" %>
+    <%= cl_image_tag current_user.photo.key, class:"border-solid border-2 border-blue-200 w-36 h-36 rounded-full" %>
     <span class="pt-2 text-black font-bold text-xs uppercase tracking-wide"><%= current_user.first_name %></span>
   </div>
 </div>
