@@ -48,10 +48,10 @@ vaisselle.save!
 ménage.save!
 courses.save!
 
-assignation1 = Assignation.new(statut:'fait', date: Date.today)
-assignation2 = Assignation.new(statut:'en cours', date: Date.today)
-assignation3 = Assignation.new(statut:'à faire', date: Date.today)
-assignation4 = Assignation.new(statut:'à faire', date: Date.today)
+assignation1 = Assignation.new(statut:true, date: Date.today)
+assignation2 = Assignation.new(statut:false, date: Date.today)
+assignation3 = Assignation.new(statut:false, date: Date.today)
+assignation4 = Assignation.new(statut:false, date: Date.today)
 
 assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
 assignation1.task = vaisselle
