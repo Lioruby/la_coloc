@@ -4,27 +4,27 @@
     <div class="flex justify-around">
       <div>
         <%= link_to colocation_path(current_colocation) do  %>
-          <i class="icon fas fa-home"></i>
+          <i class="fas fa-home"></i>
         <% end %>
       </div>
       <div>
         <%= link_to 'chat_path' do  %>
-          <i class="icon far fa-comment-alt"></i>
+          <i class="far fa-comment-alt"></i>
         <% end %>
       </div>
       <div>
         <%= link_to tasks_path(current_colocation) do  %>
-          <i class="icon fas fa-align-left"></i>
+          <i class="fas fa-align-left"></i>
         <% end %>
       </div>
       <div>
         <%= link_to assignations_path do  %>
-          <i class="icon fas fa-history"></i>
+          <i class="fas fa-history"></i>
         <% end %>
       </div>
       <div>
-        <%= link_to user_path(current_user) do  %>
-          <i class="icon far fa-user"></i>
+        <%= link_to user_path(current_user), class: "#{nav_active_class_for('users')}" do  %>
+          <i class="far fa-user"></i>
         <% end %>
       </div>
     </div>

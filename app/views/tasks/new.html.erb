@@ -1,4 +1,39 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
 
+<div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
+
+  <%= simple_form_for([@colocation, @task]) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
+      <h2 class="text-center font-bold text-xl text-gray-800">
+        Inscription
+      </h2>
+      <div class="text-left">
+        <%= f.input :name,
+        label: 'Nom de la tâche',
+        placeholder: 'Vaisselle, Ménage ...',
+        input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+        label_html: { class: 'text-gray-700 text-sm' } %>
+      <%= f.input :description,
+                  label: 'Description',
+                  placeholder: "Il faut faire la vaisselle d'hier",
+                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                  label_html: { class: 'text-gray-700 text-sm' }%>
+      <%= f.input :duration,
+                  label: 'Durée estimée en minutes',
+                  placeholder: '15',
+                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
+                  label_html: { class: 'text-gray-700 text-sm' },
+                  hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
+      </div>
+      <div class="p-5">
+        <%= f.button :submit, "Ajouter",
+        class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%= render 'shared/navigation_footer' %>
 
