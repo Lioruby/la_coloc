@@ -3,6 +3,7 @@ class AssignationsController < ApplicationController
   end
 
   def index
+    @assignations = Assignation.all
   end
 
   def edit
