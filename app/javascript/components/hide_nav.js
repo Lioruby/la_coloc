@@ -1,5 +1,9 @@
 const hiddenNav = () => {
   let hideItem = document.getElementById("myLinks");
+
+  if (hideItem == null)
+    return
+
   hideItem.classList.toggle('hidden')
 }
 

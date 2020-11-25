@@ -1,6 +1,18 @@
+
+<div class="text-white text-center flex justify-around">
+  <div class="active tab w-1/2 py-2 shadow-md">
+    <h1>Tâches</h1>
+  </div>
+  <div class="tab w-1/2 py-2 shadow-md">
+    <h1>Colocs</h1>
+  </div>
+</div>
+
+
+
 <div class="px-auto text-center py-8">
-<h1> <%= @colocation.name %> </h1>
-<h3>Voila les tâches ! A qui le tour? </h3>
+  <h1> <%= @colocation.name %> </h1>
+  <h3>Voila les tâches ! A qui le tour? </h3>
 </div>
 
 <div class="flex  flex-col gap-6 px-8">
@@ -22,4 +34,7 @@
   <% end %>
   <% end %>
 </div>
+
+
+
 <%= render 'shared/navigation_footer' %>
