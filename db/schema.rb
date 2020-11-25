@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_125009) do
   create_table "assignations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "task_id", null: false
-    t.string "statut"
+    t.boolean "statut"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
