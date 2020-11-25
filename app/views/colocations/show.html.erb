@@ -10,14 +10,14 @@
   <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
     <%= assignation.task.name %>
-
     <%= simple_form_for assignation do |f| %>
-    <%= f.input :statut, as: :select, collection: ["fait"]  %>
+    <%= f.input :statut, as: :boolean %>
     <%= f.input :photos, as: :file, label:"Ajouter une preuve(photo)" %>
     <%= f.button :submit , "Valider"%>
     <% end %>
-
   </div>
+
+
   <% end %>
   <% end %>
   <% end %>
