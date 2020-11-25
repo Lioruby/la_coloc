@@ -22,24 +22,28 @@
 </div>
 
 
-<!-- Un bloc jour + display task commence ici, les 5 suivants sont identiques sauf le (x) de Date.today.next_day au départ -->
+<!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
+ -->
+
+  <% i = 1 %>
+  <% 15.times do %>
 
   <% @existing_date = [] %>
 
   <% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day %>
+    <% if assignation.date == Date.today.next_day(i) %>
     <% @existing_date << assignation.date %>
     <% end %>
     <% end %>
     <% if @existing_date != [] %>
   <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day.strftime("%A") %> </h3>
+    <h3 class="text-xl py-4"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
 
   <div class="flex flex-col gap-6 px-8">
 <% end %>
 
     <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day %>
+    <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
     <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
       <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
       <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
@@ -51,151 +55,8 @@
     <% end %>
   </div>
   </div>
+  <% i += 1 %>
+  <% end %>
 
-<!-- Termine ici -->
-
-<% @existing_date = [] %>
-
-<% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day(2) %>
-    <% @existing_date << assignation.date %>
-    <% end %>
-    <% end %>
-    <% if @existing_date != [] %>
-  <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day(2).strftime("%A") %> </h3>
-
-  <div class="flex flex-col gap-6 px-8">
-<% end %>
-
-    <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day(2) %>
-    <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
-      <%= simple_form_for assignation do |f| %>
-      <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
-
-
-<% @existing_date = [] %>
-
-<% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day(3) %>
-    <% @existing_date << assignation.date %>
-    <% end %>
-    <% end %>
-    <% if @existing_date != [] %>
-  <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day(3).strftime("%A") %> </h3>
-
-  <div class="flex flex-col gap-6 px-8">
-<% end %>
-
-    <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day(3) %>
-    <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
-      <%= simple_form_for assignation do |f| %>
-      <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
-
-
-<% @existing_date = [] %>
-
-<% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day(4) %>
-    <% @existing_date << assignation.date %>
-    <% end %>
-    <% end %>
-    <% if @existing_date != [] %>
-  <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day(4).strftime("%A") %> </h3>
-
-  <div class="flex flex-col gap-6 px-8">
-<% end %>
-
-    <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day(4) %>
-    <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
-      <%= simple_form_for assignation do |f| %>
-      <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
-
-
-<% @existing_date = [] %>
-
-<% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day(5) %>
-    <% @existing_date << assignation.date %>
-    <% end %>
-    <% end %>
-    <% if @existing_date != [] %>
-  <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day(5).strftime("%A") %> </h3>
-
-  <div class="flex flex-col gap-6 px-8">
-<% end %>
-
-    <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day(5) %>
-    <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
-      <%= simple_form_for assignation do |f| %>
-      <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
-
-
-<% @existing_date = [] %>
-
-  <% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day(6) %>
-    <% @existing_date << assignation.date %>
-    <% end %>
-    <% end %>
-    <% if @existing_date != [] %>
-  <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day(6).strftime("%A") %> </h3>
-
-  <div class="flex flex-col gap-6 px-8">
-<% end %>
-
-    <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day(6) %>
-    <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
-      <%= simple_form_for assignation do |f| %>
-      <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
 
 <%= render 'shared/navigation_footer' %>
