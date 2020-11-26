@@ -19,7 +19,13 @@
           </div>
         </div>
           <div class="items-end">
-            <p>Tâche réalisée: <%= assignation.task.name %><p>
+            <p>Tâche réalisée:  
+              <% if assignation.task == nil %>
+                <%= assignation.name %>
+              <% else  %>
+                <%= assignation.task.name  %></span>
+              <% end %>
+            <p>
           </div>
       </div>
     <% end %>
