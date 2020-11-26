@@ -16,10 +16,4 @@ class AssignationsController < ApplicationController
     assignation.save!
     redirect_to colocation_path(current_colocation)
   end
-
-  private
-
-  # def assignation_params_require
-  #   params.require(:assignation).permit(:photo)
-  # end
 end
