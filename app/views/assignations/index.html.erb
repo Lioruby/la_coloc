@@ -1,3 +1,11 @@
-<h1>Assignations index</h1>
+<% @assignations.each do |assignation| %>
+  <% if assignation.statut == true %>
+    <div class="flex justify-between px-4 m-2 border-2 border-yellow-500 text-gray-500">
+      <p><%= assignation.user.first_name %></p>
+      <p><%= assignation.task.name %></p>
+    </div>
+  <% end %>
+<% end %>
+
 
 <%= render 'shared/navigation_footer' %>

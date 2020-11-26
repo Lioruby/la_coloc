@@ -3,22 +3,22 @@
   <div class="w-screen px-4 py-2 bg-gray-800 text-white fixed bottom-0">
     <div class="flex justify-around">
       <div>
-        <%= link_to colocation_path(current_colocation) do  %>
+        <%= link_to colocation_path(current_colocation), class: "#{nav_active_class_for('colocations')}" do %>
           <i class="fas fa-home"></i>
         <% end %>
       </div>
       <div>
-        <%= link_to 'chat_path' do  %>
+        <%= link_to 'chat_path' do %>
           <i class="far fa-comment-alt"></i>
         <% end %>
       </div>
       <div>
-        <%= link_to tasks_path(current_colocation) do  %>
+        <%= link_to tasks_path(current_colocation), class: "#{nav_active_class_for('tasks')}" do %>
           <i class="fas fa-align-left"></i>
         <% end %>
       </div>
       <div>
-        <%= link_to assignations_path do  %>
+        <%= link_to assignations_path, class: "#{nav_active_class_for('assignations')}" do %>
           <i class="fas fa-history"></i>
         <% end %>
       </div>

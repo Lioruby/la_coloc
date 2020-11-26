@@ -1,18 +1,68 @@
 <div class="px-auto text-center py-8">
 <h1> <%= @colocation.name %> </h1>
 <h3>Voila les tâches ! A qui le tour? </h3>
+
+<h3 class="pt-4 font-bold text-xl"> Tâches du jour </h3>
 </div>
 
-<div class="flex  flex-col gap-6 px-8">
+<div class="grid grid-cols-2 gap-6 px-4">
   <% @colocation.users.each do | user | %>
   <% user.assignations.each do | assignation | %>
-    <% if assignation.statut != "fait" %>
-  <div class="flex items-center py-4 pl-4 bg-blue-200 shadow-lg">
+    <% if assignation.statut == false && assignation.date == Date.today %>
+  <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <%= assignation.task.name %>
+    <span class="text-black font-bold text-xs uppercase tracking-wide"> Faire <%= assignation.task.name %></span>
   </div>
-    <% end %>
+
+  <% end %>
   <% end %>
   <% end %>
 </div>
+
+
+<!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
+ -->
+
+<% i = 1 %>
+  <% 15.times do %>
+
+  <% @existing_date = [] %>
+  <% @colocation.users.each do | user | %>
+    <% user.assignations.each do | assignation | %>
+      <% if assignation.date == Date.today.next_day(i) %>
+      <% @existing_date << assignation.date %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+      <% if @existing_date != [] %>
+    <div class="text-center py-4 ">
+      <h3 class="text-xl py-4"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
+    </div>
+      <% if @existing_date.length >= 2 %>
+        <div class="grid grid-cols-2 gap-6 px-4">
+      <% else %>
+        <div class="flex flex-col gap-6 px-4">
+      <% end %>
+  <% end %>
+
+      <% @colocation.users.each do | user | %>
+      <% user.assignations.each do | assignation | %>
+      <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
+      <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
+        <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+        <span class="text-black font-bold text-xs uppercase tracking-wide">Faire <%= assignation.task.name %></span>
+      </div>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+    </div>
+
+    <% i += 1 %>
+    <% end %>
+
+
+
 <%= render 'shared/navigation_footer' %>
+
