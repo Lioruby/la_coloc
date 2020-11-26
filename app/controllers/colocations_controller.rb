@@ -25,6 +25,10 @@ class ColocationsController < ApplicationController
   def edit
   end
 
+  def roommates
+    @roomates = current_colocation.users
+  end
+
   private
 
   def set_params_coloc

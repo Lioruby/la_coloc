@@ -1,15 +1,35 @@
 const initTabs = () => {
-  const activeTab = document.querySelector('.tab .active')
-  const tabs = document.querySelectorAll('.tabs')
+  const taskTab = document.querySelector('#taskTab');
+  const colocTab = document.querySelector('#colocTab');
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', function(event) {
-      if (tab != activeTab) {
-        tab.classList.add('active', 'border-b-2', 'rounded-bl-md' 'border-yellow-500', 'bg-gray-800')
-        tab.classList.remove('bg-gray-700')
-      }
-    })
+  if (taskTab == null)
+    return
+
+  taskTab.classList.remove('bg-gray-700');
+  taskTab.classList.add('border-b-2', 'rounded-bl-md', 'border-yellow-500', 'bg-gray-800');
+
+  function toggleTaskTab() {
+    taskTab.classList.remove('bg-gray-700')
+    taskTab.classList.add('border-b-2', 'rounded-bl-md', 'border-yellow-500', 'bg-gray-800')
+    colocTab.classList.add('bg-gray-700')
+    colocTab.classList.remove('border-b-2', 'rounded-bl-md', 'border-yellow-500', 'bg-gray-800')
+  }
+
+  taskTab.addEventListener('click', (event) => {
+    toggleTaskTab();
   })
+
+  function toggleColocTab() {
+    colocTab.classList.remove('bg-gray-700')
+    colocTab.classList.add('border-b-2', 'rounded-bl-md', 'border-yellow-500', 'bg-gray-800')
+    taskTab.classList.add('bg-gray-700')
+    taskTab.classList.remove('border-b-2', 'rounded-bl-md', 'border-yellow-500', 'bg-gray-800')
+  }
+
+  colocTab.addEventListener('click', (event) => {
+    toggleColocTab();
+  })
+
 }
 
 export default initTabs;
