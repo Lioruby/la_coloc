@@ -29,7 +29,6 @@ export default class extends Controller {
         body: JSON.stringify({ all_names: event.from.innerText })
       })
     };
-
     changePosition(event);
   }
 }
