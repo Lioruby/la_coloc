@@ -4,32 +4,32 @@ class AssignationAlgo
     @task = task
   end
 
-  def assign_task
+  def self.call(*args)
+    new(*args).call
+  end
+
+  def call
+    hash_working_time = working_time
+    task_for = faineant(hash_working_time)
+    assignation = Assignation.new(task_id: @task.id, user_id: task_for.keys.first.values[0].id)
   end
 
   private
 
   def working_time
-    @colocation.user
+    working_time_for_user = {}
+    @colocation.users.each do |user|
+      total_duration = 0
+      user.tasks.each do |task|
+        total_duration += task.duration
+      end
+      working_time_for_user[user: user] = total_duration
+    end
+    working_time_for_user
   end
 
-  def assign_task_to
-    @tasks.each do |task|
-      if task.recurrence == 'quotidienne'
-        i = 1
-        7.times do
-          date = Date.next_day(i)
-          assign = Assignation.new(date: date)
-          assign.user = @users.sample
-          assign.task = task
-          i += 1
-        end
-      else
-        date = Date.next_day(i)
-        assign = Assignation.new(date: date)
-        assign.user = User.all.sample
-        assign.task = task
-      end
-    end
+  def faineant(hash_working)
+    ap [hash_working.min_by{|k, v| v}].to_h
+    [hash_working.min_by{|k, v| v}].to_h
   end
 end
