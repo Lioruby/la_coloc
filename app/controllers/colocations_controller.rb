@@ -26,7 +26,7 @@ class ColocationsController < ApplicationController
   end
 
   def roommates
-    @roomates = current_colocation.users
+    @colocation = Colocation.find(params[:colocation_id])
   end
 
   private
