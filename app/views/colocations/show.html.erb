@@ -1,6 +1,8 @@
+<%= render 'shared/home_tabs' %>
+
 <div class="px-auto text-center py-8">
-<h1> <%= @colocation.name %> </h1>
-<h3>Voila les tâches ! A qui le tour? </h3>
+  <h1> <%= @colocation.name %> </h1>
+  <h3>Voila les tâches ! A qui le tour? </h3>
 
 <h3 class="pt-4 font-bold text-xl"> Tâches du jour </h3>
 </div>
@@ -18,7 +20,6 @@
   <% end %>
   <% end %>
 </div>
-
 
 <!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
  -->
@@ -61,7 +62,6 @@
 
     <% i += 1 %>
     <% end %>
-
 
 
 <%= render 'shared/navigation_footer' %>
