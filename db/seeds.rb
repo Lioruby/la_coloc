@@ -121,19 +121,19 @@ preflior3.task = vaisselle
 preflior3.save!
 
 preffranck1 = Preference.new(position: 0)
-preffranck1.user = thomas
+preffranck1.user = franck
 preffranck1.task = courses
 preffranck1.save!
 
 
 preffranck2 = Preference.new(position: 1)
-preffranck2.user = thomas
+preffranck2.user = franck
 preffranck2.task = vaisselle
 preffranck2.save!
 
 
 preffranck3 = Preference.new(position: 2)
-preffranck3.user = thomas
+preffranck3.user = franck
 preffranck3.task = ménage
 preffranck3.save!
 
