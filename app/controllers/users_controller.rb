@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     @preferences = current_user.preferences
     task_with_position = {}
     names = params[:all_names].split(' ')
-    ap names
 
     names.each_with_index { |name, i| task_with_position[name] = i }
 

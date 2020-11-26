@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   end
 
 
-  resources :assignations, only: [:index, :show, :update]
   resources :tasks
+  resources :assignations, only: [:index, :show, :edit, :update]
   resources :preferences, except: [:create, :new, :destroy]
   resources :users, only: :show do
     member do
