@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_114032) do
 
   create_table "preferences", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "rating"
+    t.integer "position"
     t.bigint "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
