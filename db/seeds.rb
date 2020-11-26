@@ -37,9 +37,9 @@ thomas.save!
 lior.save!
 franck.save!
 
-vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 30)
-ménage = Task.new(name: 'Ménage', description: 'Il faut faire le ménage', duration: 60)
-courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 20)
+vaisselle = Task.new(name: 'la Vaisselle', description: 'Il faut faire la vaisselle', duration: 30)
+ménage = Task.new(name: 'le Ménage', description: 'Il faut faire le ménage', duration: 60)
+courses = Task.new(name: 'les Courses', description: 'La liste des courses est sur le frigo', duration: 20)
 
 
 vaisselle.colocation = lacoloc
@@ -56,12 +56,12 @@ assignation3 = Assignation.new(statut: false, date: Date.today)
 assignation4 = Assignation.new(statut: false, date: Date.today)
 assignation5 = Assignation.new(statut: false, date: "Thu, 26 Nov 2020")
 assignation6 = Assignation.new(statut: false, date: "Thu, 26 Nov 2020")
-assignation7 = Assignation.new(statut: false, date: "Fri, 27 Nov 2020")
+assignation7 = Assignation.new(statut: false, date: "Sat, 28 Nov 2020")
 assignation8 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
 
 assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
 assignation1.task = vaisselle
-assignation1.user = thomas
+assignation1.user = franck
 assignation1.save!
 
 assignation2.photo.attach(io: URI.open(task_photos[1]), filename: 'photo.jpg', content_type: 'image/jpg')
