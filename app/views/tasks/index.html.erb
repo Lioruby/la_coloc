@@ -10,7 +10,7 @@
     <% if assignation.statut == false && assignation.date == Date.today %>
   <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
     <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
+    <span class="text-black font-bold text-sm uppercase tracking-wide"> Faire <%= assignation.task.name %></span>
     <%= simple_form_for assignation do |f| %>
     <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
     <% end %>
@@ -46,7 +46,7 @@
     <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
     <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
       <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide"><%= assignation.task.name %></span>
+      <span class="text-black font-bold text-sm uppercase tracking-wide">Faire <%= assignation.task.name %></span>
       <%= simple_form_for assignation do |f| %>
       <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
       <% end %>
