@@ -15,7 +15,9 @@
 
 <div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
 
-  <%= simple_form_for([@colocation, @task]) do |f| %>
+
+
+  <%= simple_form_for(@assignation) do |f| %>
     <%= f.error_notification %>
 
     <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
@@ -23,30 +25,20 @@
         Nouvelle Tâche
       </h2>
       <div class="text-left">
-        <%= f.input :name,
-        label: 'Nom de la tâche',
-        placeholder: 'Vaisselle, Ménage ...',
+        <%= f.association :user,
+        label: 'Qui?',
         input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
         label_html: { class: 'text-gray-700 text-sm' } %>
-      <%= f.input :description,
-                  label: 'Description',
-                  placeholder: "Il faut faire la vaisselle d'hier",
+      <%= f.input :name,
+                  label: 'Name :',
+                  placeholder: "Acheter le pain",
                   input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' }%>
-      <%= f.input :duration,
-                  label: 'Durée estimée en minutes',
-                  placeholder: '15',
+      <%= f.input :date,
+                  label: 'Choisis un jour',
                   input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' },
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
-
-      <%= f.input :recurrence,
-                  collection: ['quotidienne', 'hebdomadaire', 'mensuel'],
-                  label: 'Recurrence',
-                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
-                  label_html: { class: 'text-gray-700 text-sm' },
-                  hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
-
       </div>
       <div class="p-5">
         <%= f.button :submit, "Ajouter",
@@ -54,6 +46,7 @@
       </div>
     </div>
   <% end %>
+
 </div>
 
 

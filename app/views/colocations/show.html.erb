@@ -13,7 +13,12 @@
     <% if assignation.statut == false && assignation.date == Date.today %>
   <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <span class="text-black font-bold text-xs uppercase tracking-wide"> Faire <%= assignation.task.name %></span>
+    <span class="text-black font-bold text-xs uppercase tracking-wide">
+      <% if assignation.task == nil %>
+      <%= assignation.name %>
+      <% else  %>
+      <%= assignation.task.name  %></span>
+      <% end %>
   </div>
 
   <% end %>
@@ -52,7 +57,13 @@
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
       <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
         <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <span class="text-black font-bold text-xs uppercase tracking-wide">Faire <%= assignation.task.name %></span>
+        <span class="text-black font-bold text-xs uppercase tracking-wide">
+          <% if assignation.task == nil %>
+      <%= assignation.name %>
+      <% else  %>
+      <%= assignation.task.name  %></span>
+      <% end %>
+        </span>
       </div>
       <% end %>
       <% end %>
