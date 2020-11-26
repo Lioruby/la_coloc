@@ -2,7 +2,11 @@
   <% if assignation.statut == true %>
     <div class="flex justify-between px-4 m-2 border-2 border-yellow-500 text-gray-500">
       <p><%= assignation.user.first_name %></p>
-      <p><%= assignation.task.name %></p>
+      <% if assignation.task == nil %>
+      <%= assignation.name %>
+      <% else  %>
+      <%= assignation.task.name  %></span>
+      <% end %>
     </div>
   <% end %>
 <% end %>
