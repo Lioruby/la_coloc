@@ -29,9 +29,9 @@ thomas.save!
 lior.save!
 franck.save!
 
-vaisselle = Task.new(name: 'la Vaisselle', description: 'Il faut faire la vaisselle', duration: 30, recurrence: "quotidienne")
-ménage = Task.new(name: 'le Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
-courses = Task.new(name: 'les Courses', description: 'La liste des courses est sur le frigo', duration: 20, recurrence: "hebdomadaire")
+vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 30, recurrence: "quotidienne")
+ménage = Task.new(name: 'Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
+courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 20, recurrence: "hebdomadaire")
 
 
 vaisselle.colocation = lacoloc
@@ -90,39 +90,51 @@ prefthomas1 = Preference.new(position: 0)
 prefthomas1.user = thomas
 prefthomas1.task = vaisselle
 prefthomas1.save!
+
+
 prefthomas2 = Preference.new(position: 1)
-prefthomas1.user = thomas
-prefthomas1.task = ménage
-prefthomas1.save!
+prefthomas2.user = thomas
+prefthomas2.task = ménage
+prefthomas2.save!
+
+
 prefthomas3 = Preference.new(position: 2)
-prefthomas1.user = thomas
-prefthomas1.task = courses
-prefthomas1.save!
+prefthomas3.user = thomas
+prefthomas3.task = courses
+prefthomas3.save!
 
 preflior1 = Preference.new(position: 0)
 preflior1.user = lior
 preflior1.task = ménage
 preflior1.save!
+
+
 preflior2 = Preference.new(position: 1)
-preflior1.user = lior
-preflior1.task = courses
-preflior1.save!
+preflior2.user = lior
+preflior2.task = courses
+preflior2.save!
+
+
 preflior3 = Preference.new(position: 2)
-preflior1.user = lior
-preflior1.task = vaisselle
-preflior1.save!
+preflior3.user = lior
+preflior3.task = vaisselle
+preflior3.save!
 
 preffranck1 = Preference.new(position: 0)
-prefthomas1.user = thomas
-prefthomas1.task = courses
-prefthomas1.save!
+preffranck1.user = thomas
+preffranck1.task = courses
+preffranck1.save!
+
+
 preffranck2 = Preference.new(position: 1)
-prefthomas1.user = thomas
-prefthomas1.task = vaisselle
-prefthomas1.save!
+preffranck2.user = thomas
+preffranck2.task = vaisselle
+preffranck2.save!
+
+
 preffranck3 = Preference.new(position: 2)
-prefthomas1.user = thomas
-prefthomas1.task = ménage
-prefthomas1.save!
-2
+preffranck3.user = thomas
+preffranck3.task = ménage
+preffranck3.save!
+
 
