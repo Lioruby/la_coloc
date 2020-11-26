@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
   resources :preferences, except: [:create, :new, :destroy]
-  resources :users, only: :show do
+  resources :users, only: [:show, :index] do
     member do
       post :move
     end
