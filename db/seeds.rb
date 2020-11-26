@@ -29,9 +29,9 @@ thomas.save!
 lior.save!
 franck.save!
 
-vaisselle = Task.new(name: 'la Vaisselle', description: 'Il faut faire la vaisselle', duration: 30)
-ménage = Task.new(name: 'le Ménage', description: 'Il faut faire le ménage', duration: 60)
-courses = Task.new(name: 'les Courses', description: 'La liste des courses est sur le frigo', duration: 20)
+vaisselle = Task.new(name: 'la Vaisselle', description: 'Il faut faire la vaisselle', duration: 30 recurrence: "quotidienne")
+ménage = Task.new(name: 'le Ménage', description: 'Il faut faire le ménage', duration: 60 recurrence: "hebdomadaire")
+courses = Task.new(name: 'les Courses', description: 'La liste des courses est sur le frigo', duration: 20 recurrence: "hebdomadaire")
 
 
 vaisselle.colocation = lacoloc
