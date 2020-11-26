@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_125009) do
+ActiveRecord::Schema.define(version: 2020_11_26_102614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_125009) do
   create_table "assignations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "task_id", null: false
-    t.boolean "statut"
+    t.boolean "statut", default: false
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_125009) do
 
   create_table "preferences", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "rating"
+    t.integer "position"
     t.bigint "task_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_11_24_125009) do
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "recurrence"
     t.index ["colocation_id"], name: "index_tasks_on_colocation_id"
   end
 
