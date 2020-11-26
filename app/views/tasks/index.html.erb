@@ -18,7 +18,7 @@
       <% end %>
     </span>
     <%= simple_form_for assignation do |f| %>
-    <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
+    <%= link_to "Valider", edit_assignation_path(current_colocation, assignation_id: assignation), class: "mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
     <% end %>
   </div>
 

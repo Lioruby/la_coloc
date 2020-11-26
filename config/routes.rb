@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   end
 
 
-  resources :assignations, only: [:index, :show, :update, :create]
+  resources :assignations, except: [:destroy, :new]
   resources :tasks do
     collection do
       get "occasionnel", to: 'tasks#occasionnel'
     end
   end
+
   resources :preferences, except: [:create, :new, :destroy]
   resources :users, only: [:show, :index] do
     member do

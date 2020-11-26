@@ -7,6 +7,7 @@ class AssignationsController < ApplicationController
   end
 
   def edit
+    @assignation = Assignation.find(params[:assignation_id])
   end
 
   def create
@@ -21,10 +22,16 @@ class AssignationsController < ApplicationController
 
   def update
     assignation = Assignation.find(params[:id])
+    assignation.update(photo_params_require)
     assignation[:statut] = true
-    # assignation.update!(assignation_params_require)
     assignation.save!
+    # assignation.update!(assignation_params_require)
     redirect_to colocation_path(current_colocation)
+  end
+  private
+
+  def photo_params_require
+    params.require(:assignation).permit(:photo)
   end
 
   def assignation_params
