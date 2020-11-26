@@ -6,7 +6,7 @@
 
     <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
       <h2 class="text-center font-bold text-xl text-gray-800">
-        Inscription
+        Nouvelle Tâche
       </h2>
       <div class="text-left">
         <%= f.input :name,
@@ -25,6 +25,14 @@
                   input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' },
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
+
+      <%= f.input :recurrence,
+                  collection: ['quotidienne', 'hebdomadaire', 'mensuel'],
+                  label: 'Recurrence',
+                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
+                  label_html: { class: 'text-gray-700 text-sm' },
+                  hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
+
       </div>
       <div class="p-5">
         <%= f.button :submit, "Ajouter",
