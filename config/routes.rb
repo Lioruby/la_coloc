@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :preferences, except: [:create, :new, :destroy]
   resources :users, only: :show
 
+  get "roommates", to: 'colocations#roommates'
+
   root to: 'pages#home'
 end
