@@ -1,7 +1,16 @@
 class AssignationAlgo
-  def initialize(tasks, users)
-    @task = tasks
-    @users = users
+  def initialize(colocation, task)
+    @colocation = colocation
+    @task = task
+  end
+
+  def assign_task
+  end
+
+  private
+
+  def working_time
+    @colocation.user
   end
 
   def assign_task_to
@@ -24,4 +33,3 @@ class AssignationAlgo
     end
   end
 end
-
