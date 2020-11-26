@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :assignations, only: [:index, :show, :update]
   resources :tasks
   resources :preferences, except: [:create, :new, :destroy]
-  resources :users, only: :show
+  resources :users, only: :show do
+    member do
+      post :move
+    end
+  end
 
   root to: 'pages#home'
 end
