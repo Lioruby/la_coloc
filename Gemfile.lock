@@ -109,6 +109,10 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.7.0)
+      launchy (~> 2.2)
     listen (3.3.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -117,6 +121,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mailjet (1.5.4)
+      activesupport (>= 3.1.0)
+      rack (>= 1.4.0)
+      rest-client
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
@@ -267,7 +275,9 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   jbuilder (~> 2.7)
+  letter_opener
   listen (~> 3.2)
+  mailjet (~> 1.5)
   pg (>= 0.18, < 2.0)
   pry-byebug
   pry-rails

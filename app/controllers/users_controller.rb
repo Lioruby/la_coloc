@@ -1,15 +1,10 @@
 class UsersController < ApplicationController
-  def new
-  end
 
   def index
   end
 
   def show
     @preferences = Preference.all
-  end
-
-  def create
   end
 
   def move
