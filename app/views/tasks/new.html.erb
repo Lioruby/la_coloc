@@ -1,17 +1,4 @@
-<h1>Crée une tâche</h1>
-
-<div class="text-white text-center flex justify-around">
-  <div class="<%= params[:action] == 'show' ? 'border-b-2 rounded-bl-md border-yellow-500 bg-gray-800' : 'bg-gray-700' %> w-1/2 py-2 shadow-md" id="taskTab">
-    <%= link_to new_task_path do %>
-      <h1>Recurrente</h1>
-    <% end %>
-  </div>
-  <div class="<%= params[:action] == 'roommates' ? 'border-b-2 rounded-bl-md border-yellow-500 bg-gray-800' : 'bg-gray-700' %> w-1/2 py-2 shadow-md" id="colocTab">
-    <%= link_to occasionnel_tasks_path do %>
-        <h1>Occasionnel</h1>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/task_tabs' %>
 
 <div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
 
@@ -41,8 +28,8 @@
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
 
       <%= f.input :recurrence,
-                  collection: ['quotidienne', 'hebdomadaire', 'mensuel'],
-                  label: 'Recurrence',
+                  collection: ['quotidien', 'hebdomadaire', 'mensuel'],
+                  label: 'Récurrence',
                   input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' },
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
