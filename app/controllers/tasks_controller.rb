@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   end
 
   def new
+    @assignation = Assignation.new
     @task = Task.new
   end
 
@@ -16,6 +17,10 @@ class TasksController < ApplicationController
     else
       redirect_to new_task_path
     end
+  end
+
+  def occasionnel
+    @assignation = Assignation.new
   end
 
   def update
@@ -35,4 +40,5 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :description, :duration)
   end
+
 end

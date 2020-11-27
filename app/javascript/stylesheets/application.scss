@@ -2,3 +2,21 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.history-avatar {
+  position: absolute;
+  img {
+    position: relative;
+    left: 308px;
+    bottom: 7.5px;
+  }
+}
+

@@ -8,5 +8,12 @@ class User < ApplicationRecord
   belongs_to :colocation
   has_many :preferences, dependent: :destroy
   has_many :assignations, dependent: :destroy
+
   has_many :tasks, through: :assignations
+
+
+  def name
+    @name = first_name
+  end
+
 end
