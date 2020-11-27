@@ -26,7 +26,7 @@ class AssignationsController < ApplicationController
     assignation[:statut] = true
     assignation.save!
     # assignation.update!(assignation_params_require)
-    redirect_to colocation_path(current_colocation)
+    redirect_to tasks_path(current_colocation)
   end
   private
 
