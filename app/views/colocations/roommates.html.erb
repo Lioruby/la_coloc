@@ -5,13 +5,28 @@
   <h3>Participants</h3>
 </div>
 
-<div class="flex  flex-col gap-6 px-8">
+<div class="flex">
   <% current_colocation.users.each do | user | %>
-  <div class="flex justify-between text-white items-center px-3 py-4 pl-4 bg-blue-200 shadow-lg">
-    <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <%= user.first_name %>
+  <div class="flex flex-col w-full text-black items-center px-3 py-4 pl-4">
+    <%= cl_image_tag user.photo.key, class:" border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+    <span class="pt-2"> <%= user.first_name %> </span>
   </div>
   <% end %>
+</div>
+
+<div class="px-auto text-center py-8">
+  <h1> Statistiques </h1>
+</div>
+
+<div class="px-4 flex flex-col">
+  <span class="py-4">La coloc <%= current_colocation.name %> existe depuis le <%= current_colocation.created_at.strftime("%d/%m/%Y") %> </span>
+  <span class="py-4"> <%= Assignation.all.count %> tâches ont été réalisées depuis </span>
+  <span class="flex items-end py-4"> <%= cl_image_tag User.find(2).photo.key, class:"mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full"  %> <%= User.find(2).name %> est celui qui a réalisé le plus de tâches!
+  </span>
+  <span class="flex items-end py-4"> <%= cl_image_tag User.find(3).photo.key, class:"mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full"  %> <%= User.find(3).name %> est celui qui a le plus prouvé ses réalisations!
+  </span>
+  <span class="flex items-end py-4"> <%= cl_image_tag User.find(1).photo.key, class:"mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full"  %> <%= User.find(1).name %> est le plus fainéant d'entre tous...
+  </span>
 </div>
 
 <%= render 'shared/navigation_footer' %>
