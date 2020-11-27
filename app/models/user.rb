@@ -11,9 +11,7 @@ class User < ApplicationRecord
 
   has_many :tasks, through: :assignations
 
-
   def name
     @name = first_name
   end
-
 end
