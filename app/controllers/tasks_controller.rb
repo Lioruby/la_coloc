@@ -13,6 +13,13 @@ class TasksController < ApplicationController
     @task.colocation = @colocation
 
     if @task.save!
+      users = User.all
+      users.each do |user|
+      preference = Preference.new(position: User.all.count)
+      preference.user = user
+      preference.task = @task
+      preference.save
+      end
       redirect_to root_path
     else
       redirect_to new_task_path
