@@ -10,7 +10,7 @@
   <% @colocation.users.each do | user | %>
   <% user.assignations.each do | assignation | %>
     <% if assignation.statut == false && assignation.date == Date.today %>
-  <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl">
+  <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
     <div>
         <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
@@ -65,7 +65,7 @@
       <% @colocation.users.each do | user | %>
       <% user.assignations.each do | assignation | %>
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
-      <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl">
+      <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
         <div>
           <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
