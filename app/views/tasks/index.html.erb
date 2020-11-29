@@ -1,7 +1,7 @@
 <div class="container mx-auto">
   <div class="flex flex-col gap-6 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
     <h1 class="text-lg font-semibold"> Bonjour, <%= current_user.first_name %> </h1>
-    <%= image_tag "up_to_date.svg", class:"w-44 h-44" %>
+    <%= image_tag "completed_task.svg", class:"w-44 h-44" %>
     <h3 class="text-lg font-semibold"> Voici les tâches du jour </h3>
   </div>
 
@@ -52,7 +52,7 @@
       <% end %>
       <% if @existing_date != [] %>
     <div class="text-left py-4 ">
-      <h3 class="text-l italic px-1 py-4 text-gray-600"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
+      <h3 class="text-l font-semibold italic px-1 py-4 text-gray-600"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
 
     <div class="flex flex-col gap-6 px-8">
     <% end %>
