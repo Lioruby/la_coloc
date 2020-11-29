@@ -1,9 +1,10 @@
 <%= render 'shared/home_tabs' %>
 
-<div class="px-auto text-center py-8">
-  <h1 class="font-bold"> <%= current_colocation.name %> </h1>
-  <h3 class="">Participants</h3>
-</div>
+<div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
+  <h1 class="text-lg font-semibold"> <%= current_colocation.name %> </h1>
+  <%= image_tag "team.svg", class:"w-44 h-44" %>
+  <h3 class="text-lg font-semibold">Participants</h3>
+
 
 <div class="flex">
   <% current_colocation.users.each do | user | %>
@@ -13,9 +14,12 @@
   </div>
   <% end %>
 </div>
+</div>
 
-<div class="px-auto text-center py-8">
-  <h1 class="font-bold"> Statistiques </h1>
+
+<div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
+  <h1 class="text-lg font-semibold"> Statistiques </h1>
+  <%= image_tag "stats_fun.svg", class:"w-44 h-44" %>
 </div>
 
 <div class="px-4 flex flex-col">
