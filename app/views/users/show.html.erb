@@ -16,7 +16,7 @@
   </div>
   <div class="py-6 pr-4 w-full col-span-3" data-controller="preference" data-preference-url="/users/:id/move">
     <% current_user.preferences.sort_by(&:position).each do |preference| %>
-        <div data-id="<%= current_user.id %>" class="py-2 text-center">
+        <div data-id="<%= preference.task.id %>" class="py-2 text-center">
             <h4 class="border-solid border-2 border-yellow-500 hover:bg-yellow-600 bg-blue-200 px-4 py-4 rounded-lg font-bold text-sm uppercase tracking-wide">
               <%= preference.task.name %>
             </h4>

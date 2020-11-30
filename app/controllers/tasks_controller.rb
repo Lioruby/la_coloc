@@ -9,6 +9,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.name = @task.name
     @colocation = current_user.colocation
     @task.colocation = @colocation
 
