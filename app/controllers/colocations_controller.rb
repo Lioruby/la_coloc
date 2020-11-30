@@ -3,6 +3,7 @@ class ColocationsController < ApplicationController
 
   def new
     @colocation = Colocation.new
+    check_colocation
   end
 
   def update
@@ -15,7 +16,6 @@ class ColocationsController < ApplicationController
       current_user.colocation = @colocation
       current_user.save
       check_colocation
-      redirect_to colocation_path(@colocation)
     else
       render :new
     end
@@ -34,8 +34,8 @@ class ColocationsController < ApplicationController
   private
 
   def check_colocation
-    if current_user.colocation.nil?
-      redirect_to new_colocation_path
+    unless current_user.colocation.nil?
+      redirect_to colocation_path(current_user.colocation)
     end
   end
 
