@@ -1,10 +1,10 @@
-<div class="text-white text-center flex justify-around">
-  <div class="<%= params[:action] == 'show' ? 'border-b-2 rounded-bl-md border-yellow-500 bg-gray-800' : 'bg-gray-700' %> w-1/2 py-2 shadow-md" id="taskTab">
+<div class="items-center text-white text-center flex justify-around relative z-index-0">
+  <div class="<%= params[:action] == 'show' ? 'border-b-2 rounded-bl-md border-yellow-500 bg-gray-800' : 'border-b-2 bg-gray-700' %> w-1/2 py-2 shadow-md" id="taskTab">
     <%= link_to colocation_path(current_colocation) do %>
       <h1>Tâches</h1>
     <% end %>
   </div>
-  <div class="<%= params[:action] == 'roommates' ? 'border-b-2 rounded-bl-md border-yellow-500 bg-gray-800' : 'bg-gray-700' %> w-1/2 py-2 shadow-md" id="colocTab">
+  <div class="<%= params[:action] == 'roommates' ? 'border-b-2 rounded-bl-md border-yellow-500 bg-gray-800' : 'border-b-2 bg-gray-700' %> w-1/2 py-2 shadow-md" id="colocTab">
     <%= link_to colocation_roommates_path(current_colocation) do %>
         <h1>Colocs</h1>
     <% end %>
