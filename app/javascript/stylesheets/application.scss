@@ -20,3 +20,22 @@ input[type="file"] {
   }
 }
 
+
+.supergrid {
+  display: grid;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.supergriditem {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.supergriditem > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

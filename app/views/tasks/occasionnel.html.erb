@@ -1,17 +1,38 @@
 <%= render 'shared/task_tabs' %>
 
-<div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
+<div class="bg-gray-800 text-center">
+  <div>
+    <h1 class="text-white py-4 font-bold text-xl tracking-wide">Tâches en cours...</h1>
+  </div>
+
+<div class="supergrid pt-2 pb-4 px-6">
+    <% current_colocation.users.each do |user| %>
+    <% user.assignations.each do |assignation| %>
+    <% if assignation.name != nil %>
+    <div class="supergriditem justify-center font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black">
+     <span><%= link_to assignation_path(assignation), class: '' do %>
+      <%= assignation.name %></span>
+      <% end %>
+      <% end %>
+    <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="bg-gray-800 p-4 flex items-center justify-center">
 
 
 
   <%= simple_form_for(@assignation) do |f| %>
     <%= f.error_notification %>
 
-    <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
-      <h2 class="text-center font-bold text-xl text-gray-800">
+    <div class="bg-gray-200 p-2 text-center border rounded shadow-md bg-center">
+      <h2 class="pb-4 pt-1 text-center font-bold text-lg text-gray-800">
         Nouvelle Tâche
       </h2>
-      <div class="text-left">
+      <div class="text-left ">
         <%= f.association :user,
         label: 'Qui?',
         input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
@@ -27,7 +48,7 @@
                   label_html: { class: 'text-gray-700 text-sm' },
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
       </div>
-      <div class="p-5">
+      <div class="pt-4 pb-12">
         <%= f.button :submit, "Ajouter",
         class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm" %>
       </div>

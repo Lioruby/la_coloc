@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
 
 
-  resources :assignations, except: [:destroy, :new]
+  resources :assignations, except: [:destroy, :new] do
+    member do
+      post :update_before_photo
+    end
+  end
   resources :tasks do
     collection do
       get "occasionnel", to: 'tasks#occasionnel'
