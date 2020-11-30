@@ -17,7 +17,7 @@ class AssignationsController < ApplicationController
     if @assignation.save
       redirect_to occasionnel_tasks_path, notice: 'Assignation crée avec succès'
     else
-      redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
+      redirect_to occasionnel_tasks_path, notice: 'Erreur, veuillez recommencer'
     end
   end
 

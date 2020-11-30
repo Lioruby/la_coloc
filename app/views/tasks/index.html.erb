@@ -48,7 +48,7 @@
     <% @existing_date = [] %>
 
     <% current_user.assignations.each do | assignation | %>
-      <% if assignation.date == Date.today.next_day(i) %>
+      <% if assignation.date == Date.today.next_day(i)  %>
       <% @existing_date << assignation.date %>
       <% end %>
       <% end %>
