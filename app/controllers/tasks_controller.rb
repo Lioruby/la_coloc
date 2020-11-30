@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   def index
   end
 
@@ -23,6 +24,7 @@ class TasksController < ApplicationController
           preference.save
         end
       end
+      assign_task_after_create
       redirect_to user_path(current_user), notice: 'La tâche a été crée avec succès'
     else
       redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
@@ -58,7 +60,17 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :duration)
+    params.require(:task).permit(:name, :description, :duration, :recurrence)
+  end
+
+  def assign_task_after_create
+    if @task.recurrence == 'quotidien'
+      7.times do |i|
+        AssignationAlgo.call(current_colocation, @task, Date.today.next_day(i))
+      end
+    else
+      AssignationAlgo.call(current_colocation, @task, Date.today)
+    end
   end
 
 end
