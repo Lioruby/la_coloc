@@ -7,7 +7,10 @@ export default class extends Controller {
 
   connect() {
     this.sortable =  Sortable.create(this.element, {
+      easing: "cubic-bezier(1, 0, 0, 1)",
+      swapThreshold: 1,
       onEnd: this.end.bind(this)
+
     })
   }
   end(event) {
