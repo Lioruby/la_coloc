@@ -20,7 +20,7 @@ class TasksController < ApplicationController
       preference.task = @task
       preference.save
       end
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       redirect_to new_task_path
     end
