@@ -1,7 +1,7 @@
-<header class="bg-gray-800">
-    <div id="topnav" class="flex items-center justify-between px-4 py-2 ">
+<header class="bg-gray-800 fixed top-0 z-10 h-16">
+    <div id="topnav" class="w-screen flex items-center justify-between px-4 py-2 bg-gray-800">
       <div class="flex items-end">
-        <%= link_to unauthenticated_path  do   %>
+        <%= link_to unauthenticated_path  do %>
           <%= image_tag "nav_img.svg", class:"w-12 bg-gray-800" %>
         <% end %>
         <h1 class="text-white text-lg uppercase font-semibold tracking-wide pl-4">La Coloc</h1>
@@ -14,7 +14,7 @@
         </button>
       </div>
     </div>
-    <div class=" text-left pb-4">
+    <div class="text-left pb-4">
       <% if !user_signed_in? %>
         <div id="myLinks" class="bg-gray-800 block hidden">
           <%= link_to 'Connexion', new_user_session_path, class: "block text-gray-200 font-semibold p-1 ml-4 rounded hover:bg-gray-900" %>
@@ -27,3 +27,5 @@
       <% end %>
     </div>
 </header>
+
+<div class="mt-16"></div>

@@ -2,7 +2,7 @@
 
 <div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
   <h1 class="text-lg font-semibold"> <%= @colocation.name %> </h1>
-  <%= image_tag "calendar.svg", class:"w-44 h-44" %>
+  <%= image_tag "calendar.svg", class:"w-44 h-38" %>
   <h3 class="text-lg font-semibold"> Tâches du jour </h3>
 </div>
 
@@ -20,11 +20,13 @@
           <%= assignation.task.name  %></span>
           <% end %>
         </span>
-        <div class="block text-xs text-gray-600">
-          <i class="fas fa-history"></i>
-          <span class=""> <%= assignation.task.duration %> min </span>
-        </div>
-      </div>
+        <% if assignation.task != nil %>
+          <div class="block text-xs text-gray-600">
+            <i class="fas fa-history"></i>
+            <span> <%= assignation.task.duration %> min </span>
+          </div>
+        <% end %>
+    </div>
   </div>
 
   <% end %>
@@ -75,10 +77,12 @@
             <%= assignation.task.name  %></span>
             <% end %>
           </span>
+          <% if assignation.task != nil %>
           <div class="block text-xs text-gray-600">
             <i class="fas fa-history"></i>
-            <span class=""> <%= assignation.task.duration %> min </span>
+            <span class="px-2"> <%= assignation.task.duration %> min </span>
           </div>
+        <% end %>
         </div>
       </div>
       <% end %>
