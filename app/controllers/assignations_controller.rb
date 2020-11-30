@@ -1,5 +1,6 @@
 class AssignationsController < ApplicationController
   def show
+    @assignation = Assignation.find(params[:id])
   end
 
   def index
@@ -28,6 +29,14 @@ class AssignationsController < ApplicationController
     # assignation.update!(assignation_params_require)
     redirect_to tasks_path(current_colocation)
   end
+
+  def update_before_photo
+    @assignation = Assignation.find(params[:id])
+    @assignation.update(assignation_params)
+    @assignation.save!
+    redirect_to occasionnel_tasks_path
+  end
+
   private
 
   def photo_params_require

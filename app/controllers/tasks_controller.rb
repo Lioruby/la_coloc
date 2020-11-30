@@ -31,12 +31,17 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    @task.save!
+    redirect_to new_task_path
   end
 
   def edit
   end
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def destroy
