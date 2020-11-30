@@ -26,7 +26,7 @@ export default class extends Controller {
           'Content-Type': 'application/json'
         },
         credentials: 'same-origin',
-        body: JSON.stringify({ all_names: event.from.innerText })
+        body: JSON.stringify({ all_names: event.from.innerText.replace(/\n/g, '-') })
       })
     };
     changePosition(event);
