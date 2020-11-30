@@ -27,6 +27,7 @@ import '../stylesheets/application.scss';
 import { clickOnBurger } from '../components/hide_nav'
 import initTabs from '../components/home_tabs'
 import "controllers"
+import dynamicCalendar from '../components/calendar'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -36,5 +37,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   clickOnBurger();
   // initTabs();
+  dynamicCalendar();
 });
 
