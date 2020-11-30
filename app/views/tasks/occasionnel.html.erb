@@ -5,18 +5,18 @@
     <h1 class="text-white py-4 font-bold text-xl tracking-wide">Tâches en cours...</h1>
   </div>
 
-  <div class="pt-2 pb-4 px-8 grid grid-cols-3 gap-3">
+<div class="supergrid pt-2 pb-4 px-6">
     <% current_colocation.users.each do |user| %>
     <% user.assignations.each do |assignation| %>
     <% if assignation.name != nil %>
-    <div>
-      <%= link_to assignation_path(assignation), class: 'inline-block font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black' do %>
-      <%= assignation.name %>
+    <div class="supergriditem justify-center font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black">
+     <span><%= link_to assignation_path(assignation), class: '' do %>
+      <%= assignation.name %></span>
       <% end %>
       <% end %>
-    <% end %>
     <% end %>
     </div>
+    <% end %>
   </div>
 </div>
 

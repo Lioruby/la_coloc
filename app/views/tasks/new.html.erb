@@ -5,11 +5,11 @@
     <h1 class="text-white py-4 font-bold text-xl tracking-wide">Tâches en cours...</h1>
   </div>
 
-  <div class="pt-2 pb-4 px-8 grid grid-cols-3 gap-4">
+  <div class="supergrid pt-2 pb-4 px-6">
     <% current_colocation.tasks.each do |task| %>
-    <div>
-      <%= link_to task_path(task), class: 'font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black' do %>
-      <%= task.name %>
+    <div class="supergriditem justify-center font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black">
+    <span><%= link_to task_path(task), class: '' do %>
+      <%= task.name %></span>
       <% end %>
     </div>
     <% end %>
