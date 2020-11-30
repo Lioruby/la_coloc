@@ -14,10 +14,10 @@ class AssignationsController < ApplicationController
   def create
     @assignation = Assignation.new(assignation_params)
 
-    if @assignation.save!
-      redirect_to root_path
+    if @assignation.save
+      redirect_to root_path, notice: 'Assignation crée avec succès'
     else
-      redirect_to new_task_path
+      redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
     end
   end
 
@@ -25,16 +25,24 @@ class AssignationsController < ApplicationController
     assignation = Assignation.find(params[:id])
     assignation.update(photo_params_require)
     assignation[:statut] = true
-    assignation.save!
+
+    if assignation.save
     # assignation.update!(assignation_params_require)
-    redirect_to tasks_path(current_colocation)
+      redirect_to tasks_path(current_colocation), notice: 'La photo à bien été ajoutée'
+    else
+      redirect_to tasks_path(current_colocation)
+    end
   end
 
   def update_before_photo
     @assignation = Assignation.find(params[:id])
     @assignation.update(assignation_params)
-    @assignation.save!
-    redirect_to occasionnel_tasks_path
+
+    if @assignation.save
+      redirect_to occasionnel_tasks_path, notice: 'La tâche à bien été modifiée'
+    else
+      redirect_to occasionnel_tasks_path, notice: 'Erreur, veuillez recommencer'
+    end
   end
 
   private

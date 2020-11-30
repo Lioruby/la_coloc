@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     @colocation = current_user.colocation
     @task.colocation = @colocation
 
-    if @task.save!
+    if @task.save
       users = User.all
       users.each do |user|
       preference = Preference.new(position: User.all.count)
@@ -20,9 +20,9 @@ class TasksController < ApplicationController
       preference.task = @task
       preference.save
       end
-      redirect_to root_path
+      redirect_to root_path, notice: 'La tâche a été crée avec succès'
     else
-      redirect_to new_task_path
+      redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
     end
   end
 
@@ -33,8 +33,13 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update(task_params)
-    @task.save!
-    redirect_to new_task_path
+
+
+    if @task.save
+      redirect_to new_task_path, notice: 'La modification à été prise en compte'
+    else
+      redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
+    end
   end
 
   def edit
