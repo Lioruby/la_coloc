@@ -1,25 +1,29 @@
-<div class="md:container">
+<div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-500 border-opacity-30">
+  <h1 class="text-lg font-semibold"> Historique </h1>
+  <%= image_tag "tablette_vide.svg", class:"w-44 h-44 pb-2" %>
+</div>
+
+<div class="px-2 py-2">
   <% @assignations.each do |assignation| %>
     <% if assignation.statut == true %>
-      <div class="px-4 m-2 border-2 bg-gray-300 rounded-lg text-gray-500">
+      <div class="px-2 m-2 border-2 bg-blue-200 rounded-lg">
         <div class="history-avatar">
           <%= cl_image_tag assignation.user.photo.key, class: 'avatar' %>
         </div>
-        <div class="flex justify-between">
-          <div>
-            <p>
-              <%= assignation.user.first_name %>
-              à bien bosser, voici la preuve
-            </p>
-          <div class="w-40">
+        <div class="flex flex-col items-start">
+            <div class="flex items-baseline px-5 py-4">
+              <span class="text-yellow-600 font-extrabold text-base uppercase tracking-wide"><%= assignation.user.first_name %> &nbsp;</span>
+              <span class="font-semibold text-xs uppercase text-gray-800 tracking-wide">à bien bossé,&nbsp;</span>
+              <span class="font-semibold text-xs uppercase text-gray-800 tracking-wide"> &nbsp;la preuve</span>
+            </div>
+          <div class="rounded-3xl overflow-hidden mx-4">
             <% if assignation.photo.attached? %>
-              <%= cl_image_tag assignation.photo.key, class: "rounded" %>
+              <%= cl_image_tag assignation.photo.key, class: "w-full object-cover h-44" %>
             <% end %>
-          </div>
           </div>
         </div>
           <div class="items-end">
-            <p>Tâche réalisée:  
+            <p class="px-2 py-4 text-gray-600">Tâche réalisée:
               <% if assignation.task == nil %>
                 <%= assignation.name %>
               <% else  %>
@@ -32,6 +36,6 @@
   <% end %>
 </div>
 
-
+<div class="mb-16"></div>
 
 <%= render 'shared/navigation_footer' %>

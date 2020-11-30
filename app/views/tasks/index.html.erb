@@ -1,68 +1,88 @@
-<div class="text-center py-4">
-<h1> <%= current_user.first_name %> </h1>
-
-
-<h3> Tâches du jour </h3>
-</div>
-
-<div class="flex flex-col gap-6 px-8">
-  <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today %>
-  <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-    <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <span class="text-black font-bold text-sm uppercase tracking-wide">
-      <% if assignation.task == nil %>
-      <%= assignation.name %>
-      <% else  %>
-      <%= assignation.task.name  %></span>
-      <% end %>
-    </span>
-    <%= simple_form_for assignation do |f| %>
-    <%= link_to "Valider", edit_assignation_path(current_colocation, assignation_id: assignation), class: "mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
-    <% end %>
+<div class="container mx-auto">
+  <div class="flex flex-col gap-6 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
+    <h1 class="text-lg font-semibold"> Bonjour, <%= current_user.first_name %> </h1>
+    <%= image_tag "completed_task.svg", class:"w-44 h-44" %>
+    <h3 class="text-lg font-semibold"> Voici les tâches du jour </h3>
   </div>
 
-
-  <% end %>
-  <% end %>
-</div>
-
-
-<!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
- -->
-
-  <% i = 1 %>
-  <% 15.times do %>
-
-  <% @existing_date = [] %>
-
-  <% current_user.assignations.each do | assignation | %>
-    <% if assignation.date == Date.today.next_day(i) %>
-    <% @existing_date << assignation.date %>
-    <% end %>
-    <% end %>
-    <% if @existing_date != [] %>
-  <div class="text-center py-4 ">
-    <h3 class="text-xl py-4"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
-
-  <div class="flex flex-col gap-6 px-8">
-<% end %>
-
+  <div class="flex flex-col gap-6 px-8 py-8">
     <% current_user.assignations.each do | assignation | %>
-    <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
-    <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <span class="text-black font-bold text-sm uppercase tracking-wide">Faire <%= assignation.task.name %></span>
+      <% if assignation.statut == false && assignation.date == Date.today %>
+    <div class="flex justify-between items-center pt-2 pb-3 px-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+      <%= cl_image_tag current_user.photo.key, class:"border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+      <div>
+        <span class="mt-5 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+          <% if assignation.task == nil %>
+          <%= assignation.name %>
+          <% else  %>
+          <%= assignation.task.name  %></span>
+          <% end %>
+        </span>
+        <div class="block text-xs text-gray-600">
+          <i class="fas fa-history"></i>
+          <span class="px-2"> <%= assignation.task.duration %> min </span>
+        </div>
+      </div>
       <%= simple_form_for assignation do |f| %>
-      <%= f.button :submit , "Valider", class:"mr-4 inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
+      <%= link_to "Valider", edit_assignation_path(current_colocation, assignation_id: assignation), class: "inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
       <% end %>
     </div>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
-  <% i += 1 %>
-  <% end %>
 
+
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="mx-8 border-solid border-b-2 border-t-2 border-gray-400 border-opacity-30">
+    <h3 class="text-center py-4 text-lg font-semibold">Tâches des prochains jours</h3>
+  </div>
+
+  <!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
+   -->
+  <div>
+    <% i = 1 %>
+    <% 15.times do %>
+
+    <% @existing_date = [] %>
+
+    <% current_user.assignations.each do | assignation | %>
+      <% if assignation.date == Date.today.next_day(i) %>
+      <% @existing_date << assignation.date %>
+      <% end %>
+      <% end %>
+      <% if @existing_date != [] %>
+    <div class="text-left py-4 ">
+      <h3 class="text-l font-semibold italic px-1 py-4 text-gray-600"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
+
+    <div class="flex flex-col gap-6 px-8">
+    <% end %>
+
+      <% current_user.assignations.each do | assignation | %>
+      <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
+      <div class="flex justify-start items-center py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+        <%= cl_image_tag current_user.photo.key, class:"border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+        <div class="ml-12">
+          <span class="mt-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+            <% if assignation.task == nil %>
+            <%= assignation.name %>
+            <% else  %>
+            <%= assignation.task.name  %></span>
+            <% end %>
+          </span>
+          <div class="block text-xs mt-2 text-gray-600">
+            <i class="fas fa-history"></i>
+            <span class="px-2"> <%= assignation.task.duration %> min </span>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    </div>
+    <% i += 1 %>
+    <% end %>
+</div>
+
+<div class="mb-16"></div>
 
 <%= render 'shared/navigation_footer' %>

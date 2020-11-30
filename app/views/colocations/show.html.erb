@@ -1,24 +1,30 @@
 <%= render 'shared/home_tabs' %>
 
-<div class="px-auto text-center py-8">
-  <h1> <%= @colocation.name %> </h1>
-  <h3>Voila les tâches ! A qui le tour? </h3>
-
-<h3 class="pt-4 font-bold text-xl"> Tâches du jour </h3>
+<div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
+  <h1 class="text-lg font-semibold"> <%= @colocation.name %> </h1>
+  <%= image_tag "calendar.svg", class:"w-44 h-44" %>
+  <h3 class="text-lg font-semibold"> Tâches du jour </h3>
 </div>
 
-<div class="grid grid-cols-2 gap-6 px-4">
+<div class="grid grid-cols-2 gap-4 px-4 py-8">
   <% @colocation.users.each do | user | %>
   <% user.assignations.each do | assignation | %>
     <% if assignation.statut == false && assignation.date == Date.today %>
-  <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
+  <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <span class="text-black font-bold text-xs uppercase tracking-wide">
-      <% if assignation.task == nil %>
-      <%= assignation.name %>
-      <% else  %>
-      <%= assignation.task.name  %></span>
-      <% end %>
+    <div>
+        <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+          <% if assignation.task == nil %>
+          <%= assignation.name %>
+          <% else  %>
+          <%= assignation.task.name  %></span>
+          <% end %>
+        </span>
+        <div class="block text-xs text-gray-600">
+          <i class="fas fa-history"></i>
+          <span class=""> <%= assignation.task.duration %> min </span>
+        </div>
+      </div>
   </div>
 
   <% end %>
@@ -26,6 +32,10 @@
   <% end %>
 </div>
 
+
+ <div class="mx-8 border-solid border-b-2 border-t-2 border-gray-400 border-opacity-30">
+    <h3 class="text-center py-4 text-lg font-semibold">Tâches des prochains jours</h3>
+  </div>
 <!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
  -->
 
@@ -42,38 +52,45 @@
   <% end %>
 
       <% if @existing_date != [] %>
-    <div class="text-center py-4 ">
-      <h3 class="text-xl py-4"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
-    </div>
+    <div class="text-left py-4 ">
+      <h3 class="text-l font-semibold italic px-1 py-4 text-gray-600"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
+
       <% if @existing_date.length >= 2 %>
-        <div class="grid grid-cols-2 gap-6 px-4">
+        <div class="grid grid-cols-2 gap-4 px-4">
       <% else %>
-        <div class="flex flex-col gap-6 px-4">
+        <div class="flex flex-col gap-4 px-4">
       <% end %>
   <% end %>
 
       <% @colocation.users.each do | user | %>
       <% user.assignations.each do | assignation | %>
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) %>
-      <div class="flex justify-between items-center py-4 pl-4 bg-blue-200 shadow-lg">
-        <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <span class="text-black font-bold text-xs uppercase tracking-wide">
-          <% if assignation.task == nil %>
-      <%= assignation.name %>
-      <% else  %>
-      <%= assignation.task.name  %></span>
-      <% end %>
-        </span>
+      <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+    <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+        <div>
+          <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+            <% if assignation.task == nil %>
+            <%= assignation.name %>
+            <% else  %>
+            <%= assignation.task.name  %></span>
+            <% end %>
+          </span>
+          <div class="block text-xs text-gray-600">
+            <i class="fas fa-history"></i>
+            <span class=""> <%= assignation.task.duration %> min </span>
+          </div>
+        </div>
       </div>
       <% end %>
       <% end %>
       <% end %>
     </div>
     </div>
-
+    </div>
     <% i += 1 %>
     <% end %>
 
+<div class="mb-16"></div>
 
 <%= render 'shared/navigation_footer' %>
 
