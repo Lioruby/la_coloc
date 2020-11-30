@@ -8,17 +8,19 @@
 <div class="supergrid pt-2 pb-4 px-6">
     <% current_colocation.users.each do |user| %>
     <% user.assignations.each do |assignation| %>
-    <% if assignation.name != nil %>
+    <% if assignation.task == nil %>
     <div class="supergriditem justify-center font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black">
      <span><%= link_to assignation_path(assignation), class: '' do %>
       <%= assignation.name %></span>
       <% end %>
-      <% end %>
-    <% end %>
     </div>
+    <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>
+
+
 
 
 <div class="bg-gray-800 p-4 flex items-center justify-center">
