@@ -9,18 +9,21 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.name = @task.name
     @colocation = current_user.colocation
     @task.colocation = @colocation
 
     if @task.save
       users = User.all
       users.each do |user|
-      preference = Preference.new(position: User.all.count)
-      preference.user = user
-      preference.task = @task
-      preference.save
+        if user.colocation == current_colocation
+          preference = Preference.new(position: Task.all.count)
+          preference.user = user
+          preference.task = @task
+          preference.save
+        end
       end
-      redirect_to root_path, notice: 'La tâche a été crée avec succès'
+      redirect_to user_path(current_user), notice: 'La tâche a été crée avec succès'
     else
       redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
     end

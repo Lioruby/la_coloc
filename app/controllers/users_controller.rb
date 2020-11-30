@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  def new
-  end
 
   def index
   end
@@ -9,15 +7,14 @@ class UsersController < ApplicationController
     @preferences = Preference.all
   end
 
-  def create
-  end
-
   def move
     @preferences = current_user.preferences
     task_with_position = {}
-    names = params[:all_names].split(' ')
+    ap params[:all_names]
+    names = params[:all_names].split('-')
 
     names.each_with_index { |name, i| task_with_position[name] = i }
+    ap names
 
     task_with_position.each do |name, position|
       @preferences.each do |pref|

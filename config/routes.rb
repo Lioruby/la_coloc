@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users#, controllers: { registrations: 'users/registrations' }
 
   resources :colocations, except: [:index, :destroy] do
     get "roommates", to: 'colocations#roommates'
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :preferences, except: [:create, :new, :destroy]
+
   resources :users, only: [:show, :index] do
     member do
       post :move
@@ -25,5 +26,11 @@ Rails.application.routes.draw do
   end
 
 
-  root to: 'pages#home'
+  authenticated :user do
+    root to: 'colocations#new', as: 'new'
+  end
+
+  unauthenticated do
+    root to: "pages#home", as: "unauthenticated"
+  end
 end

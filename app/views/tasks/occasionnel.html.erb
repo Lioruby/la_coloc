@@ -42,9 +42,9 @@
                   placeholder: "Acheter le pain",
                   input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' }%>
-      <%= f.input :date,
+      <%= f.input :date, as: :string,
                   label: 'Choisis un jour :',
-                  input_html: { class: "block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
+                  input_html: { class: "calendar block bg-gray-100 px-3 py-2 text-sm border border-gray-200 rounded w-80" },
                   label_html: { class: 'text-gray-700 text-sm' },
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
       </div>

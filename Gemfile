@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'letter_opener', group: :development
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -66,3 +68,5 @@ gem "pundit", "~> 2.1"
 gem "amazing_print", "~> 1.2"
 
 gem "cloudinary", "~> 1.18"
+
+gem "mailjet", "~> 1.5"
