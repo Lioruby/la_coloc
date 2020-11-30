@@ -29,6 +29,7 @@ class ColocationsController < ApplicationController
 
   def roommates
     @colocation = Colocation.find(params[:colocation_id])
+    @work_times = working_time
   end
 
   private
@@ -45,5 +46,18 @@ class ColocationsController < ApplicationController
 
   def find_colocation
     @colocation = Colocation.find(params[:id])
+  end
+
+  def working_time
+    working_time_for_user = {}
+    @colocation.users.each do |user|
+      total_duration = 0
+      user.tasks.each do |task|
+        total_duration += task.duration
+      end
+      working_time_for_user[user.id] = total_duration
+    end
+    ap working_time_for_user.sort_by {|k,v| v}.reverse.to_h
+    working_time_for_user.sort_by {|k,v| v}.reverse.to_h
   end
 end
