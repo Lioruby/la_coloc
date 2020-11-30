@@ -2,14 +2,22 @@
 
 <div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
   <h1 class="text-lg font-semibold"> <%= @colocation.name %> </h1>
-  <%= image_tag "calendar.svg", class:"w-44 h-38" %>
+  <%= image_tag "calendar.svg", class:"h-44" %>
   <h3 class="text-lg font-semibold"> Tâches en cours </h3>
 </div>
+
+<!-- Début de la methode pour afficher les taches en cours -->
 
 <div class="grid grid-cols-2 gap-4 px-4 py-8">
   <% @colocation.users.each do | user | %>
   <% user.assignations.each do | assignation | %>
+
+<!-- Un premier if pour les taches occasionnel qui n'ont pas de task associé -->
+
   <% if  assignation.task != nil %>
+
+<!-- Un deuxieme pour afficher les taches à la date d'aujourd'hui et les hebdomaires sur 7j glissant  -->
+
     <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
   <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
@@ -29,8 +37,10 @@
         <% end %>
     </div>
   </div>
-
   <% end %>
+
+<!-- On fait la même chose qu'au dessus pour les taches occasionnel -->
+
   <% elsif assignation.statut == false && assignation.date == Date.today %>
   <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
@@ -51,14 +61,20 @@
     </div>
   </div>
   <% end %>
+
+<!-- Method terminé -->
+
   <% end %>
   <% end %>
 </div>
 
 
+
  <div class="mx-8 border-solid border-b-2 border-t-2 border-gray-400 border-opacity-30">
     <h3 class="text-center py-4 text-lg font-semibold">Tâches des prochains jours</h3>
   </div>
+
+
 <!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
  -->
 
@@ -68,6 +84,9 @@
   <% @existing_date = [] %>
   <% @colocation.users.each do | user | %>
     <% user.assignations.each do | assignation | %>
+
+<!-- Première method pour savoir si il y a plus de 2 taches à montrer pour savoir si on display en grid ou pas -->
+
       <% if assignation.task != nil %>
         <% if assignation.date == Date.today.next_day(i) && assignation.task.recurrence != "hebdomadaire" %>
         <% @existing_date << assignation.date %>
@@ -89,13 +108,22 @@
       <% end %>
   <% end %>
 
+<!-- Fin de la première méthod -->
+
+
       <% @colocation.users.each do | user | %>
       <% user.assignations.each do | assignation | %>
+<!--
+Comme pour la method taches en cours premier if pour savoir si tache occasionnel  -->
+
       <% if assignation.task != nil %>
+
+<!-- A linverse on veut pas des taches hebdomadaire ici, seulement celle qui correspondent à la dates -->
+
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) && assignation.task.recurrence != "hebdomadaire" %>
-      <div class="flex justify-center items-center py-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+      <div class="flex justify-center items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <div class="ml-4">
+        <div class="">
           <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
             <% if assignation.task == nil %>
             <%= assignation.name %>
@@ -113,9 +141,9 @@
       </div>
       <% end %>
       <% elsif assignation.statut == false && assignation.date == Date.today.next_day(i)%>
-      <div class="flex justify-center items-center py-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+      <div class="flex justify-center items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <div class="ml-4">
+        <div class="">
           <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
             <% if assignation.task == nil %>
             <%= assignation.name %>
