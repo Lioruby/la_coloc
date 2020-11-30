@@ -3,6 +3,7 @@ class ColocationsController < ApplicationController
 
   def new
     @colocation = Colocation.new
+    check_colocation
   end
 
   def update
@@ -10,10 +11,11 @@ class ColocationsController < ApplicationController
   end
 
   def create
-    colocation = Colocation.new(set_params_coloc)
-    if colocation.save
-      current_user.colocation = colocation
-      redirect_to colocation_path(colocation)
+    @colocation = Colocation.new(set_params_coloc)
+    if @colocation.save
+      current_user.colocation = @colocation
+      current_user.save
+      check_colocation
     else
       render :new
     end
@@ -30,6 +32,12 @@ class ColocationsController < ApplicationController
   end
 
   private
+
+  def check_colocation
+    unless current_user.colocation.nil?
+      redirect_to colocation_path(current_user.colocation)
+    end
+  end
 
   def set_params_coloc
     params.require(:colocation).permit(:name)

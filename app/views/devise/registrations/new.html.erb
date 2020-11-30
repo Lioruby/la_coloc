@@ -32,6 +32,14 @@
                   input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-full" },
                   label_html: { class: 'text-gray-700 text-sm' } %>
 
+      <%= f.input :photo, as: :file,
+                    id: "file-upload",
+                    label: '&nbsp;'.html_safe,
+                    label_html:
+                    {
+                      class: 'fa fa-camera custom-file-upload mb-2 py-2 px-10 shadow-md text-xl bg-gray-400 rounded text-gray-200'
+                    } %>
+
       </div>
       <div class="p-5">
         <%= f.button :submit, "Inscription",

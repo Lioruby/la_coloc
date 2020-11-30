@@ -22,17 +22,6 @@
   <%= image_tag "stats_fun.svg", class:"w-44 h-44" %>
 
 
-<div class="px-4 flex flex-col">
-  <span class="py-4">La coloc <%= current_colocation.name %> existe depuis le <%= current_colocation.created_at.strftime("%d/%m/%Y") %> </span>
-  <span class="py-4"> <%= Assignation.all.count %> tâches ont été réalisées depuis </span>
-  <span class="flex items-end py-4"> <%= cl_image_tag User.find(2).photo.key, class:"mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full"  %> <%= User.find(2).name %> est celui qui a réalisé le plus de tâches!
-  </span>
-  <span class="flex items-end py-4"> <%= cl_image_tag User.find(3).photo.key, class:"mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full"  %> <%= User.find(3).name %> est celui qui a le plus prouvé ses réalisations!
-  </span>
-  <span class="flex items-end py-4"> <%= cl_image_tag User.find(1).photo.key, class:"mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full"  %> <%= User.find(1).name %> est le plus fainéant d'entre tous...
-  </span>
-</div>
-
 <div class="mb-16"></div>
 </div>
 
