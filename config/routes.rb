@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     end
   end
 
+  require "sidekiq/web"
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
 
   authenticated :user do
     root to: 'colocations#new', as: 'new'

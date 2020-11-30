@@ -1,7 +1,8 @@
 class AssignationAlgo
-  def initialize(colocation, task)
+  def initialize(colocation, task, date)
     @colocation = colocation
     @task = task
+    @date = date
   end
 
   def self.call(*args)
@@ -35,8 +36,10 @@ class AssignationAlgo
   def working_time
     working_time_for_user = {}
     @colocation.users.each do |user|
+      ap "Je calcule le temps pour #{user.id}"
       total_duration = 0
-      user.tasks.each do |task|
+      user.reload.tasks.each do |task|
+        ap task
         total_duration += task.duration
       end
       working_time_for_user[user.id] = total_duration
@@ -62,6 +65,6 @@ class AssignationAlgo
   end
 
   def assign(user, tache)
-    Assignation.create(user_id: user.id, task_id: tache.id, date: Date.today)
+    Assignation.create!(user_id: user.id, task_id: tache.id, date: @date)
   end
 end
