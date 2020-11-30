@@ -1,12 +1,28 @@
 <%= render 'shared/task_tabs' %>
 
-<div class="bg-gray-800 p-3 h-screen flex items-center justify-center">
+<div class="bg-gray-800 text-center">
+  <div>
+    <h1 class="text-white py-4 font-bold text-xl tracking-wide">Tâches en cours...</h1>
+  </div>
+
+  <div class="pt-2 pb-4 px-8 grid grid-cols-3 gap-4">
+    <% current_colocation.tasks.each do |task| %>
+    <div>
+      <%= link_to task_path(task), class: 'font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black' do %>
+      <%= task.name %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="bg-gray-800 p-4 flex items-center justify-center">
 
   <%= simple_form_for([@colocation, @task]) do |f| %>
     <%= f.error_notification %>
 
-    <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
-      <h2 class="text-center font-bold text-xl text-gray-800">
+    <div class="bg-gray-200 p-3 text-center border rounded shadow-md bg-center">
+      <h2 class="text-center font-bold text-lg text-gray-800 pb-4">
         Nouvelle Tâche
       </h2>
       <div class="text-left">
@@ -35,7 +51,7 @@
                   hint_html: { class: 'text-xs text-gray-400 mb-3 italic' } %>
 
       </div>
-      <div class="p-5">
+      <div class="pt-4 pb-12">
         <%= f.button :submit, "Ajouter",
         class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm" %>
       </div>
