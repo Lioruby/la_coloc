@@ -28,7 +28,7 @@
           <% else  %>
           <%= assignation.task.name  %></span>
           <% end %>
-        </span>
+
         <% if assignation.task != nil %>
           <div class="block text-xs text-gray-600">
             <i class="fas fa-history"></i>
@@ -122,9 +122,9 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
 
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) && assignation.task.recurrence != "hebdomadaire" %>
       <div class="flex justify-center items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
-    <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+        <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
         <div class="">
-          <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+          <span class="my-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
             <% if assignation.task == nil %>
             <%= assignation.name %>
             <% else  %>
@@ -140,6 +140,9 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
         </div>
       </div>
       <% end %>
+
+<!-- Ici cest pour les assignation occasionnel on refait la method du dessus -->
+
       <% elsif assignation.statut == false && assignation.date == Date.today.next_day(i)%>
       <div class="flex justify-center items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
@@ -160,6 +163,9 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
         </div>
       </div>
       <% end %>
+
+<!-- Fin de la method -->
+
       <% end %>
       <% end %>
     </div>
