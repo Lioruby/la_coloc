@@ -8,7 +8,7 @@
 
 <!-- Début de la methode pour afficher les taches en cours -->
 
-  <div class="flex flex-col gap-6 px-8 py-8">
+  <div class="flex flex-col gap-6 px-6 py-6">
     <% current_user.assignations.each do | assignation | %>
 
 <!-- Un premier if pour les taches occasionnel qui n'ont pas de task associé -->
@@ -18,8 +18,8 @@
 <!-- Un deuxieme pour afficher les taches à la date d'aujourd'hui et les hebdomaires sur 7j glissant  -->
 
       <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
-    <div class="flex justify-between items-center pt-2 pb-3 px-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
-      <%= cl_image_tag current_user.photo.key, class:"border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+    <div class="flex justify-around items-center py-4 px-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
       <div class="">
         <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
           <% if assignation.task == nil %>
@@ -29,7 +29,7 @@
           <% end %>
 
         <% if assignation.task != nil %>
-          <div class="block text-xs text-gray-600">
+          <div class="pt-2 block text-xs text-gray-600">
             <i class="fas fa-history"></i>
             <span class="px-2"> <%= assignation.task.duration %> min </span>
           </div>
@@ -44,10 +44,10 @@
 <!-- On fait la même chose qu'au dessus pour les taches occasionnel -->
 
 <% elsif assignation.statut == false && assignation.date == Date.today %>
-  <div class="flex justify-around items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+  <div class="flex justify-around items-center px-4 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
     <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
     <div>
-        <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+        <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
           <% if assignation.task == nil %>
           <%= assignation.name %>
           <% else  %>
@@ -55,7 +55,7 @@
           <% end %>
         </span>
         <% if assignation.task != nil %>
-          <div class="block text-xs text-gray-600">
+          <div class="pt-2 block text-xs text-gray-600">
             <i class="fas fa-history"></i>
             <span> <%= assignation.task.duration %> min </span>
           </div>
@@ -101,7 +101,7 @@
     <div class="text-left py-4 ">
       <h3 class="text-l font-semibold italic px-1 py-4 text-gray-600"><%= Date.today.next_day(i).strftime("%A %d/%m") %> </h3>
 
-    <div class="flex flex-col gap-4 px-4">
+    <div class="flex flex-col gap-6 px-6 py-6">
     <% end %>
 
 <!-- Fin de la première method -->
@@ -115,10 +115,10 @@
 <!-- A linverse on veut pas des taches hebdomadaire ici, seulement celle qui correspondent à la dates -->
 
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) && assignation.task.recurrence != "hebdomadaire" %>
-      <div class="flex justify-center items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+      <div class="flex justify-center items-center px-4 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
         <%= cl_image_tag current_user.photo.key, class:" mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
         <div class="">
-          <span class="my-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+          <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
             <% if assignation.task == nil %>
             <%= assignation.name %>
             <% else  %>
@@ -126,7 +126,7 @@
             <% end %>
           </span>
           <% if assignation.task != nil %>
-            <div class="block text-xs text-gray-600">
+            <div class="pt-2 block text-xs text-gray-600">
             <i class="fas fa-history"></i>
             <span class="px-2"> <%= assignation.task.duration %> min </span>
           </div>
@@ -138,10 +138,10 @@
 <!-- Ici cest pour les assignation occasionnel on refait la method du dessus -->
 
     <% elsif assignation.statut == false && assignation.date == Date.today.next_day(i)%>
-          <div class="flex justify-center items-center px-2 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+          <div class="flex justify-center items-center px-4 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
         <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
             <div class="">
-              <span class="mt-2 mb-2 block text-gray-800 font-bold text-sm uppercase tracking-wide">
+              <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
                 <% if assignation.task == nil %>
                 <%= assignation.name %>
                 <% else  %>
@@ -149,7 +149,7 @@
                 <% end %>
               </span>
               <% if assignation.task != nil %>
-              <div class="block text-xs text-gray-600">
+              <div class="pt-2 block text-xs text-gray-600">
                 <i class="fas fa-history"></i>
                 <span class="px-2"> <%= assignation.task.duration %> min </span>
               </div>
