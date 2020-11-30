@@ -15,10 +15,12 @@ class TasksController < ApplicationController
     if @task.save!
       users = User.all
       users.each do |user|
-      preference = Preference.new(position: User.all.count)
-      preference.user = user
-      preference.task = @task
-      preference.save
+        if user.colocation == current_colocation
+          preference = Preference.new(position: Task.all.count)
+          preference.user = user
+          preference.task = @task
+          preference.save
+        end
       end
       redirect_to user_path(current_user)
     else
