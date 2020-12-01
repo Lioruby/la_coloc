@@ -29,6 +29,7 @@ import initTabs from '../components/home_tabs'
 import "controllers"
 import dynamicCalendar from '../components/calendar'
 import scrollNav from '../components/navbarScroll'
+import { loadAnimation } from '../components/chargement'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -40,5 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   // initTabs();
   dynamicCalendar();
   // scrollNav();
+  //Chargement invitation
+  loadAnimation();
 });
 
