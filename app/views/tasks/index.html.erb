@@ -46,9 +46,12 @@
 
     <% elsif assignation.statut == false && assignation.date == Date.today %>
       <div class="flex justify-around items-center px-4 py-6 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
-        <%= cl_image_tag current_user.photo.key, class:"ml-4 mr-2 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <span class="text-center text-gray-800 font-bold text-sm uppercase tracking-wide">
+        <%= cl_image_tag current_user.photo.key, class:"flex-shrink border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+        <span class="truncatewithoutnowrap text-center flex-grow px-4 text-gray-800 font-bold text-sm uppercase tracking-wide">
           <%= assignation.name %></span>
+          <%= simple_form_for assignation do |f| %>
+          <%= link_to "Valider", edit_assignation_path(current_colocation, assignation_id: assignation), class: "flex flex-shrink inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
+          <% end %>
       </div>
     <% end %>
     <% end %>
