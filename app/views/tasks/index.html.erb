@@ -1,11 +1,11 @@
-
+<div>
 
   <div class="text-center py-4 px-4">
     <h3 class="text-lg font-semibold"> Tâches à faire </h3>
   </div>
 
 <!-- Début de la methode pour afficher les taches en cours -->
-<div class="flex flex-start px-3 py-5">
+<div class="flex flex-start px-4 py-5">
      <div class="flex flex-col flex-shrink items-center font-bold text-yellow-600 ">
         <span ><%= Date.today.strftime("%a") %></span>
         <span><%= Date.today.strftime("%d") %></span>
@@ -107,7 +107,7 @@
 
 <!-- Comme pour la method taches en cours premier if pour savoir si tache occasionnel  -->
 
-    <% if assignation.task != nil %>
+      <% if assignation.task != nil %>
 
 <!-- A linverse on veut pas des taches hebdomadaire ici, seulement celle qui correspondent à la dates -->
 
