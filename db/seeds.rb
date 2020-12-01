@@ -32,79 +32,83 @@ franck.save!
 vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 30, recurrence: "quotidien")
 ménage = Task.new(name: 'Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
 courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 20, recurrence: "hebdomadaire")
+aspirateur = Task.new(name: 'Passer laspirateur puis la serpillère et faut se depêcher', description: 'il faut passer laspirateur', duration: 30, recurrence: "quotidien")
 
 
 vaisselle.colocation = lacoloc
 ménage.colocation = lacoloc
 courses.colocation = lacoloc
+aspirateur.colocation = lacoloc
 
 vaisselle.save!
 ménage.save!
 courses.save!
+aspirateur.save!
 
-# assignation1 = Assignation.new(statut: true, date: Date.today)
-# assignation2 = Assignation.new(statut: false, date: Date.today)
-# assignation3 = Assignation.new(statut: false, date: Date.today)
-# assignation4 = Assignation.new(statut: false, date: Date.today)
-# assignation5 = Assignation.new(statut: false, date: "Sat, 28 Nov 2020")
-# assignation6 = Assignation.new(statut: false, date: "Sun, 29 Nov 2020")
-# assignation7 = Assignation.new(statut: false, date: "Mon, 30 Nov 2020")
-# assignation8 = Assignation.new(statut: false, date: "Thu, 1 Dec 2020")
-# assignation9 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
-# assignation10 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
-# assignation11 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
-# assignation12 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+
+assignation1 = Assignation.new(statut: true, date: Date.today)
+assignation2 = Assignation.new(statut: false, date: Date.today)
+assignation3 = Assignation.new(statut: false, date: Date.today)
+assignation4 = Assignation.new(statut: false, date: Date.today)
+assignation5 = Assignation.new(statut: false, date: "Thu, 1 Dec 2020")
+assignation6 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
+assignation7 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
+assignation8 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
+assignation9 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+assignation10 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+assignation11 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+assignation12 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
 # assignation13 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
 
-# assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
-# assignation1.task = vaisselle
-# assignation1.user = franck
-# assignation1.save!
+assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
+assignation1.task = vaisselle
+assignation1.user = franck
+assignation1.save!
 
-# assignation2.photo.attach(io: URI.open(task_photos[1]), filename: 'photo.jpg', content_type: 'image/jpg')
-# assignation2.task = ménage
-# assignation2.user = lior
-# assignation2.save!
+assignation2.photo.attach(io: URI.open(task_photos[1]), filename: 'photo.jpg', content_type: 'image/jpg')
+assignation2.task = ménage
+assignation2.user = lior
+assignation2.save!
 
-# assignation3.task = courses
-# assignation3.user = thomas
-# assignation3.save!
+assignation3.task = courses
+assignation3.user = thomas
+assignation3.save!
 
-# assignation4.task = vaisselle
-# assignation4.user = franck
-# assignation4.save!
+assignation4.task = vaisselle
+assignation4.user = franck
+assignation4.save!
 
-# assignation5.task = vaisselle
-# assignation5.user = thomas
-# assignation5.save!
+assignation5.task = vaisselle
+assignation5.user = thomas
+assignation5.save!
 
-# assignation6.task = vaisselle
-# assignation6.user = lior
-# assignation6.save!
+assignation6.task = vaisselle
+assignation6.user = lior
+assignation6.save!
 
-# assignation7.task = vaisselle
-# assignation7.user = franck
-# assignation7.save!
+assignation7.task = vaisselle
+assignation7.user = franck
+assignation7.save!
 
-# assignation8.task = vaisselle
-# assignation8.user = thomas
-# assignation8.save!
+assignation8.task = vaisselle
+assignation8.user = thomas
+assignation8.save!
 
-# assignation9.task = vaisselle
-# assignation9.user = lior
-# assignation9.save!
+assignation9.task = vaisselle
+assignation9.user = thomas
+assignation9.save!
 
-# assignation10.task = ménage
-# assignation10.user = franck
-# assignation10.save!
+assignation10.task = ménage
+assignation10.user = franck
+assignation10.save!
 
-# assignation11.task = vaisselle
-# assignation11.user = thomas
-# assignation11.save!
+assignation11.task = aspirateur
+assignation11.user = thomas
+assignation11.save!
 
-# assignation12.task = courses
-# assignation12.user = lior
-# assignation12.save!
+assignation12.task = courses
+assignation12.user = lior
+assignation12.save!
 
 # assignation13.task = vaisselle
 # assignation13.user = franck
