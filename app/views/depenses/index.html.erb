@@ -13,44 +13,26 @@
 
 <br>
 
-<table class="table-auto w-screen">
-  <thead class="px-4 text-left">
+<table class="table-auto w-11/12 mx-6">
+  <thead class="text-left">
     <tr>
       <th>Name</th>
       <th>Argent dépensé</th>
       <th>Balance</th>
     </tr>
   </thead>
-  <tbody class="px-4 text-left">
+  <tbody class="text-left">
 
     <% current_colocation.users.each do |user| %>
       <tr>
         <td><%= user.name.capitalize %></td>
-        <td><%= user.balance %></td>
-        <td><%= @hash_balance["#{user.name}"].round(2) %></td>
+        <td class="text-center"><%= user.balance %> <i class="fas fa-euro-sign"></i></td>
+        <td><%= @hash_balance["#{user.name}"].round(2) %> <i class="fas fa-euro-sign"></i></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<h1 class="text-center"> <%= current_colocation.balance %> euros dépensés dans cette colocation</h1>
-<br>
-<% current_colocation.users.each do |user| %>
-  <h1 class="text-center"> <%= user.balance %> euros dépensés par <%= user.name %></h1>
-<% end %>
-<br>
-
-<div class="text-center">
-  <% @hash_balance.each do |name, montant| %>
-    <% if montant < 0 %>
-      <h1><%= name %> doit <%= montant %> euros au pot commun </h1>
-    <% elsif montant > 0 %>
-      <h1><%= name %> a <%= montant %> euros d'avance</h1>
-    <% else %>
-      <h1><%= name %> ne doit rien au pot commun </h1>
-    <% end %>
-  <% end %>
-</div>
 <br>
 
 <h1 class="text-center font-bold uppercase">Historique</h1>
