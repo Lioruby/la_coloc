@@ -165,4 +165,24 @@ preffranck3.user = franck
 preffranck3.task = ménage
 preffranck3.save!
 
+depense1 = Depense.new(montant: 25.3, name: 'Tournée')
+depense1.user = franck
+depense1.save!
+franck.balance += depense1.montant
+franck.save!
+depense2 = Depense.new(montant: 15.3, name: 'Courses')
+depense2.user = lior
+depense2.save!
+lior.balance += depense2.montant
+lior.save!
+depense3 = Depense.new(montant: 12.6, name: 'Produits ménagers')
+depense3.user = thomas
+depense3.save!
+thomas.balance += depense3.montant
+thomas.save!
 
+lacoloc.users.each do |user|
+  lacoloc.balance += user.balance
+end
+lacoloc.balance = lacoloc.balance.round(2)
+lacoloc.save!

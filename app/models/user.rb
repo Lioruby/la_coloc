@@ -11,6 +11,7 @@ class User < ApplicationRecord
   belongs_to :colocation, optional: true
   has_many :preferences, dependent: :destroy
   has_many :assignations, dependent: :destroy
+  has_many :depenses, dependent: :destroy
 
   has_many :tasks, through: :assignations
 

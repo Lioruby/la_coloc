@@ -1,0 +1,63 @@
+<div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
+  <h1 class="text-lg font-semibold"> Bonjour, <%= current_user.first_name %> </h1>
+  <%= image_tag "money.svg", class:"h-44" %>
+  <h3 class="text-lg font-semibold"> Tricount </h3>
+</div>
+
+<br>
+<div class="text-center">
+  <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full">
+    <%= link_to 'Nouvelle dépense', new_depense_path %>
+  </button>
+</div>
+
+<br>
+
+
+
+<h1 class="text-center"> <%= current_colocation.balance %> euros dépensés dans cette colocation</h1>
+<br>
+<% current_colocation.users.each do |user| %>
+  <h1 class="text-center"> <%= user.balance %> euros dépensés par <%= user.name %></h1>
+<% end %>
+<br>
+
+<div class="text-center">
+  <% @hash_balance.each do |name, montant| %>
+    <% if montant < 0 %>
+      <h1><%= name %> doit <%= montant %> euros au pot commun </h1>
+    <% elsif montant > 0 %>
+      <h1><%= name %> a <%= montant %> euros d'avance</h1>
+    <% else %>
+      <h1><%= name %> ne doit rien au pot commun </h1>
+    <% end %>
+  <% end %>
+</div>
+<br>
+
+<h1 class="text-center font-bold uppercase">Historique</h1>
+
+<div class="flex flex-col gap-6 px-6 py-6">
+  <% current_colocation.depenses.reverse_each do | depense | %>
+    <div class="flex justify-between items-center py-2 px-4 bg-gradient-to-l from-blue-200 to-blue-400 shadow-lg rounded-t-xl rounded-r-xl border-solid border-l-2 border-gray-800 border-opacity-10">
+      <%= cl_image_tag depense.user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+      <div class="">
+        <span class="block text-gray-800 font-bold text-sm tracking-wide">
+          <%= depense.name %>
+          <div class="pt-2 block text-xs text-right text-gray-600">
+            <span class="px-2"> <%= depense.montant %></span>
+            <i class="fas fa-euro-sign"></i>
+          </div>
+        </span>
+      </div>
+    </div>
+    <h1 class="text-right text-gray-600 text-sm -my-4"> le <%= depense.created_at.strftime("%d-%m-%Y") %> </h1>
+  <% end %>
+</div>
+
+
+
+
+<div class="mb-16"></div>
+
+<%= render 'shared/navigation_footer' %>

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     post 'create_roomates', to: 'colocations#create_roomates'
   end
 
-
   resources :assignations, except: [:destroy, :new] do
     member do
       post :update_before_photo
@@ -18,6 +17,12 @@ Rails.application.routes.draw do
   resources :tasks do
     collection do
       get "occasionnel", to: 'tasks#occasionnel'
+    end
+  end
+
+  resources :depenses, except: [:destroy] do
+    collection do
+      get 'recap', to: 'depenses#recap'
     end
   end
 
