@@ -1,0 +1,39 @@
+<div class="flex flex-col gap-4 items-center text-center py-4 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
+  <h1 class="text-lg font-semibold"> Bonjour, <%= current_user.first_name %> </h1>
+  <%= image_tag "having_fun.svg", class:"h-44" %>
+  <h3 class="text-lg font-semibold"> Les dépenses de la coloc </h3>
+</div>
+
+<br>
+<div class="text-center">
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+    <%= link_to 'Récapitulatif', recap_depenses_path %>
+  </button>
+
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+    <%= link_to 'Nouvelle dépense', new_depense_path %>
+  </button>
+</div>
+
+<div class="flex flex-col gap-6 px-6 py-6">
+  <% current_colocation.depenses.reverse_each do | depense | %>
+    <div class="flex justify-around items-center py-4 px-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+      <%= cl_image_tag depense.user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+      <div class="">
+        <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
+          <%= depense.name %>
+          <div class="pt-2 block text-xs text-gray-600">
+            <i class="fas fa-euro-sign"></i>
+            <span class="px-2"> <%= depense.montant %> euros </span>
+          </div>
+        </span>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<div class="mb-16"></div>
+
+<%= render 'shared/navigation_footer' %>

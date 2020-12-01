@@ -1,0 +1,36 @@
+<div class="bg-gray-800 p-4 flex items-center justify-center">
+
+  <%= simple_form_for(@depense) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="bg-gray-200 p-3 text-center border rounded shadow-md bg-center">
+      <h2 class="text-center font-bold text-lg text-gray-800 pb-4">
+        Nouvelle dépense
+      </h2>
+      <div class="text-left">
+        <%= f.input :name,
+                    label: 'Nom de la dépense',
+                    placeholder: 'Franprix, Tournée ...',
+                    input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                    label_html: { class: 'text-gray-700 text-sm' } %>
+        <%= f.input :montant,
+                    label: 'Montant',
+                    input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                    label_html: { class: 'text-gray-700 text-sm' }%>
+        <%= f.association :user, collection: current_colocation.users,
+                          label: 'Qui?',
+                          input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded w-80" },
+                          label_html: { class: 'text-gray-700 text-sm' } %>
+
+      </div>
+      <div class="pt-4 pb-12">
+        <%= f.button :submit, "Ajouter",
+        class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%= render 'shared/navigation_footer' %>
+
