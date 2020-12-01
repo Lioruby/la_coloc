@@ -9,6 +9,7 @@
 <!-- Début de la methode pour afficher les taches en cours -->
 
   <div class="flex flex-col gap-6 px-6 py-6">
+    <!-- <div class="test"> -->
     <% current_user.assignations.each do | assignation | %>
 
 <!-- Un premier if pour les taches occasionnel qui n'ont pas de task associé -->
@@ -18,15 +19,16 @@
 <!-- Un deuxieme pour afficher les taches à la date d'aujourd'hui et les hebdomaires sur 7j glissant  -->
 
       <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
-    <div class="flex justify-around items-center py-4 px-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
-      <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-      <div class="">
-        <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
-          <% if assignation.task == nil %>
-            <%= assignation.name %>
-          <% else  %>
-            <%= assignation.task.name  %></span>
-          <% end %>
+        <div class="flex justify-around items-center py-4 px-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+          <%= cl_image_tag current_user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+        <div>
+          <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
+
+        <% if assignation.task == nil %>
+          <%= assignation.name %>
+        <% else  %>
+          <%= assignation.task.name  %></span>
+        <% end %>
 
         <% if assignation.task != nil %>
           <div class="pt-2 block text-xs text-gray-600">
@@ -34,40 +36,42 @@
             <span class="px-2"> <%= assignation.task.duration %> min </span>
           </div>
         <% end %>
+        </div>
+        <%= simple_form_for assignation do |f| %>
+        <%= link_to "Valider", edit_assignation_path(current_colocation, assignation_id: assignation), class: "inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
+        <% end %>
       </div>
-      <%= simple_form_for assignation do |f| %>
-      <%= link_to "Valider", edit_assignation_path(current_colocation, assignation_id: assignation), class: "inline-block px-2 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-xs" %>
       <% end %>
-      <% end %>
-    </div>
+
 
 <!-- On fait la même chose qu'au dessus pour les taches occasionnel -->
 
-<% elsif assignation.statut == false && assignation.date == Date.today %>
-  <div class="flex justify-around items-center px-4 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
-    <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-    <div>
+    <% elsif assignation.statut == false && assignation.date == Date.today %>
+      <div class="flex justify-around items-center px-4 py-4 pl-4 bg-blue-200 shadow-lg rounded-t-xl rounded-r-xl border-solid border-2 border-gray-800 border-opacity-10">
+        <%= cl_image_tag user.photo.key, class:"mr-4 border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
+      <div>
         <span class="block text-gray-800 font-bold text-sm uppercase tracking-wide">
-          <% if assignation.task == nil %>
+        <% if assignation.task == nil %>
           <%= assignation.name %>
-          <% else  %>
+        <% else  %>
           <%= assignation.task.name  %></span>
-          <% end %>
-        </span>
+        <% end %>
+
         <% if assignation.task != nil %>
           <div class="pt-2 block text-xs text-gray-600">
             <i class="fas fa-history"></i>
-            <span> <%= assignation.task.duration %> min </span>
+            <span> <%= assignation.task.duration %> min</span>
           </div>
         <% end %>
-    </div>
+      </div>
+      </div>
+    <% end %>
+    <% end %>
+<!--   </div> -->
   </div>
-  <% end %>
 
 <!-- Method terminé -->
 
-    <% end %>
-  </div>
 
 <!-- Taches dans le futur -->
 
