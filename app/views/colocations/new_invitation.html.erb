@@ -1,0 +1,14 @@
+<div class="bg-gray-800 px-8 py-4 h-screen ">
+  <div class="bg-gray-200 p-4 text-center border rounded shadow-md bg-center">
+    <h2 class="text-center font-bold text-xl text-gray-800">
+      Invite tes coloc' !
+    </h2>
+    <%= form_tag colocation_create_invitation_path(current_colocation), method: :post do  %>
+      <div>
+        <p>Rentrez un ou plusieurs emails séparés par des espaces.</p>
+        <%= text_field_tag "Email", params[:emails] %>
+      </div>
+      <input type="submit" value="Envoyer une invitation">
+    <% end %>
+  </div>
+</div>

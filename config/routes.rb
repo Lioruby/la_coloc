@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users#, controllers: { registrations: 'users/registrations' }
+  devise_for :users
 
   resources :colocations, except: [:index, :destroy] do
     get "roommates", to: 'colocations#roommates'
+    get 'new_invitation', to: 'colocations#new_invitation'
+    post 'create_invitation', to: 'colocations#create_invitation'
+    get 'new_roomates', to: 'colocations#new_roomates'
+    post 'create_roomates', to: 'colocations#create_roomates'
   end
 
 

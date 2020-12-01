@@ -1,0 +1,4 @@
+<h1> <%= @user.first_name %> vous invite à rejoindre <%= @colocation.name %> ! </h1>
+
+
+<%= link_to 'Cliquez ici pour la rejoindre !', colocation_new_roomates_url(@colocation), method: :post %>

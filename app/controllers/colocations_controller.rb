@@ -1,6 +1,10 @@
 class ColocationsController < ApplicationController
   before_action :find_colocation, only: [:update, :edit, :show]
 
+  skip_before_action :verify_authenticity_token, :only => [:create_invitation]
+
+  before_action :find_colocation_by_colocation_id, only: [:roommates, :create_roomates, :new_roomates, :new_invitation]
+
   def new
     @colocation = Colocation.new
     check_colocation
@@ -8,6 +12,29 @@ class ColocationsController < ApplicationController
 
   def update
     @colocation.update(name: set_params_coloc)
+  end
+
+  def new_invitation
+  end
+
+  def new_roomates
+  end
+
+  def create_roomates
+    current_user.colocation = @colocation
+    current_user.save!
+    create_preferences_for_current_user
+    assign_task_after_create
+    redirect_to colocation_path(@colocation)
+  end
+
+  def create_invitation
+    email_array = params[:Email].split(' ')
+    email_array.each do |email|
+      send_invitation_email(email)
+    end
+
+    redirect_to user_path(current_user)
   end
 
   def create
@@ -28,12 +55,12 @@ class ColocationsController < ApplicationController
   end
 
   def roommates
-    @colocation = Colocation.find(params[:colocation_id])
     @work_times = actual_working_time
     @faineant = shame_wall
   end
 
   private
+
 
   def check_colocation
     unless current_user.colocation.nil?
@@ -41,13 +68,21 @@ class ColocationsController < ApplicationController
     end
   end
 
+
   def set_params_coloc
     params.require(:colocation).permit(:name)
   end
 
+
   def find_colocation
     @colocation = Colocation.find(params[:id])
   end
+
+
+  def find_colocation_by_colocation_id
+    @colocation = Colocation.find(params[:colocation_id])
+  end
+
 
   def actual_working_time
     working_time_for_user = {}
@@ -64,6 +99,7 @@ class ColocationsController < ApplicationController
     working_time_for_user.sort_by {|k,v| v}.reverse.to_h
   end
 
+
   def shame_wall
     uncompleted_array = {}
     @colocation.users.each do |user|
@@ -75,4 +111,50 @@ class ColocationsController < ApplicationController
     end
     [uncompleted_array.max_by{|k, v| v}].to_h
   end
+
+
+  def send_invitation_email(email)
+    UserMailer.invitation(user: current_user, email: email, colocation: current_colocation).deliver_now
+  end
+
+
+  def create_preferences_for_current_user
+    @colocation.tasks.each_with_index do |task, i|
+      ap task
+      pref = Preference.new(position: i)
+      pref.user = current_user
+      pref.task = task
+      pref.save!
+    end
+  end
+
+
+  def assign_task_after_create
+
+    destroy_colocation_assignations
+
+      @colocation.tasks.each do |task|
+
+        if task.recurrence == "quotidien"
+          7.times do |i|
+            AssignationAlgo.call(@colocation, task, Date.today.next_day(i + 1))
+          end
+
+        elsif task.recurrence == "hebdomadaire"
+          AssignationAlgo.call(@colocation, task, Date.today.next_day(4))
+
+        elsif task.recurrence == "mensuel"
+          AssignationAlgo.call(@colocation, task, Date.today.next_day(10))
+
+        end
+      end
+    end
+
+    def destroy_colocation_assignations
+      @colocation.users.each do |user|
+        user.assignations.each do |assignation|
+          assignation.destroy
+        end
+      end
+    end
 end
