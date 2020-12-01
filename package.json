@@ -6,6 +6,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "animejs": "^3.2.1",
     "autoprefixer": "^9",
     "flatpickr": "^4.6.6",
     "jquery": "^3.5.1",
