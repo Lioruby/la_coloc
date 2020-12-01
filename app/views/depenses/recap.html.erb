@@ -1,7 +1,0 @@
-<h1 class="text-center"> <%= current_colocation.balance %> euros dépensés dans cette colocation</h1>
-
-<% current_colocation.users.each do |user| %>
-  <h1 class="text-center"> <%= user.balance %> euros dépensés par <%= user.name %></h1>
-<% end %>
-
-<%= render 'shared/navigation_footer' %>

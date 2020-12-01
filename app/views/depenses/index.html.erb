@@ -7,12 +7,29 @@
 <br>
 <div class="text-center">
   <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-    <%= link_to 'Récapitulatif', recap_depenses_path %>
-  </button>
-
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
     <%= link_to 'Nouvelle dépense', new_depense_path %>
   </button>
+</div>
+
+<br>
+
+<h1 class="text-center"> <%= current_colocation.balance %> euros dépensés dans cette colocation</h1>
+<br>
+<% current_colocation.users.each do |user| %>
+  <h1 class="text-center"> <%= user.balance %> euros dépensés par <%= user.name %></h1>
+<% end %>
+<br>
+
+<div class="text-center">
+  <% @hash_balance.each do |name, montant| %>
+    <% if montant < 0 %>
+      <h1><%= name %> doit <%= montant %> euros au pot commun </h1>
+    <% elsif montant > 0 %>
+      <h1><%= name %> a <%= montant %> euros d'avance</h1>
+    <% else %>
+      <h1><%= name %> ne doit rien au pot commun </h1>
+    <% end %>
+  <% end %>
 </div>
 
 <div class="flex flex-col gap-6 px-6 py-6">
