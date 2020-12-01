@@ -13,7 +13,8 @@ class DepensesController < ApplicationController
 
     if @depense.save
       @depense.user.balance += @depense.montant
-      @depense.user.save!
+      user = @depense.user
+      user.save!
       current_colocation.balance += @depense.montant
       current_colocation.save!
       redirect_to depenses_path, notice: 'La tâche a été crée avec succès'

@@ -13,7 +13,25 @@
 
 <br>
 
+<table class="table-auto w-screen">
+  <thead class="px-4 text-left">
+    <tr>
+      <th>Name</th>
+      <th>Argent dépensé</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody class="px-4 text-left">
 
+    <% current_colocation.users.each do |user| %>
+      <tr>
+        <td><%= user.name.capitalize %></td>
+        <td><%= user.balance %></td>
+        <td><%= @hash_balance["#{user.name}"].round(2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <h1 class="text-center"> <%= current_colocation.balance %> euros dépensés dans cette colocation</h1>
 <br>
