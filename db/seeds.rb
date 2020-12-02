@@ -56,7 +56,8 @@ courses.save!
 # assignation10 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
 # assignation11 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
 # assignation12 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
-# assignation13 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
+# # assignation13 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
+
 
 # assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
 # assignation1.task = vaisselle

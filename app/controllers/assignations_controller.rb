@@ -21,6 +21,7 @@ class AssignationsController < ApplicationController
     end
   end
 
+
   def update
     assignation = Assignation.find(params[:id])
     assignation.update(photo_params_require)
