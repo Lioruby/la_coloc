@@ -18,7 +18,7 @@ module LaColoc
     config.action_mailer.delivery_method = :mailjet
     config.active_job.queue_adapter = :sidekiq
     config.hosts << /.+(\.ngrok\.io)/
-    config.hosts << "lacoloc.xyz"
+    config.hosts << "www.lacoloc.xyz"
     config.hosts << "la-coloc.herokuapp.com"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
