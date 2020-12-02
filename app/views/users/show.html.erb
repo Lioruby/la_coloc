@@ -5,11 +5,14 @@
 <div class="bg-gray-800 flex justify-center h-32">
 
   <div class="flex flex-col text-center text-white rounded-lg">
+    <div>
+      <%= link_to 'Supprimer une tâche', user_destroy_current_colocation_task_index_path(current_user), class: "absolute left-6 text-white text-xs mt-2" %>
+    </div>
     <h1 class="pt-6 pb-4 font-bold text-2xl  tracking-wide"><%= current_user.first_name %></h1>
     <%= cl_image_tag current_user.photo.key, class:"border-solid border-2 border-blue-200 h-24 rounded-full object-cover" %>
     <h4 class="pt-2 pb-4 text-gray-600 font-semibold text-xs tracking-wide text-center">Tu préfères...</h4>
   </div>
-  <%= link_to 'Invite un nouveau coloc !', colocation_new_invitation_path(current_colocation), class: "absolute right-6 text-white text-xs"  %>
+  <%= link_to 'Invite un nouveau coloc !', colocation_new_invitation_path(current_colocation), class: "absolute right-4 text-white text-xs mt-2"  %>
 </div>
 
 <div class="grid grid-cols-4 pt-12 px-2">

@@ -2,7 +2,7 @@
 
 <br>
 <div class="rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 flex flex-col gap-4 items-center text-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
-  <h1 class="text-lg font-semibold py-2"> Les joueurs </h1>
+  <h2 class="text-lg font-semibold py-2"> Les joueurs </h2>
   <div class="flex">
     <% current_colocation.users.each do | user | %>
       <div class="flex flex-col w-full text-black items-center pb-2 px-3 pl-4">
@@ -10,6 +10,9 @@
         <span class="pt-2 text-gray-800 font-bold text-xs tracking-wide"> <%= user.first_name.capitalize %> </span>
       </div>
     <% end %>
+  </div>
+  <div>
+
   </div>
 </div>
 
@@ -19,7 +22,7 @@
 
   <%#= image_tag "stats_fun.svg", class:"w-15 text-center" %>
   <div id="leaderboard">
-    <h1 class='text-center font-bold text-lg my-2'>Statistiques</h1>
+    <h2 class='text-center font-bold text-lg my-2'>Statistiques</h2>
     <canvas id="best-roomate-chart" width="200" height="200" class="mb-5"></canvas>
     <% i = 1 %>
     <% @work_times.each do |key, value| %>
@@ -40,7 +43,7 @@
 
 
 <div class="-mt-6 rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 mt-6 flex flex-col gap-4 items-center text-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
-  <h1 class="text-lg font-semibold py-2"> <%= current_colocation.name %> </h1>
+  <h2 class="text-lg font-semibold py-2"> <%= current_colocation.name %> </h2>
   <%#= image_tag "trash.svg", class:"w-44" %>
   <h3 class="text-gray-800 font-bold text-xs tracking-wide">Faineant</h3>
 

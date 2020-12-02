@@ -1,0 +1,14 @@
+<div class="flex gap-3 justify-around items-center text-center py-2 mx-8">
+  <h1 class="text-lg font-semibold">Choisis la tâche à supprimer:</h1>
+</div>
+<div>
+  <% @tasks.each do |task| %>
+    <div class="p-4 flex justify-around">
+      <p> <%= task.name %> </p>
+       <%= link_to 'Supprimer', user_destroy_current_colocation_task_path(current_user, task_id: task.id), method: :delete, data: { confirm: 'Ês-tu sur de vouloir supprimer cette tâche ?' } %>
+    </div>
+  <% end %>
+</div>
+
+<%= render 'shared/navigation_footer' %>
+

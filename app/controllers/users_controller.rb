@@ -3,6 +3,17 @@ class UsersController < ApplicationController
   def index
   end
 
+  def destroy_current_colocation_task_index
+    @tasks = current_user.colocation.tasks
+  end
+
+  def destroy_current_colocation_task
+    @colocation = current_user.colocation
+    task_to_destroy = @colocation.tasks.select { |task| task.id == params[:task_id].to_i }[0]
+
+    task_to_destroy.destroy
+  end
+
   def show
     @preferences = Preference.all
   end
