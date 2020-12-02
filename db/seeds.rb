@@ -130,6 +130,11 @@ prefthomas3.user = thomas
 prefthomas3.task = courses
 prefthomas3.save!
 
+prefthomas4 = Preference.new(position: 3)
+prefthomas4.user = thomas
+prefthomas4.task = cuisine
+prefthomas4.save!
+
 preflior1 = Preference.new(position: 0)
 preflior1.user = lior
 preflior1.task = ménage
@@ -147,6 +152,11 @@ preflior3.user = lior
 preflior3.task = vaisselle
 preflior3.save!
 
+preflior4 = Preference.new(position: 3)
+preflior4.user = lior
+preflior4.task = cuisine
+preflior4.save!
+
 preffranck1 = Preference.new(position: 0)
 preffranck1.user = franck
 preffranck1.task = courses
@@ -163,6 +173,11 @@ preffranck3 = Preference.new(position: 2)
 preffranck3.user = franck
 preffranck3.task = ménage
 preffranck3.save!
+
+preffranck4 = Preference.new(position: 3)
+preffranck4.user = franck
+preffranck4.task = cuisine
+preffranck4.save!
 
 depense1 = Depense.new(montant: 25.3, name: 'Tournée')
 depense1.user = franck
