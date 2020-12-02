@@ -25,7 +25,7 @@
 
     <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
         <% if assignation.task.recurrence == "hebdomadaire" %>
-            <div class="flex flex start items-center px-2 py-2 bg-yellow-300 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
+            <div class="flex flex start items-center px-2 py-2 bg-yellow-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
           <div class="">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           </div>
