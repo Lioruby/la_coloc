@@ -2,7 +2,7 @@
   <div class="w-screen px-4 py-4 bg-gray-800 text-white fixed bottom-0">
     <div class="flex justify-around">
       <div>
-        <%= link_to colocation_path(current_colocation), class: "#{nav_active_class_for('colocations','show')} #{nav_active_class_for('colocations','roommates')}" do %>
+        <%= link_to colocation_path(current_colocation), class: "#{nav_active_class_for('colocations','show')}" do %>
           <i class="fas fa-home"></i>
         <% end %>
       </div>
@@ -17,13 +17,13 @@
         <% end %>
       </div>
       <div>
-        <%= link_to new_task_path, class: "#{nav_active_class_for('tasks','new')} #{nav_active_class_for('tasks','occasionnel')}" do %>
-          <i class="fas fa-plus"></i>
+        <%= link_to depenses_path, class: "#{nav_active_class_for('depenses','new')} #{nav_active_class_for('depenses','index')}" do %>
+          <i class="fas fa-euro-sign"></i>
         <% end %>
       </div>
       <div>
-        <%= link_to user_path(current_user), class: "#{nav_active_class_for('users','show')}" do  %>
-          <i class="far fa-user"></i>
+        <%= link_to colocation_roommates_path(current_colocation), class: "#{nav_active_class_for('colocations','roommates')}" do  %>
+          <i class="fas fa-chart-line"></i>
         <% end %>
       </div>
     </div>
