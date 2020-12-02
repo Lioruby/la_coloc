@@ -1,21 +1,20 @@
-<div class="flex gap-4 items-center justify-around text-center py-4 mx-8 ">
-  <!-- <h1 class="text-gray-200">Holder</h1> -->
-  <h1 class="text-lg font-semibold"> Historique </h1>
-  <%= image_tag "historique.svg", class:"h-16" %>
+<div class="flex flex-col gap-3 items-center text-center py-2 mx-8">
+  <h1 class="text-lg font-semibold"> Tableau des preuves </h1>
+  <%= image_tag "tablette_vide.svg", class:"h-8 " %>
 </div>
 
-<div class="px-2 py-2">
+<div class="px-6">
   <% @assignations.reverse.each do |assignation| %>
     <% if assignation.statut == true %>
-      <div class="px-2 m-2 border-2 bg-blue-200 rounded-lg">
+      <div class="px-2 my-4 border-2 bg-blue-200 rounded-lg">
         <div class="history-avatar">
           <%= cl_image_tag assignation.user.photo.key, class: 'avatar' %>
         </div>
         <div class="flex flex-col items-start">
             <div class="flex items-baseline px-2 py-4">
-              <span class="text-yellow-600 font-extrabold text-base uppercase tracking-wide"><%= assignation.user.first_name %> &nbsp;</span>
-              <span class="font-semibold text-xs uppercase text-gray-800 tracking-wide">a bien bossé,&nbsp;</span>
-              <span class="font-semibold text-xs uppercase text-gray-800 tracking-wide"> &nbsp;la preuve</span>
+              <span class="text-yellow-600 font-extrabold text-base"><%= assignation.user.first_name %> &nbsp;</span>
+              <span class="font-base text-sm">a bien bossé,&nbsp;</span>
+              <span class="font-semibold text-sm"> &nbsp;la preuve</span>
             </div>
           <div class="rounded-3xl overflow-hidden mx-4">
             <% if assignation.photo.attached? %>
@@ -23,14 +22,19 @@
             <% end %>
           </div>
         </div>
-          <div class="items-end">
-            <p class="px-2 py-4 text-gray-600">Tâche réalisée:
+
+          <div class="flex justify-between">
+            <span class="px-2 py-2 text-gray-600 text-xs">Tâche réalisée:
               <% if assignation.task == nil %>
                 <%= assignation.name %>
               <% else  %>
-                <%= assignation.task.name  %></span>
+                <%= assignation.task.name  %>
               <% end %>
-            <p>
+            </span>
+
+            <div class="px-2 py-2 text-gray-600 text-xs ">
+              <%= assignation.updated_at.strftime("%Hh%M - %a %d ") %>
+            </div>
           </div>
       </div>
     <% end %>

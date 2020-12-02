@@ -6,7 +6,7 @@
 
 <div class="flex flex-start px-4 py-5">
      <div class="flex flex-col flex-shrink items-center font-bold text-yellow-600 ">
-        <span ><%= Date.today.strftime("%a") %></span>
+        <span ><%= translate_day_name(Date.today.strftime("%a")) %></span>
         <span><%= Date.today.strftime("%d") %></span>
       </div>
   <div class="flex flex-col gap-4 flex-grow pl-4 pr-6">
@@ -22,17 +22,32 @@
 <!-- Un deuxieme pour afficher les taches à la date d'aujourd'hui et les hebdomaires sur 7j glissant  -->
 
     <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
-        <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
+        <% if assignation.task.recurrence == "hebdomadaire" %>
+            <div class="flex flex start items-center px-2 py-2 bg-yellow-300 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
           <div class="">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           </div>
           <div class="px-3">
-            <span class="text-gray-800 font-bold text-sm tracking-wide">
-            <%= assignation.task.name  %></span>
-            <span class="block text-xs text-gray-600 tracking-wide"><%= assignation.task.recurrence%></span>
+            <span class="text-gray-800 font-bold text-sm">
+            <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
+            <span class="block text-xs text-gray-600"><%= change_hebdo_and_quoti(assignation.task.recurrence)%></span>
           </div>
 
         </div>
+
+        <% else %>
+          <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
+            <div class="">
+              <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
+            </div>
+            <div class="px-3">
+              <span class="text-gray-800 font-bold text-sm">
+              <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
+              <span class="block text-xs text-gray-600"><%= change_hebdo_and_quoti(assignation.task.recurrence)%></span>
+            </div>
+
+          </div>
+        <% end %>
       <% end %>
 
 <!-- On fait la même chose qu'au dessus pour les taches occasionnel -->
@@ -40,8 +55,8 @@
   <% elsif assignation.statut == false && assignation.date == Date.today %>
       <div class="flex flex-start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
         <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
-        <span class="px-3 text-gray-800 font-bold text-sm tracking-wide">
-          <%= assignation.name %></span>
+        <span class="px-3 text-gray-800 font-bold text-sm">
+         <%= link_to assignation_path(assignation), class: '' do %><%= assignation.name %><% end %></span>
       </div>
 
     <% end %>
@@ -50,11 +65,6 @@
   </div>
   </div>
 
-
-
- <div class="mx-8 border-solid border-b-2 border-t-2 border-gray-400 border-opacity-30">
-    <h3 class="text-center py-4 text-lg font-semibold">Tâches des prochains jours</h3>
-  </div>
 
 
 <!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
@@ -82,7 +92,7 @@
     <% if @existing_date != [] %>
       <div class="flex flex-start px-3 py-5">
         <div class="flex flex-col flex-shrink font-bold items-center">
-          <span ><%= Date.today.next_day(i).strftime("%a") %></span>
+          <span ><%= translate_day_name(Date.today.next_day(i).strftime("%a")) %></span>
           <span><%= Date.today.next_day(i).strftime("%d") %></span>
         </div>
 
@@ -105,8 +115,8 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
         <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           <div class="px-3">
-            <span class="text-gray-800 font-bold text-sm tracking-wide">
-            <%= assignation.task.name  %></span>
+            <span class="text-gray-800 font-bold text-sm">
+            <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
           </div>
 
         </div>
@@ -119,8 +129,8 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
             <div class="flex-shrink">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
             </div>
-            <span class="flex-grow px-3 text-gray-800 font-bold text-sm tracking-wide">
-            <%= assignation.name %></span>
+            <span class="flex-grow px-3 text-gray-800 font-bold text-sm">
+            <%= link_to assignation_path(assignation), class: '' do %><%= assignation.name %><% end %></span>
           </div>
       <% end %>
 

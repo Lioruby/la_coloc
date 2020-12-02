@@ -41,9 +41,9 @@ class TasksController < ApplicationController
 
 
     if @task.save
-      redirect_to new_task_path, notice: 'La modification à été prise en compte'
+      redirect_to colocation_path(current_colocation), notice: 'La modification à été prise en compte'
     else
-      redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
+      redirect_to colocation_path(current_colocation), notice: 'Erreur, veuillez recommencer'
     end
   end
 

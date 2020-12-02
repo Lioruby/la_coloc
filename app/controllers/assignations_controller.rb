@@ -39,9 +39,9 @@ class AssignationsController < ApplicationController
     @assignation.update(assignation_params)
 
     if @assignation.save
-      redirect_to occasionnel_tasks_path, notice: 'La tâche à bien été modifiée'
+      redirect_to colocation_path(current_colocation), notice: 'La tâche à bien été modifiée'
     else
-      redirect_to occasionnel_tasks_path, notice: 'Erreur, veuillez recommencer'
+      redirect_to colocation_path(current_colocation), notice: 'Erreur, veuillez recommencer'
     end
   end
 
