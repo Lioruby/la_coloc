@@ -24,7 +24,8 @@
 <!-- Un deuxieme pour afficher les taches à la date d'aujourd'hui et les hebdomaires sur 7j glissant  -->
 
     <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
-        <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
+        <% if assignation.task.recurrence == "hebdomadaire" %>
+            <div class="flex flex start items-center px-2 py-2 bg-yellow-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
           <div class="">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           </div>
@@ -35,6 +36,20 @@
           </div>
 
         </div>
+
+        <% else %>
+          <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
+            <div class="">
+              <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
+            </div>
+            <div class="px-3">
+              <span class="text-gray-800 font-bold text-sm tracking-wide">
+              <%= assignation.task.name  %></span>
+              <span class="block text-xs text-gray-600 tracking-wide"><%= assignation.task.recurrence%></span>
+            </div>
+
+          </div>
+        <% end %>
       <% end %>
 
 <!-- On fait la même chose qu'au dessus pour les taches occasionnel -->
@@ -52,11 +67,6 @@
   </div>
   </div>
 
-
-
- <div class="mx-8 border-solid border-b-2 border-t-2 border-gray-400 border-opacity-30">
-    <h3 class="text-center py-4 text-lg font-semibold">Tâches des prochains jours</h3>
-  </div>
 
 
 <!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
