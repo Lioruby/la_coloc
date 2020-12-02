@@ -1,5 +1,3 @@
-<%= render 'shared/home_tabs' %>
-
 <div class="text-center py-3 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
   <h1 class="text-lg font-semibold"> <%= @colocation.name %> Calendrier</h1>
 </div>
@@ -8,7 +6,7 @@
 
 <div class="flex flex-start px-4 py-5">
      <div class="flex flex-col flex-shrink items-center font-bold text-yellow-600 ">
-        <span ><%= Date.today.strftime("%a") %></span>
+        <span ><%= translate_day_name(Date.today.strftime("%a")) %></span>
         <span><%= Date.today.strftime("%d") %></span>
       </div>
   <div class="flex flex-col gap-4 flex-grow pl-4 pr-6">
@@ -25,14 +23,14 @@
 
     <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
         <% if assignation.task.recurrence == "hebdomadaire" %>
-            <div class="flex flex start items-center px-2 py-2 bg-yellow-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
+            <div class="flex flex start items-center px-2 py-2 bg-yellow-300 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
           <div class="">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           </div>
           <div class="px-3">
             <span class="text-gray-800 font-bold text-sm">
             <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
-            <span class="block text-xs text-gray-600"><%= assignation.task.recurrence%></span>
+            <span class="block text-xs text-gray-600"><%= change_hebdo_and_quoti(assignation.task.recurrence)%></span>
           </div>
 
         </div>
@@ -45,7 +43,7 @@
             <div class="px-3">
               <span class="text-gray-800 font-bold text-sm">
               <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
-              <span class="block text-xs text-gray-600"><%= assignation.task.recurrence%></span>
+              <span class="block text-xs text-gray-600"><%= change_hebdo_and_quoti(assignation.task.recurrence)%></span>
             </div>
 
           </div>
@@ -94,7 +92,7 @@
     <% if @existing_date != [] %>
       <div class="flex flex-start px-3 py-5">
         <div class="flex flex-col flex-shrink font-bold items-center">
-          <span ><%= Date.today.next_day(i).strftime("%a") %></span>
+          <span ><%= translate_day_name(Date.today.next_day(i).strftime("%a")) %></span>
           <span><%= Date.today.next_day(i).strftime("%d") %></span>
         </div>
 
