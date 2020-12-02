@@ -29,21 +29,24 @@ thomas.save!
 lior.save!
 franck.save!
 
-vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 20, recurrence: "quotidien")
-ménage = Task.new(name: 'Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
-courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 90, recurrence: "hebdomadaire")
-cuisine = Task.new(name: 'Cuisine', description: 'Blablabal', duration: 40, recurrence: "quotidien")
+vaisselle = Task.new(name: 'Faire la Vaisselle', description: 'Il faut faire la vaisselle', duration: 20, recurrence: "quotidien")
+ménage = Task.new(name: 'Faire le Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
+courses = Task.new(name: 'Faire les Courses', description: 'La liste des courses est sur le frigo', duration: 90, recurrence: "hebdomadaire")
+cuisine = Task.new(name: 'Faire la Cuisine', description: 'Blablabal', duration: 40, recurrence: "quotidien")
+litiere = Task.new(name: 'Changer la litière', description: 'Changer la litière du chat', duration: 5, recurrence: "hebdomadaire")
 
 
 vaisselle.colocation = lacoloc
 ménage.colocation = lacoloc
 courses.colocation = lacoloc
 cuisine.colocation = lacoloc
+litiere.colocation = lacoloc
 
 vaisselle.save!
 ménage.save!
 courses.save!
 cuisine.save!
+litiere.save!
 
 # assignation1 = Assignation.new(statut: true, date: Date.today)
 # assignation2 = Assignation.new(statut: false, date: Date.today)
@@ -136,7 +139,12 @@ prefthomas4.user = thomas
 prefthomas4.task = cuisine
 prefthomas4.save!
 
-preflior1 = Preference.new(position: 0)
+prefthomas5 = Preference.new(position: 0)
+prefthomas5.user = thomas
+prefthomas5.task = litiere
+prefthomas5.save!
+
+preflior1 = Preference.new(position: 4)
 preflior1.user = lior
 preflior1.task = ménage
 preflior1.save!
@@ -158,7 +166,12 @@ preflior4.user = lior
 preflior4.task = cuisine
 preflior4.save!
 
-preffranck1 = Preference.new(position: 0)
+preflior5 = Preference.new(position: 0)
+preflior5.user = lior
+preflior5.task = litiere
+preflior5.save!
+
+preffranck1 = Preference.new(position: 4)
 preffranck1.user = franck
 preffranck1.task = courses
 preffranck1.save!
@@ -179,6 +192,12 @@ preffranck4 = Preference.new(position: 3)
 preffranck4.user = franck
 preffranck4.task = cuisine
 preffranck4.save!
+
+preffranck5 = Preference.new(position: 4)
+preffranck5.user = franck
+preffranck5.task = litiere
+preffranck5.save!
+
 
 depense1 = Depense.new(montant: 25.3, name: 'Tournée')
 depense1.user = franck
