@@ -15,7 +15,7 @@
     </div>
     <% end %>
   </div>
-  <div class="py-6 pr-8 w-full col-span-3" data-controller="preference" data-preference-url="/users/:id/move">
+  <div class="pt-6 pb-2 pr-8 w-full col-span-3" data-controller="preference" data-preference-url="/users/:id/move">
     <% current_user.preferences.sort_by(&:position).each do |preference| %>
         <div data-id="<%= preference.task.id %>" class="py-1 text-center">
             <div class="flex flex-start items-center border-solid border-2 border-yellow-500 hover:bg-yellow-600 bg-blue-200 px-2 py-2 rounded-lg font-semibold text-sm tracking-wide">
