@@ -8,7 +8,7 @@
 
 <div class="flex flex-start px-4 py-5">
      <div class="flex flex-col flex-shrink items-center font-bold text-yellow-600 ">
-        <span ><%= Date.today.strftime("%a") %></span>
+        <span ><%= translate_day_name(Date.today.strftime("%a")) %></span>
         <span><%= Date.today.strftime("%d") %></span>
       </div>
   <div class="flex flex-col gap-4 flex-grow pl-4 pr-6">
@@ -94,7 +94,7 @@
     <% if @existing_date != [] %>
       <div class="flex flex-start px-3 py-5">
         <div class="flex flex-col flex-shrink font-bold items-center">
-          <span ><%= Date.today.next_day(i).strftime("%a") %></span>
+          <span ><%= translate_day_name(Date.today.next_day(i).strftime("%a")) %></span>
           <span><%= Date.today.next_day(i).strftime("%d") %></span>
         </div>
 
