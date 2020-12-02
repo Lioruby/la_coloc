@@ -1,4 +1,5 @@
-<div>
+<% content_for :title, "Mes tâches" %>
+
 
   <div class="text-center py-3 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
     <h3 class="text-lg font-semibold"> Tâches à faire </h3>
@@ -82,7 +83,7 @@
         <span><%= Date.today.next_day(i).strftime("%d") %></span>
       </div>
 
-    <div class="flex flex-col gap-4 pl-4 pr-6">
+    <div class="flex flex-col gap-4 flex-grow pl-4 pr-6">
     <% end %>
 
       <% current_user.assignations.each do | assignation | %>

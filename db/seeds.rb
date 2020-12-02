@@ -32,18 +32,16 @@ franck.save!
 vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 30, recurrence: "quotidien")
 ménage = Task.new(name: 'Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
 courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 20, recurrence: "hebdomadaire")
-aspirateur = Task.new(name: 'Passer laspirateur puis la serpillère et faut se depêcher', description: 'il faut passer laspirateur', duration: 30, recurrence: "quotidien")
 
 
 vaisselle.colocation = lacoloc
 ménage.colocation = lacoloc
 courses.colocation = lacoloc
-aspirateur.colocation = lacoloc
+
 
 vaisselle.save!
 ménage.save!
 courses.save!
-aspirateur.save!
 
 
 # assignation1 = Assignation.new(statut: true, date: Date.today)
@@ -59,6 +57,7 @@ aspirateur.save!
 # assignation11 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
 # assignation12 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
 # # assignation13 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
+
 
 # assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
 # assignation1.task = vaisselle
