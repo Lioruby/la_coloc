@@ -29,20 +29,21 @@ thomas.save!
 lior.save!
 franck.save!
 
-vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 30, recurrence: "quotidien")
+vaisselle = Task.new(name: 'Vaisselle', description: 'Il faut faire la vaisselle', duration: 20, recurrence: "quotidien")
 ménage = Task.new(name: 'Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
-courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 20, recurrence: "hebdomadaire")
+courses = Task.new(name: 'Courses', description: 'La liste des courses est sur le frigo', duration: 90, recurrence: "hebdomadaire")
+cuisine = Task.new(name: 'Cuisine', description: 'Blablabal', duration: 40, recurrence: "quotidien")
 
 
 vaisselle.colocation = lacoloc
 ménage.colocation = lacoloc
 courses.colocation = lacoloc
-
+cuisine.colocation = lacoloc
 
 vaisselle.save!
 ménage.save!
 courses.save!
-
+cuisine.save!
 
 # assignation1 = Assignation.new(statut: true, date: Date.today)
 # assignation2 = Assignation.new(statut: false, date: Date.today)
