@@ -29,7 +29,7 @@ class AssignationsController < ApplicationController
 
     if assignation.save
     # assignation.update!(assignation_params_require)
-      redirect_to tasks_path(current_colocation), notice: 'La photo à bien été ajoutée'
+      redirect_to assignations_path, notice: 'La photo à bien été ajoutée'
     else
       redirect_to tasks_path(current_colocation)
     end

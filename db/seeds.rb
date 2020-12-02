@@ -47,7 +47,7 @@ cuisine.save!
 
 # assignation1 = Assignation.new(statut: true, date: Date.today)
 # assignation2 = Assignation.new(statut: false, date: Date.today)
-# assignation3 = Assignation.new(statut: false, date: Date.today)
+assignation3 = Assignation.new(statut: false, date: Date.today)
 # assignation4 = Assignation.new(statut: false, date: Date.today)
 # assignation5 = Assignation.new(statut: false, date: "Thu, 1 Dec 2020")
 # assignation6 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
@@ -70,9 +70,9 @@ cuisine.save!
 # assignation2.user = lior
 # assignation2.save!
 
-# assignation3.task = courses
-# assignation3.user = thomas
-# assignation3.save!
+assignation3.task = courses
+assignation3.user = thomas
+assignation3.save!
 
 # assignation4.task = vaisselle
 # assignation4.user = franck
