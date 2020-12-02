@@ -47,3 +47,50 @@ input[type="file"] {
    -webkit-box-orient: vertical;
    -webkit-line-clamp: 2; /* number of lines to show */
 }
+
+
+#marqueur {
+  animation: marqueur 1s ease-in-out infinite alternate;
+  transform-origin: bottom;
+
+}
+
+@keyframes marqueur {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(60deg);
+  }
+}
+
+
+#Aiguille {
+  animation: aiguille 3s infinite linear;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes aiguille {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+#cheminee {
+  animation: cheminee 3s infinite;
+  transform-origin: bottom;
+
+}
+
+@keyframes cheminee {
+  from {
+    transform: rotateX(50deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}
