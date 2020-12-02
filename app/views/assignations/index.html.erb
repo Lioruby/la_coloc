@@ -35,7 +35,8 @@
             </span>
 
             <div class="px-2 py-2 text-gray-600 text-xs ">
-              <%= assignation.updated_at.strftime("%Hh%M - %a %d ") %>
+              <% day = translate_day_name(assignation.updated_at.strftime("%a"))%>
+              <%= assignation.updated_at.strftime("%Hh%M - #{day} %d") %>
             </div>
           </div>
       </div>

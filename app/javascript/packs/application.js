@@ -30,6 +30,7 @@ import "controllers"
 import dynamicCalendar from '../components/calendar'
 import scrollNav from '../components/navbarScroll'
 import { loadAnimation } from '../components/chargement'
+import { bestRoomateChart } from '../components/chart.js'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -43,5 +44,9 @@ document.addEventListener('turbolinks:load', () => {
   // scrollNav();
   //Chargement invitation
   loadAnimation();
+
+  //chargement du graphique
+  bestRoomateChart();
+
 });
 
