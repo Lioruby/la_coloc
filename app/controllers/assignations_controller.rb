@@ -21,17 +21,18 @@ class AssignationsController < ApplicationController
     end
   end
 
-
   def update
     assignation = Assignation.find(params[:id])
-    assignation.update(photo_params_require)
+    if photo_params_require != nil
+      assignation.update(photo_params_require)
+    end
     assignation[:statut] = true
 
     if assignation.save
     # assignation.update!(assignation_params_require)
-      redirect_to tasks_path(current_colocation), notice: 'La photo à bien été ajoutée'
+      redirect_to assignations_path, notice: 'la tâche a bien été validée avec une photo'
     else
-      redirect_to tasks_path(current_colocation)
+      redirect_to assignations_path, notice: 'la tâche a bien été validée sans photo'
     end
   end
 
@@ -49,7 +50,9 @@ class AssignationsController < ApplicationController
   private
 
   def photo_params_require
+    if params[:photo] != nil
     params.require(:assignation).permit(:photo)
+    end
   end
 
   def assignation_params
