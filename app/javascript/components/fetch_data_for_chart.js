@@ -1,0 +1,7 @@
+const fetchDataForChart = () => {
+
+};
+
+export {
+  fetchDataForChart
+};

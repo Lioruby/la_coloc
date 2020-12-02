@@ -57,6 +57,17 @@ class ColocationsController < ApplicationController
   def roommates
     @work_times = actual_working_time
     @faineant = shame_wall
+
+    respond_to do |format|
+      format.html
+      format.json { render json:
+      {
+      all_data: {
+        users: @colocation.users.map { |u| { name: u.name, id: u.id, work_time: @work_times[u.id] } }
+        }
+      }
+    }
+    end
   end
 
   private
