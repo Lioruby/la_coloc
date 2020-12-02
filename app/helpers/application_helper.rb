@@ -6,4 +6,30 @@ module ApplicationHelper
       return "aujourd'hui"
     end
   end
+
+  def translate_day_name(day)
+    case
+    when day == "Mon"
+      return "Lun"
+
+    when day == "Tue"
+      return "Mar"
+
+    when day == "Wed"
+      return "Mer"
+
+    when day == "Thu"
+      return "Jeu"
+
+    when day == "Fri"
+      return "Ven"
+
+    when day == "Sat"
+      return "Sam"
+
+    when day == "Sun"
+      return "Dim"
+    end
+  end
+
 end
