@@ -83,7 +83,7 @@
         <span><%= Date.today.next_day(i).strftime("%d") %></span>
       </div>
 
-    <div class="flex flex-col gap-4 pl-4 pr-6">
+    <div class="flex flex-col gap-4 flex-grow pl-4 pr-6">
     <% end %>
 
       <% current_user.assignations.each do | assignation | %>
