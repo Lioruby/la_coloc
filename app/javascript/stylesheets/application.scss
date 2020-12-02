@@ -81,7 +81,7 @@ input[type="file"] {
 }
 
 #cheminee {
-  animation: cheminee 3s infinite;
+  animation: cheminee 3s infinite linear;
   transform-origin: bottom;
 
 }
