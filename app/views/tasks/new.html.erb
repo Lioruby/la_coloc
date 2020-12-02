@@ -1,22 +1,6 @@
 <%= render 'shared/task_tabs' %>
 
-<div class="bg-gray-800 text-center">
-  <div>
-    <h1 class="text-white py-4 font-bold text-xl tracking-wide">Tâches en cours...</h1>
-  </div>
-
-  <div class="supergrid pt-2 pb-4 px-6">
-    <% current_colocation.tasks.each do |task| %>
-    <div class="supergriditem justify-center font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black">
-    <span><%= link_to task_path(task), class: '' do %>
-      <%= task.name %></span>
-      <% end %>
-    </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="bg-gray-800 p-4 flex items-center justify-center">
+<div class="bg-gray-800 h-screen p-4 -mt-20 flex items-center justify-center">
 
   <%= simple_form_for([@colocation, @task]) do |f| %>
     <%= f.error_notification %>
