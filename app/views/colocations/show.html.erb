@@ -1,12 +1,16 @@
 <% content_for :title, "Coloc - #{current_colocation.name}" %>
 
-<div class="text-center py-3 mx-8 border-solid border-b-2 border-gray-400 border-opacity-30">
-  <h1 class="text-lg font-semibold"> <%= @colocation.name %> Calendrier</h1>
+<div class="flex justify-between items-center py-3 mx-5 border-solid border-b-2 border-gray-400 border-opacity-30">
+  <button class="bg-yellow-500  text-white uppercase text-xs font-bold py-1 px-2 rounded-full">
+    <%= link_to 'New', new_task_path %>
+  </button>
+  <h1 class="text-lg font-semibold px-2"> <%= @colocation.name %> Calendrier</h1>
+  <%= image_tag "calendar.svg", class:"h-12" %>
 </div>
 
 <!-- Début de la methode pour afficher les taches en cours -->
 
-<div class="flex flex-start px-4 py-5">
+<div class="flex flex-start px-3 py-5">
      <div class="flex flex-col flex-shrink items-center font-bold text-yellow-600 ">
         <span ><%= translate_day_name(Date.today.strftime("%a")) %></span>
         <span><%= Date.today.strftime("%d") %></span>
