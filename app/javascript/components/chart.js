@@ -38,6 +38,13 @@ const chartBar = (data) => {
 
       // Configuration options go here
       options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+                beginAtZero:true
+            }
+          }]
+        }
       }
   });
 
