@@ -1,36 +1,13 @@
 <%= render 'shared/task_tabs' %>
 
-<div class="bg-gray-800 text-center">
-  <div>
-    <h1 class="text-white py-4 font-bold text-xl tracking-wide">Tâches en cours...</h1>
-  </div>
-
-<div class="supergrid pt-2 pb-4 px-6">
-    <% current_colocation.users.each do |user| %>
-    <% user.assignations.each do |assignation| %>
-    <% if assignation.task == nil %>
-    <div class="supergriditem justify-center font-bold text-xs uppercase tracking-wide text-white rounded-full bg-yellow-500 px-2 py-2 hover:bg-blue-200 hover:text-black">
-     <span><%= link_to assignation_path(assignation), class: '' do %>
-      <%= assignation.name %></span>
-      <% end %>
-    </div>
-    <% end %>
-    <% end %>
-    <% end %>
-  </div>
-</div>
-
-
-
-
-<div class="bg-gray-800 p-4 flex items-center justify-center">
+<div class="bg-gray-800 p-4 h-screen -mt-28 flex items-center justify-center">
 
 
 
   <%= simple_form_for(@assignation) do |f| %>
     <%= f.error_notification %>
 
-    <div class="bg-gray-200 p-2 text-center border rounded shadow-md bg-center">
+    <div class="bg-gray-200 p-3 text-center border rounded shadow-md bg-center">
       <h2 class="pb-4 pt-1 text-center font-bold text-lg text-gray-800">
         Nouvelle Tâche
       </h2>

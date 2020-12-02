@@ -30,9 +30,9 @@
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           </div>
           <div class="px-3">
-            <span class="text-gray-800 font-bold text-sm tracking-wide">
-            <%= assignation.task.name  %></span>
-            <span class="block text-xs text-gray-600 tracking-wide"><%= assignation.task.recurrence%></span>
+            <span class="text-gray-800 font-bold text-sm">
+            <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
+            <span class="block text-xs text-gray-600"><%= assignation.task.recurrence%></span>
           </div>
 
         </div>
@@ -43,9 +43,9 @@
               <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
             </div>
             <div class="px-3">
-              <span class="text-gray-800 font-bold text-sm tracking-wide">
-              <%= assignation.task.name  %></span>
-              <span class="block text-xs text-gray-600 tracking-wide"><%= assignation.task.recurrence%></span>
+              <span class="text-gray-800 font-bold text-sm">
+              <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
+              <span class="block text-xs text-gray-600"><%= assignation.task.recurrence%></span>
             </div>
 
           </div>
@@ -57,8 +57,8 @@
   <% elsif assignation.statut == false && assignation.date == Date.today %>
       <div class="flex flex-start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
         <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
-        <span class="px-3 text-gray-800 font-bold text-sm tracking-wide">
-          <%= assignation.name %></span>
+        <span class="px-3 text-gray-800 font-bold text-sm">
+         <%= link_to assignation_path(assignation), class: '' do %><%= assignation.name %><% end %></span>
       </div>
 
     <% end %>
@@ -117,8 +117,8 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
         <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
           <div class="px-3">
-            <span class="text-gray-800 font-bold text-sm tracking-wide">
-            <%= assignation.task.name  %></span>
+            <span class="text-gray-800 font-bold text-sm">
+            <%= link_to task_path(assignation.task), class: '' do %><%= assignation.task.name  %><% end %></span>
           </div>
 
         </div>
@@ -131,8 +131,8 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
             <div class="flex-shrink">
             <%= cl_image_tag user.photo.key, class:"w-8 h-8 rounded-full" %>
             </div>
-            <span class="flex-grow px-3 text-gray-800 font-bold text-sm tracking-wide">
-            <%= assignation.name %></span>
+            <span class="flex-grow px-3 text-gray-800 font-bold text-sm">
+            <%= link_to assignation_path(assignation), class: '' do %><%= assignation.name %><% end %></span>
           </div>
       <% end %>
 
