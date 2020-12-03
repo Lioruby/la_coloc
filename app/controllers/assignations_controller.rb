@@ -23,11 +23,10 @@ class AssignationsController < ApplicationController
 
   def update
     assignation = Assignation.find(params[:id])
-    if photo_params_require != nil
+    if params[:assignation].present?
       assignation.update(photo_params_require)
     end
     assignation[:statut] = true
-
     if assignation.save
     # assignation.update!(assignation_params_require)
       redirect_to assignations_path, notice: 'la tâche a bien été validée avec une photo'
@@ -50,9 +49,7 @@ class AssignationsController < ApplicationController
   private
 
   def photo_params_require
-    if params[:photo] != nil
     params.require(:assignation).permit(:photo)
-    end
   end
 
   def assignation_params
