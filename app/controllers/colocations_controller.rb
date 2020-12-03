@@ -66,14 +66,38 @@ class ColocationsController < ApplicationController
       format.json { render json:
       {
       all_data: {
-        users: @colocation.users.map { |u| { name: u.name, id: u.id, work_time: @work_times[u.id] } }
-        }
+        users: @colocation.users.map { |u| { name: u.name, id: u.id, work_time: @work_times[u.id] } },
+
+        time_reference: @colocation.users.map { |u| all_time_task_data(u) },
+
+        all_tasks: @colocation.tasks.map { |t| {name: t.name, id: t.id} }
+        },
       }
     }
     end
   end
 
   private
+
+  def all_time_task_data(user)
+    data = {}
+    data[:user_name] = user.name
+    data[:id] = user.id
+    tasks = []
+    total_duration = 0
+
+    user.assignations.each do |assignation|
+      if assignation.statut == true
+
+        total_duration += assignation.task.duration
+        tasks << [assignation.task.name, total_duration]
+
+      end
+
+    end
+    data[:tasks] = tasks.to_h
+    data
+  end
 
 
   def check_colocation

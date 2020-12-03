@@ -1,5 +1,5 @@
 import Chart from 'chart.js';
-import { fetchDataForChart } from './fetch_data_for_chart';
+import { userArray } from './charts_helper'
 
 const bestRoomateChart = () => {
 
@@ -53,22 +53,11 @@ const chartBar = (data) => {
 //<img class="-ml-4 w-12 rounded-full" src="http://res.cloudinary.com/dpoyktjoa/image/upload/kv6of7hn7y1n4w9u4keauns7pisd">
 //Object.entries(students)
 
-const capitalize = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
 
 const workTimeArray = (data) => {
   const array = [];
   Object.entries(data['users']).forEach((user) => {
     array.push(user[1]['work_time']);
-  });
-  return array
-};
-
-const userArray = (data) => {
-  const array = [];
-  Object.entries(data['users']).forEach((user) => {
-    array.push(capitalize(user[1]['name']));
   });
   return array
 };
