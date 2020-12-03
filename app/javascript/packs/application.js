@@ -30,7 +30,8 @@ import "controllers"
 import dynamicCalendar from '../components/calendar'
 import scrollNav from '../components/navbarScroll'
 import { loadAnimation } from '../components/chargement'
-import { bestRoomateChart } from '../components/chart.js'
+import { bestRoomateChart } from '../components/chart'
+import { tasksChart } from '../components/task_chart'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -39,14 +40,20 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   clickOnBurger();
+
   // initTabs();
   dynamicCalendar();
+
   // scrollNav();
+
   //Chargement invitation
   loadAnimation();
 
-  //chargement du graphique
+  //chargement du graphique du travail des joueurs en minutes
   bestRoomateChart();
+
+  //chargement du graphique des tâches en détails
+  tasksChart();
 
 });
 

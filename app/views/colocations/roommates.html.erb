@@ -85,6 +85,11 @@
     <canvas id="best-roomate-chart" width="200" height="200" class="pt-4 mb-5"></canvas>
   </div>
   <br>
+    <% current_colocation.users.each_with_index do |user, i| %>
+  <div class="">
+      <canvas id="task-chart-<%= i %>" width="200" height="200" class="mb-5"></canvas>
+  </div>
+    <% end %>
 </div>
 
 <div class=" -mb-16 -mt-4"> </div>
