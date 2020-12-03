@@ -32,4 +32,13 @@ module ApplicationHelper
     end
   end
 
+  def moins_de_preuve
+    assignation_true = []
+    Assignation.all.each do |assignation|
+      if assignation.statut && assignation.photo.attached == nil
+        assignation_true << assignation
+      end
+    end
+      ap assignation_true
+  end
 end

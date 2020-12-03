@@ -1,57 +1,65 @@
 <% content_for :title, "Statistiques" %>
 
 <br>
-<div class="rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 flex flex-col gap-4 items-center text-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
+<div class="rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 flex flex-col gap-4 items-center text-center py-4 pb-24 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
   <h1 class="text-lg font-semibold py-2"> Les joueurs </h1>
   <div class="flex">
     <% current_colocation.users.each do | user | %>
       <div class="flex flex-col w-full text-black items-center pb-2 px-3 pl-4">
         <%= cl_image_tag user.photo.key, class:" border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <span class="pt-2 text-gray-800 font-bold text-xs tracking-wide"> <%= user.first_name.capitalize %> </span>
+        <span class="pt-2 text-gray-800 font-bold text-sm tracking-wide"> <%= user.first_name.capitalize %> </span>
+        <div>
+          <span class="pt-2 text-xs text-gray-800 text-center"> Kiff <%= user.preferences[0].task.name %> il l'a déjà fait </span>
+          <span class="text-sm font-bold"> <%= user.preferences[0].task.assignations.select{|assignation|assignation.statut}.count %> </span>
+          <span class="text-xs text-gray-800">fois</span>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
 
 
-<div class="ml-64 -mb-16 -mt-4"> <%= image_tag "stats_fun.svg", class:"h-16 text-center" %> </div>
+<div class="ml-64 -mb-16 -mt-4"> </div>
 <div class="-mt-4 rounded-t-3xl bg-gradient-to-tr from-white to-gray-200 flex flex-col gap-4 items-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
 
   <%#= image_tag "stats_fun.svg", class:"w-15 text-center" %>
   <div id="leaderboard">
-    <h1 class='text-center font-bold text-lg my-2'>Statistiques</h1>
-    <canvas id="best-roomate-chart" width="200" height="200" class="mb-5"></canvas>
+    <h1 class='text-center font-bold text-lg my-3 pb-2'>Statistiques</h1>
     <% i = 1 %>
     <% @work_times.each do |key, value| %>
-      <%= cl_image_tag User.find(key).photo.key, class:"-ml-4 w-12 rounded-full" %>
-      <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-6 py-8 mb-2 -mt-6 flex justify-between'>
+      <%= cl_image_tag User.find(key).photo.key, class:"-ml-2 -mt-2 w-8 rounded-full" %>
+      <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-10 py-4 mb-2 -mt-6 flex justify-between'>
         <h2 class="font-semibold"> <%= User.find(key).first_name.capitalize %> </h2>
         <h2> <%= "#{value} min"%> </h2>
       </div>
-      <div class='-mt-6 text-gray-700 text-lg font-bold text-center w-1/12 ml-72 bg-blue-300 rounded-full border-solid border-yellow-300'>
+      <div class='-mt-6 mb-2 text-gray-700 text-lg font-bold text-center w-1/12 ml-72 bg-blue-300 rounded-full border-solid border-yellow-300'>
         <%= i %>
       </div>
       <% i += 1 %>
     <% end %>
+    <canvas id="best-roomate-chart" width="200" height="200" class="pt-4 mb-5"></canvas>
+  </div>
+  <br>
+</div>
+
+<div class="ml-64 -mb-16 -mt-4"> </div>
+<div class="-mt-4 rounded-t-3xl bg-gradient-to-tr from-white to-gray-200 flex flex-col gap-4 items-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
+
+  <%#= image_tag "stats_fun.svg", class:"w-15 text-center" %>
+  <div id="leaderboard">
+    <h1 class='text-center font-bold text-lg my-3 pb-2'>Mur de la honte</h1>
+      <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-10 py-4 mb-2 -mt-6 flex justify-between'>
+        <h2>  </h2>
+      </div>
+      <div class='-mt-6 mb-2 text-gray-700 text-lg font-bold text-center w-1/12 ml-72 bg-blue-300 rounded-full border-solid border-yellow-300'>
+      </div>
   </div>
   <br>
 </div>
 
 
-
-<div class="-mt-6 rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 mt-6 flex flex-col gap-4 items-center text-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
-  <h1 class="text-lg font-semibold py-2"> <%= current_colocation.name %> </h1>
-  <%#= image_tag "trash.svg", class:"w-44" %>
-  <h3 class="text-gray-800 font-bold text-xs tracking-wide">Faineant</h3>
-
-  <%= cl_image_tag User.find(@faineant.keys.first).photo.key, class:"-ml-72 w-12 rounded-full z-10" %>
-
-  <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-6 py-8 mb-2 -mt-10 flex justify-between'>
-    <h2 class="font-semibold"> <%= User.find(@faineant.keys.first).first_name.capitalize %> </h2>
-
-    <h2> <%= "#{@faineant.values.first} tâches en attente"%> </h2>
-  </div>
-</div>
-
 <div class="mb-14"></div>
 <%= render 'shared/navigation_footer' %>
+
+# <%= User.find(@faineant.keys.first).first_name.capitalize %>
+# <%= "#{@faineant.values.first} tâches en attente"%>
