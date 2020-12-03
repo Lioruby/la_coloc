@@ -7,6 +7,7 @@ class ColocationsController < ApplicationController
 
   def new
     @colocation = Colocation.new
+
     check_colocation
   end
 
@@ -25,6 +26,7 @@ class ColocationsController < ApplicationController
     current_user.save!
     create_preferences_for_current_user
     assign_task_after_create
+
     redirect_to colocation_path(@colocation)
   end
 
@@ -60,6 +62,7 @@ class ColocationsController < ApplicationController
 
     respond_to do |format|
       format.html
+
       format.json { render json:
       {
       all_data: {
@@ -97,16 +100,16 @@ class ColocationsController < ApplicationController
 
   def actual_working_time
     working_time_for_user = {}
+
     @colocation.users.each do |user|
       total_duration = 0
-      user.tasks.each do |task|
-        task.assignations.each do |assignation|
-          total_duration += task.duration if assignation.statut == true
-        end
+
+      user.assignations.each do |assignation|
+        total_duration += assignation.task.duration if assignation.statut == true
       end
+
       working_time_for_user[user.id] = total_duration
     end
-    ap working_time_for_user.sort_by {|k,v| v}.reverse.to_h
     working_time_for_user.sort_by {|k,v| v}.reverse.to_h
   end
 
