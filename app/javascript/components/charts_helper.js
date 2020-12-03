@@ -10,6 +10,7 @@ const userArray = (data) => {
   return array
 };
 
+
 export {
   userArray
 };

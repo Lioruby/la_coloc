@@ -87,18 +87,21 @@ class ColocationsController < ApplicationController
     data[:user_name] = user.name
     data[:id] = user.id
     tasks = []
-    total_duration = 0
+    arr = []
 
-    user.assignations.each do |assignation|
+    user.assignations.each_with_index do |assignation, i|
+      total_duration = 0
       if assignation.statut == true
 
         total_duration += assignation.task.duration
         tasks << [assignation.task.name, total_duration]
+        arr << color_array[i]
 
       end
 
     end
     data[:tasks] = tasks.to_h
+    data[:color] = arr
     data
   end
 
@@ -230,6 +233,19 @@ class ColocationsController < ApplicationController
       hash_picture[user.id] = counter
     end
     [hash_picture.max_by { |k, v| v }].to_h
+  end
+
+  def color_array
+    ['#FF33FF', '#FFFF99', '#00B3E6',
+      '#E6B333', '#3366E6', '#B34D4D',
+      '#E6B3B3', '#6680B3', '#66991A',
+      '#FF99E6', '#E6331A',
+      '#66994D', '#B366CC', '#4D8000', '#B33300',
+      '#991AFF', '#4DB3FF', '#1AB399',
+      '#E666B3', '#33991A', '#CC9999', '#B3B31A',
+      '#4D8066', '#E6FF80', '#999933',
+      '#FF3380', '#CCCC00', '#4D80CC', '#9900B3',
+      '#E64D66', '#4DB380', '#FF4D4D', '#6666FF']
   end
 
 end
