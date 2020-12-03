@@ -1,6 +1,8 @@
 import Chart from 'chart.js';
 import { userArray } from './charts_helper'
 
+
+
 const tasksChart = () => {
 
   if (document.getElementById('task-chart-0') === null)
@@ -29,6 +31,7 @@ const taskChart = (data, i) => {
       data: {
           labels: taskArray(data, i),
           datasets: [{
+                      backgroundColor: data.time_reference[0].color,
                       data: taskDataPerUsers(data, i),
                       weight: 5
                     }]
@@ -36,10 +39,21 @@ const taskChart = (data, i) => {
 
       // Configuration options go here
       options: {
+        legend: {
+          display: false
+        }
       }
   }
   );
 
+};
+
+const colorArray = (data) => {
+  const array = []
+  data.time_reference.forEach((hash) => {
+    array.push(hash.color)
+  })
+  return array
 };
 
 

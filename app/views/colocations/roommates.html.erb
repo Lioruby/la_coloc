@@ -57,6 +57,12 @@
                     </table>
                 </div>
         </div>
+      <% current_colocation.users.each_with_index do |user, i| %>
+        <div class="mb-5">
+          <h4 class="text-center mb-2"> <%= user.first_name %> </h4>
+            <canvas id="task-chart-<%= i %>" width="150" height="150" class="mb-2"></canvas>
+        </div>
+      <% end %>
     </div>
 </div>
 
@@ -85,11 +91,6 @@
     <canvas id="best-roomate-chart" width="200" height="200" class="pt-4 mb-5"></canvas>
   </div>
   <br>
-    <% current_colocation.users.each_with_index do |user, i| %>
-  <div class="">
-      <canvas id="task-chart-<%= i %>" width="200" height="200" class="mb-5"></canvas>
-  </div>
-    <% end %>
 </div>
 
 <div class=" -mb-16 -mt-4"> </div>
