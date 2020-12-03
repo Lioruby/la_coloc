@@ -59,7 +59,9 @@ class ColocationsController < ApplicationController
   def roommates
     @work_times = actual_working_time
     @faineant = shame_wall
+    @points = count_points
     @least = least_picture
+    @radin = pingre
 
     respond_to do |format|
       format.html
@@ -72,7 +74,6 @@ class ColocationsController < ApplicationController
       }
     }
     end
-    @points = count_points
   end
 
   private
@@ -196,4 +197,15 @@ class ColocationsController < ApplicationController
     end
     [hash_picture.max_by { |k, v| v }].to_h
   end
+
+  def pingre
+    hash_picture = {}
+    counter = 0
+    current_colocation.users.each do |user|
+      counter += user.balance
+      hash_picture[user.id] = counter
+    end
+    [hash_picture.max_by { |k, v| v }].to_h
+  end
+
 end
