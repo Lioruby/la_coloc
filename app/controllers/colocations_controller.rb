@@ -59,6 +59,7 @@ class ColocationsController < ApplicationController
   def roommates
     @work_times = actual_working_time
     @faineant = shame_wall
+    @least = least_picture
 
     respond_to do |format|
       format.html
@@ -184,4 +185,15 @@ class ColocationsController < ApplicationController
     points.sort_by {|k,v| v}.reverse.to_h
   end
 
+  def least_picture
+    hash_picture = {}
+    current_colocation.users.each do |user|
+      counter = 0
+      user.assignations.each do |assignation|
+        counter += 1 if assignation.statut == true && !assignation.photo.attached?
+      end
+      hash_picture[user.id] = counter
+    end
+    [hash_picture.max_by { |k, v| v }].to_h
+  end
 end
