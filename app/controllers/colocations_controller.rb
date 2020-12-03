@@ -178,10 +178,10 @@ class ColocationsController < ApplicationController
     points.each do |key, value|
       points[key] = value * 0.1
       User.find(key).assignations.each do |assignation|
-        points[key] += 2.5 if assignation.statut = true
+        points[key] += 2.5 if assignation.statut == true
       end
     end
-    points
+    points.sort_by {|k,v| v}.reverse.to_h
   end
 
 end
