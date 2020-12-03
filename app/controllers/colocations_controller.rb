@@ -71,6 +71,7 @@ class ColocationsController < ApplicationController
       }
     }
     end
+    @points = count_points
   end
 
   private
@@ -147,28 +148,40 @@ class ColocationsController < ApplicationController
 
     destroy_colocation_assignations
 
-      @colocation.tasks.each do |task|
+    @colocation.tasks.each do |task|
 
-        if task.recurrence == "quotidien"
-          7.times do |i|
-            AssignationAlgo.call(@colocation, task, Date.today.next_day(i + 1))
-          end
-
-        elsif task.recurrence == "hebdomadaire"
-          AssignationAlgo.call(@colocation, task, Date.today.next_day(4))
-
-        elsif task.recurrence == "mensuel"
-          AssignationAlgo.call(@colocation, task, Date.today.next_day(10))
-
+      if task.recurrence == "quotidien"
+        7.times do |i|
+          AssignationAlgo.call(@colocation, task, Date.today.next_day(i + 1))
         end
+
+      elsif task.recurrence == "hebdomadaire"
+        AssignationAlgo.call(@colocation, task, Date.today.next_day(4))
+
+      elsif task.recurrence == "mensuel"
+        AssignationAlgo.call(@colocation, task, Date.today.next_day(10))
+
       end
     end
+  end
 
-    def destroy_colocation_assignations
-      @colocation.users.each do |user|
-        user.assignations.each do |assignation|
-          assignation.destroy
-        end
+  def destroy_colocation_assignations
+    @colocation.users.each do |user|
+      user.assignations.each do |assignation|
+        assignation.destroy
       end
     end
+  end
+
+  def count_points
+    points = actual_working_time
+    points.each do |key, value|
+      points[key] = value * 0.1
+      User.find(key).assignations.each do |assignation|
+        points[key] += 2.5 if assignation.statut = true
+      end
+    end
+    points
+  end
+
 end
