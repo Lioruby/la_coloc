@@ -49,25 +49,31 @@ input[type="file"] {
 }
 
 
-#marqueur {
-  animation: marqueur 1s ease-in-out infinite alternate;
-  transform-origin: bottom;
+// #marqueur {
+//   animation: marqueur 1s ease-in-out infinite alternate;
+//   transform-origin: bottom;
 
-}
+// }
 
-@keyframes marqueur {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(60deg);
-  }
-}
+// @keyframes marqueur {
+//   from {
+//     transform: rotateY(0deg);
+//   }
+//   to {
+//     transform: rotateY(60deg);
+//   }
+// }
 
 
 #Aiguille {
   animation: aiguille 3s infinite linear;
   transform-origin: center;
+  transform-box: fill-box;
+}
+
+#Vector_42 {
+  animation: aiguille 36s infinite linear;
+  transform-origin: 171 493;
   transform-box: fill-box;
 }
 
@@ -79,6 +85,8 @@ input[type="file"] {
     transform: rotateZ(360deg);
   }
 }
+
+
 
 #cheminee {
   animation: cheminee 3s infinite linear;
