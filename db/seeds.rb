@@ -216,7 +216,7 @@ prefthomas4.user = thomas
 prefthomas4.task = cuisine
 prefthomas4.save!
 
-prefthomas5 = Preference.new(position: 0)
+prefthomas5 = Preference.new(position: 4)
 prefthomas5.user = thomas
 prefthomas5.task = litiere
 prefthomas5.save!
