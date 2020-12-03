@@ -10,7 +10,6 @@ class DepensesController < ApplicationController
 
   def create
     @depense = Depense.new(depense_params)
-
     if @depense.save
       @depense.user.balance += @depense.montant
       user = @depense.user
@@ -60,4 +59,9 @@ class DepensesController < ApplicationController
   def depense_params
     params.require(:depense).permit(:montant, :name, :user_id)
   end
+
+  # def user_id
+  #       params.require(:depense).permit(:user)[:user].to_i
+
+  # end
 end
