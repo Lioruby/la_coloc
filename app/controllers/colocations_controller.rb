@@ -227,12 +227,14 @@ class ColocationsController < ApplicationController
 
   def pingre
     hash_picture = {}
-    counter = 0
     current_colocation.users.each do |user|
+      counter = 0
       counter += user.balance
       hash_picture[user.id] = counter
     end
-    [hash_picture.max_by { |k, v| v }].to_h
+    ap hash_picture
+    ap [hash_picture.min_by { |k, v| v }].to_h
+    [hash_picture.min_by { |k, v| v }].to_h
   end
 
   def color_array
