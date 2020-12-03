@@ -9,7 +9,6 @@
     <%= cl_image_tag current_user.photo.key, class:"border-solid border-2 border-blue-200 h-24 rounded-full object-cover" %>
     <h4 class="pt-2 pb-4 text-black uppercase font-semibold text-xs tracking-wide text-center">Tu préfères...</h4>
   </div>
-  <%= link_to 'Invite un nouveau coloc !', colocation_new_invitation_path(current_colocation), class: "absolute right-6 text-white text-xs"  %>
 </div>
 
 <div class="grid grid-cols-4 pt-12 px-2">
@@ -34,7 +33,10 @@
 <div class="px-2 ml-40 flex justify-end">
   <span class="text-xs font-semibold text-gray-400 tracking-wide italic">Appuies et maintiens enfoncé pour échanger les préférences de position</span>
 </div>
+<div class="flex justify-center">
+  <%= link_to 'Invite un nouveau coloc !', colocation_new_invitation_path(current_colocation), class: "inline-block px-4 py-2 rounded-lg bg-blue-500 text-white uppercase tracking-wide font-semibold text-sm my-6"  %>
 
+</div>
 <div class="mb-16"></div>
 
 <%= render 'shared/navigation_footer' %>
