@@ -193,7 +193,7 @@ preffranck4.user = franck
 preffranck4.task = cuisine
 preffranck4.save!
 
-preffranck5 = Preference.new(position: 4)
+preffranck5 = Preference.new(position: 0)
 preffranck5.user = franck
 preffranck5.task = litiere
 preffranck5.save!

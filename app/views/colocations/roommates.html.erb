@@ -1,26 +1,71 @@
 <% content_for :title, "Statistiques" %>
 
-<br>
-<div class="rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 flex flex-col gap-4 items-center text-center py-4 pb-24 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
-  <h1 class="text-lg font-semibold py-2"> Les joueurs </h1>
-  <div class="flex">
-    <% current_colocation.users.each do | user | %>
-      <div class="flex flex-col w-full text-black items-center pb-2 px-3 pl-4">
-        <%= cl_image_tag user.photo.key, class:" border-solid border-2 border-blue-200 w-12 h-12 rounded-full" %>
-        <span class="pt-2 text-gray-800 font-bold text-sm tracking-wide"> <%= user.first_name.capitalize %> </span>
-        <div>
-          <span class="pt-2 text-xs text-gray-800 text-center"> Kiff <%= user.preferences[0].task.name %> il l'a déjà fait </span>
-          <span class="text-sm font-bold"> <%= user.preferences[0].task.assignations.select{|assignation|assignation.statut}.count %> </span>
-          <span class="text-xs text-gray-800">fois</span>
-        </div>
-      </div>
-    <% end %>
+
+<div class="rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 flex flex-col gap-4 items-center text-center mt-24 py-4 mx-4 pb-12 ">
+  <div class="text-center pt-3 mx-8 border-solid">
+    <h3 class="text-lg font-semibold"> Les Colocs !  </h3>
   </div>
+  <div class="-mt-4 rounded-t-3xl flex flex-col gap-4 items-center py-4 mx-4 ">
+            <div class="-mx-4 pb-6 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                    <table class="min-w-full leading-normal ">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Nom
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Tâche préférée
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Total effectuées
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% current_colocation.users.each do |user| %>
+                              <tr>
+
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                  <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-10 h-10">
+                                      <%= cl_image_tag user.photo.key, class:'w-full h-full rounded-full' %>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                          <%= user.name.capitalize %>
+                                        </p>
+                                    </div>
+                                  </div>
+                                </td>
+
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    <p class="text-gray-900 whitespace-no-wrap"><%= user.preferences.find{ |preference| preference.position == 0 }.task.name %></p>
+                                </td>
+
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                   <span><%= user.preferences.find{ |preference| preference.position == 0 }.task.assignations.select{|assignation|assignation.statut}.count %></span>
+                                </td>
+                              </tr>
+                            <% end %>
+
+
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
 </div>
 
 
+
+
 <div class="ml-64 -mb-16 -mt-4"> </div>
-<div class="-mt-4 rounded-t-3xl bg-gradient-to-tr from-white to-gray-200 flex flex-col gap-4 items-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
+<div class="-mt-4 pb-12 rounded-t-3xl bg-gradient-to-tr from-white to-gray-200 flex flex-col gap-4 items-center py-4 mx-4 ">
+
 
   <%#= image_tag "stats_fun.svg", class:"w-15 text-center" %>
   <div id="leaderboard">
@@ -43,7 +88,7 @@
 </div>
 
 <div class="ml-64 -mb-16 -mt-4"> </div>
-<div class="-mt-4 rounded-t-3xl bg-gradient-to-tr from-white to-gray-200 flex flex-col gap-4 items-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
+<div class="-mt-4 rounded-t-3xl bg-gradient-to-tr from-blue-200 to-blue-400 flex flex-col gap-4 items-center py-4 mx-4 border-solid border-b-2 border-gray-400 border-opacity-30">
 
   <%#= image_tag "stats_fun.svg", class:"w-15 text-center" %>
   <div id="leaderboard">
