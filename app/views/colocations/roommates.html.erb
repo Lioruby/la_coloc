@@ -26,11 +26,11 @@
   <div id="leaderboard">
     <h1 class='text-center font-bold text-lg my-3 pb-2'>Statistiques</h1>
     <% i = 1 %>
-    <% @work_times.each do |key, value| %>
+    <% @points.each do |key, value| %>
       <%= cl_image_tag User.find(key).photo.key, class:"-ml-2 -mt-2 w-8 rounded-full" %>
       <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-10 py-4 mb-2 -mt-6 flex justify-between'>
         <h2 class="font-semibold"> <%= User.find(key).first_name.capitalize %> </h2>
-        <h2> <%= "#{value} min"%> </h2>
+        <h2> <%= "#{value} pts"%> </h2>
       </div>
       <div class='-mt-6 mb-2 text-gray-700 text-lg font-bold text-center w-1/12 ml-72 bg-blue-300 rounded-full border-solid border-yellow-300'>
         <%= i %>
