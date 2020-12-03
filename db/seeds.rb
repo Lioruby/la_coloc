@@ -52,15 +52,15 @@ assignation1 = Assignation.new(statut: true, date: Date.today)
 assignation2 = Assignation.new(statut: false, date: Date.today)
 assignation3 = Assignation.new(statut: false, date: Date.today)
 assignation4 = Assignation.new(statut: false, date: Date.today)
-assignation5 = Assignation.new(statut: false, date: "Thu, 1 Dec 2020")
-assignation6 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
-assignation7 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
-assignation8 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
-assignation9 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
-assignation10 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
-assignation11 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
-assignation12 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
-assignation13 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
+# assignation5 = Assignation.new(statut: false, date: "Thu, 1 Dec 2020")
+# assignation6 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
+# assignation7 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
+# assignation8 = Assignation.new(statut: false, date: "Wed, 2 Dec 2020")
+# assignation9 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+# assignation10 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+# assignation11 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+# assignation12 = Assignation.new(statut: false, date: "Thu, 3 Dec 2020")
+# assignation13 = Assignation.new(statut: false, date: "Fri, 4 Dec 2020")
 
 
 assignation1.photo.attach(io: URI.open(task_photos[0]), filename: 'photo.jpg', content_type: 'image/jpg')
@@ -70,7 +70,7 @@ assignation1.save!
 
 assignation2.photo.attach(io: URI.open(task_photos[1]), filename: 'photo.jpg', content_type: 'image/jpg')
 assignation2.task = ménage
-assignation2.user = lior
+assignation2.user = thomas
 assignation2.save!
 
 assignation3.task = courses
@@ -78,44 +78,44 @@ assignation3.user = thomas
 assignation3.save!
 
 assignation4.task = vaisselle
-assignation4.user = franck
+assignation4.user = thomas
 assignation4.save!
 
-assignation5.task = vaisselle
-assignation5.user = thomas
-assignation5.save!
+# assignation5.task = vaisselle
+# assignation5.user = thomas
+# assignation5.save!
 
-assignation6.task = vaisselle
-assignation6.user = lior
-assignation6.save!
+# assignation6.task = vaisselle
+# assignation6.user = lior
+# assignation6.save!
 
-assignation7.task = vaisselle
-assignation7.user = franck
-assignation7.save!
+# assignation7.task = vaisselle
+# assignation7.user = franck
+# assignation7.save!
 
-assignation8.task = vaisselle
-assignation8.user = thomas
-assignation8.save!
+# assignation8.task = vaisselle
+# assignation8.user = thomas
+# assignation8.save!
 
-assignation9.task = vaisselle
-assignation9.user = thomas
-assignation9.save!
+# assignation9.task = vaisselle
+# assignation9.user = thomas
+# assignation9.save!
 
-assignation10.task = ménage
-assignation10.user = franck
-assignation10.save!
+# assignation10.task = ménage
+# assignation10.user = franck
+# assignation10.save!
 
-assignation11.task = aspirateur
-assignation11.user = thomas
-assignation11.save!
+# assignation11.task = litiere
+# assignation11.user = thomas
+# assignation11.save!
 
-assignation12.task = courses
-assignation12.user = lior
-assignation12.save!
+# assignation12.task = courses
+# assignation12.user = lior
+# assignation12.save!
 
-assignation13.task = vaisselle
-assignation13.user = franck
-assignation13.save!
+# assignation13.task = vaisselle
+# assignation13.user = franck
+# assignation13.save!
 
 prefthomas1 = Preference.new(position: 0)
 prefthomas1.user = thomas
