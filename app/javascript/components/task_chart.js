@@ -31,7 +31,7 @@ const taskChart = (data, i) => {
       data: {
           labels: taskArray(data, i),
           datasets: [{
-                      backgroundColor: data.time_reference[0].color,
+                      backgroundColor: data.time_reference[i].color,
                       data: taskDataPerUsers(data, i),
                       weight: 5
                     }]

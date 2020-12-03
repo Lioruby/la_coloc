@@ -47,7 +47,10 @@
                                 </td>
 
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                   <span><%= user.preferences.find{ |preference| preference.position == 0 }.task.assignations.select{|assignation|assignation.statut}.count %></span>
+                                   <span><%= user.preferences
+                                                  .find{ |preference| preference.position == 0 }
+                                                  .task.assignations.select{ |assignation| assignation.statut && assignation.user == user }
+                                                  .count %></span>
                                 </td>
                               </tr>
                             <% end %>
