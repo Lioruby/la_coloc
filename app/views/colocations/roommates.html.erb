@@ -21,7 +21,7 @@
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Total effectuées
+                                    Total
                                 </th>
                             </tr>
                         </thead>
@@ -95,24 +95,24 @@
     <h1 class='text-center font-bold text-lg my-3 pb-2'>Mur de la honte</h1>
       <%= cl_image_tag User.find(@least.keys.first).photo.key, class:"-ml-2 w-8 rounded-full" %>
       <div class='text-gray-700 items-baseline statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-2 -mt-6  flex justify-between'>
-        <div class="px-8 w-50 font-semibold text-sm">Le mytho d'or</div>
+        <div class="px-6 w-50 font-semibold text-sm">Le mytho d'or</div>
         <h2 class="text-xs"> <%= User.find(@least.keys.first).name %> a validé <%= @least.values.first %> tâches sans prendre de photo </h2>
       </div>
       <%= cl_image_tag User.find(@faineant.keys.first).photo.key, class:"-ml-2 w-8 rounded-full" %>
       <div class='text-gray-700 items-baseline statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-2 -mt-6 flex justify-between'>
-        <div class="px-8 w-50 font-semibold text-sm">L'attentiste</div>
+        <div class="px-6 w-50 font-semibold text-sm">L'attentiste</div>
         <h2 class="text-xs"> <%= User.find(@faineant.keys.first).first_name.capitalize %> à <%= "#{@faineant.values.first} tâches en attente"%></h2>
       </div>
       <%= cl_image_tag User.find(@radin.keys.first).photo.key, class:"-ml-2 w-8 rounded-full" %>
-      <div class='text-gray-700 statRow items-baseline bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-2 -mt-6  flex justify-between'>
-        <div class="px-8 w-50 font-semibold text-sm">Le radin</div>
+      <div class='text-gray-700 statRow items-baseline bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-12 -mt-6  flex justify-between'>
+        <div class="px-6 w-50 font-semibold text-sm">Le radin</div>
         <h2 class="text-xs"> <%= User.find(@radin.keys.first).name %> est en retard sur le tricount </h2>
       </div>
 
       <div class='-mt-6 mb-2 text-gray-700 text-lg font-bold text-center w-1/12 ml-72 bg-blue-300 rounded-full border-solid border-yellow-300'>
       </div>
 </div>
-
+</div>
 
 <div class="mb-14"></div>
 
