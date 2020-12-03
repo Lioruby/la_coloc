@@ -49,7 +49,12 @@
   <div id="leaderboard">
     <h1 class='text-center font-bold text-lg my-3 pb-2'>Mur de la honte</h1>
       <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-10 py-4 mb-2 -mt-6 flex justify-between'>
-        <h2>  </h2>
+        <div>Le mytho d'or</div>
+        <h2> <%= User.find(@least.keys.first).name %> a validé <%= @least.values.first %> tâches sans prendre de photo </h2>
+        <div>L'attentiste</div>
+        <h2> <%= User.find(@faineant.keys.first).first_name.capitalize %> à <%= "#{@faineant.values.first} tâches en attente"%></h2>
+        <div>Le radin</div>
+        <h2> <%= User.find(@radin.keys.first).name %> est en retard sur le tricount </h2>
       </div>
       <div class='-mt-6 mb-2 text-gray-700 text-lg font-bold text-center w-1/12 ml-72 bg-blue-300 rounded-full border-solid border-yellow-300'>
       </div>
@@ -60,6 +65,3 @@
 
 <div class="mb-14"></div>
 <%= render 'shared/navigation_footer' %>
-
-# <%= User.find(@faineant.keys.first).first_name.capitalize %>
-# <%= "#{@faineant.values.first} tâches en attente"%>
