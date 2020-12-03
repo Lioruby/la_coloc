@@ -25,7 +25,7 @@
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector'},
             label_html: { class: '' },
-            collection: current_colocation.users %>
+            :collection => current_colocation.users.all.map {|user| "#{cl_image_tag(user.photo.key)}".html_safe }, class: "rounded-full" %>
 
       </div>
       <div class="pt-12 pb-12">
