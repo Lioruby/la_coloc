@@ -8,8 +8,6 @@
   <%= render 'shared/calendar' %>
 </div>
 
-<!-- Début de la methode pour afficher les taches en cours -->
-
 <div class="flex flex-start px-3 py-5">
      <div class="flex flex-col flex-shrink items-center font-bold text-yellow-600 ">
         <span ><%= translate_day_name(Date.today.strftime("%a")) %></span>
@@ -21,11 +19,9 @@
   <% user.assignations.sort_by(&:date).reverse.each do | assignation | %>
 
 
-<!-- Un premier if pour les taches occasionnel qui n'ont pas de task associé -->
 
   <% if  assignation.task != nil %>
 
-<!-- Un deuxieme pour afficher les taches à la date d'aujourd'hui et les hebdomaires sur 7j glissant  -->
 
     <% if assignation.statut == false && (assignation.date == Date.today || (assignation.task.recurrence == "hebdomadaire" && assignation.date < Date.today.next_day(7))) %>
         <% if assignation.task.recurrence == "hebdomadaire" %>
@@ -56,7 +52,6 @@
         <% end %>
       <% end %>
 
-<!-- On fait la même chose qu'au dessus pour les taches occasionnel -->
 
   <% elsif assignation.statut == false && assignation.date == Date.today %>
       <div class="flex flex-start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
@@ -71,11 +66,6 @@
   </div>
   </div>
 
-
-
-<!-- La method regarde sur x jours (15.times do = 15j) si l'user à des tasks et si oui elle display le jour et les tasks
- -->
-
 <% i = 1 %>
   <% 15.times do %>
 
@@ -83,7 +73,6 @@
   <% @colocation.users.each do | user | %>
     <% user.assignations.each do | assignation | %>
 
-<!-- Première method pour savoir si il y a plus de 2 taches à montrer pour savoir si on display en grid ou pas -->
 
     <% if assignation.task != nil %>
       <% if assignation.date == Date.today.next_day(i) && assignation.task.recurrence != "hebdomadaire" %>
@@ -105,17 +94,11 @@
         <div class="flex flex-col gap-4 flex-grow pl-4 pr-6">
     <% end %>
 
-<!-- Fin de la première méthod -->
-
 
       <% @colocation.users.each do | user | %>
       <% user.assignations.each do | assignation | %>
-<!--
-Comme pour la method taches en cours premier if pour savoir si tache occasionnel  -->
 
       <% if assignation.task != nil %>
-
-<!-- A linverse on veut pas des taches hebdomadaire ici, seulement celle qui correspondent à la dates -->
 
       <% if assignation.statut == false && assignation.date == Date.today.next_day(i) && assignation.task.recurrence != "hebdomadaire" %>
         <div class="flex flex start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
@@ -128,7 +111,6 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
         </div>
       <% end %>
 
-<!-- Ici cest pour les assignation occasionnel on refait la method du dessus -->
 
       <% elsif assignation.statut == false && assignation.date == Date.today.next_day(i)%>
           <div class="flex flex-start items-center px-2 py-2 bg-blue-200 shadow-lg rounded-lg border-solid border-2 border-gray-800 border-opacity-10">
@@ -140,7 +122,6 @@ Comme pour la method taches en cours premier if pour savoir si tache occasionnel
           </div>
       <% end %>
 
-<!-- Fin de la method -->
 
       <% end %>
       <% end %>
