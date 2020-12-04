@@ -73,7 +73,6 @@ class ColocationsController < ApplicationController
 
         time_reference: @colocation.users.map { |u| all_time_task_data(u) },
 
-        all_tasks: @colocation.tasks.map { |t| {name: t.name, id: t.id} }
         },
       }
     }
@@ -83,28 +82,39 @@ class ColocationsController < ApplicationController
   private
 
   def all_time_task_data(user)
-    data = {}
+      data = {}
     data[:user_name] = user.name
     data[:id] = user.id
     tasks = []
     arr = []
+    total_duration = 0
+    user.assignations.sort_by { |a| a.task.name }.each_with_index do |assignation, i|
 
-    user.assignations.each_with_index do |assignation, i|
-      total_duration = 0
       if assignation.statut == true
+        ap assignation.task.name
 
-        total_duration += assignation.task.duration
-        tasks << [assignation.task.name, total_duration]
+
+        tasks << [assignation.task.name, number_of_assignation_per_task(user, assignation.task.name)]
         arr << color_array[i]
-
       end
-
     end
     data[:tasks] = tasks.to_h
-    data[:color] = arr
+    data[:color] = color_array
+
     data
+
   end
 
+
+  def number_of_assignation_per_task(user, task_name)
+    time = 0
+    user.assignations.each do |a|
+      if a.statut == true && a.task.name == task_name
+        time += a.task.duration
+      end
+    end
+    time
+  end
 
   def check_colocation
     unless current_user.colocation.nil?
@@ -133,9 +143,10 @@ class ColocationsController < ApplicationController
 
     @colocation.users.each do |user|
       total_duration = 0
-
       user.assignations.each do |assignation|
-        total_duration += assignation.task.duration if assignation.statut == true
+        if assignation.statut == true
+          total_duration += assignation.task.duration
+        end
       end
 
       working_time_for_user[user.id] = total_duration
@@ -238,7 +249,7 @@ class ColocationsController < ApplicationController
   end
 
   def color_array
-    ['#FF33FF', '#FFFF99', '#00B3E6',
+    ['#FF33FF', '#00B3E6',
       '#E6B333', '#3366E6', '#B34D4D',
       '#E6B3B3', '#6680B3', '#66991A',
       '#FF99E6', '#E6331A',
