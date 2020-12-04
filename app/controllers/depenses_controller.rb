@@ -10,7 +10,6 @@ class DepensesController < ApplicationController
 
   def create
     @depense = Depense.new(depense_params)
-    raise
     if @depense.save
       @depense.user.balance += @depense.montant
       user = @depense.user

@@ -131,29 +131,25 @@ input[type="file"] {
 }
 
 .category-selector + label {
-  margin-left: 15px;
-  margin-top: 5px;
-  display: block;
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 65px;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: left;
-  padding: 4px 4px 4px 4px;
-  border: 1px solid #EAEAEA;
-  border-radius: 100px;
-  background-color: white;
-
-  img {
-    border-radius: 100px;
-    width: 65px;
-  }
+  opacity: 0;
+    margin-left: 18px;
+    margin-top: 6px;
+    display: block;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 3.7rem;
+    font-size: 0px;
+    font-weight: bold;
+    text-align: left;
+    background-color: white;
+    height: 3.7rem;
 }
 
 .category-selector:checked + label {
+  opacity: 1;
+  border: 3px solid #f19e15;
   color: white !important;
-  background-color: #f19e15;
+  background-color: rgba(0,0,0,0);
 }
 
 
