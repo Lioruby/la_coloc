@@ -104,7 +104,9 @@ input[type="file"] {
 }
 
 
-
+.form-check-label {
+  border-radius: 50%;
+}
 
 .col-form-label {
   --tw-text-opacity: 1;
@@ -129,21 +131,42 @@ input[type="file"] {
 }
 
 .category-selector + label {
-  display: block;
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: left;
-  padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 4px;
-  background-color: white;
+  opacity: 0;
+    margin-left: 18px;
+    margin-top: 6px;
+    display: block;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 3.7rem;
+    font-size: 0px;
+    font-weight: bold;
+    text-align: left;
+    background-color: white;
+    height: 3.7rem;
 }
 
 .category-selector:checked + label {
+  opacity: 1;
+  border: 3px solid #f19e15;
   color: white !important;
-  background-color: #f19e15;
+  background-color: rgba(0,0,0,0);
 }
 
+
+    // width: 50px;
+    // height: 50px;
+    // border-radius: 0.25rem;
+    // display: block;
+    // cursor: pointer;
+    // box-sizing: border-box;
+    // /* width: 100%; */
+    // font-size: 5px;
+    // font-weight: bold;
+    // text-align: left;
+    // margin-top: 10px;
+    // margin-left: 20px;
+    // /* padding: 10px 10px 30px 10px; */
+    // border: 1px solid #EAEAEA;
+    // border-radius: 100px;
+    // background-color: white;
+    // text-align: center;
