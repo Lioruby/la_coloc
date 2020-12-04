@@ -15,23 +15,15 @@
                     label_html: { class: 'text-gray-700 text-sm' } %>
         <%= f.input :montant,
                     label: 'Montant',
-                    input_html: { class: "block bg-gray-100 px-3 py-4 text-sm mb-10 border border-gray-200 rounded w-80" },
+                    input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-10 border border-gray-200 rounded w-80" },
                     label_html: { class: 'text-gray-700 text-sm' }%>
-      <div class="flex justify-between -mb-20 z-0 px-6">
-         <% current_colocation.users.each do |user| %>
-       <%=  cl_image_tag user.photo.key, class: 'w-12  rounded-full' %>
-          <% end %>
-      </div>
-        <%= f.input :user_id,
-            label: 'Qui?',
-            as: :radio_buttons,
-            collection_wrapper_tag: 'div',
-            collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
-            input_html: {class: 'category-selector'},
-            collection: current_colocation.users %>
 
+        <%= f.association :user, as: :radio_buttons, legend_tag: false,
+                               label_method: lambda {|user| cl_image_tag user.photo.key, class: 'w-16  rounded-full'}
+
+      %>
       </div>
+
       <div class="pt-12 pb-12">
         <%= f.button :submit, "Ajouter",
         class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm" %>
@@ -39,7 +31,5 @@
     </div>
   <% end %>
 </div>
-
-
 <%= render 'shared/navigation_footer' %>
 
