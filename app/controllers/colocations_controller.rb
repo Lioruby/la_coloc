@@ -88,12 +88,9 @@ class ColocationsController < ApplicationController
     tasks = []
     arr = []
     total_duration = 0
-    user.assignations.sort_by { |a| a.task.name }.each_with_index do |assignation, i|
+    user.assignations.select{ |a| !a.task.nil? }.sort_by { |a| a.task.name }.each_with_index do |assignation, i|
 
       if assignation.statut == true
-        ap assignation.task.name
-
-
         tasks << [assignation.task.name, number_of_assignation_per_task(user, assignation.task.name)]
         arr << color_array[i]
       end
@@ -108,7 +105,7 @@ class ColocationsController < ApplicationController
 
   def number_of_assignation_per_task(user, task_name)
     time = 0
-    user.assignations.each do |a|
+    user.assignations.select { |a| !a.task.nil? }.each do |a|
       if a.statut == true && a.task.name == task_name
         time += a.task.duration
       end
@@ -143,7 +140,7 @@ class ColocationsController < ApplicationController
 
     @colocation.users.each do |user|
       total_duration = 0
-      user.assignations.each do |assignation|
+      user.assignations.select{ |a| !a.task.nil? }.each do |assignation|
         if assignation.statut == true
           total_duration += assignation.task.duration
         end
