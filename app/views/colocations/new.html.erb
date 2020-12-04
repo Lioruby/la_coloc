@@ -1,8 +1,18 @@
 <% content_for :title, "Crée ta coloc" %>
 
-
-<h1>Crée ta coloc ! </h1>
-<%= simple_form_for @colocation do |f| %>
-  <%= f.input :name %>
-  <%= f.submit %>
-<% end %>
+<div class="bg-gray-800 px-8 py-4 h-screen ">
+  <div class="mt-10 bg-gray-200 p-4 text-center border rounded shadow-md">
+    <h1 class="text-center font-bold text-xl text-gray-800">Crée ta coloc ! </h1>
+    <div class="mt-5">
+      <%= simple_form_for @colocation do |f| %>
+      <div class="flex justify-center">
+        <%= f.input :name,
+         label: 'Nom de la coloc',
+        input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-3 border border-gray-200 rounded" },
+        label_html: { class: 'text-gray-700 text-sm' } %>
+      </div>
+        <%= f.submit 'Créer ta coloc !', class: "inline-block px-5 py-2 rounded-lg bg-yellow-500 text-white uppercase tracking-wide font-semibold text-sm mt-6" %>
+      <% end %>
+    </div>
+  </div>
+</div>
