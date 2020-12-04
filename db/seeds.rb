@@ -6,7 +6,6 @@ puts '-------------------'
 lacoloc = Colocation.create!(name: 'Le Wagon')
 user_images = ["https://avatars1.githubusercontent.com/u/71550958?s=400&u=5d9c2518ae08db91fa3742fff381ec6a364efd1d&v=4","https://avatars3.githubusercontent.com/u/61694823?s=460&u=41edf0546a675388bb39e187a44770b53bf500e0&v=4","https://avatars2.githubusercontent.com/u/71385272?s=460&u=d515496e33750499be8feae11fa4ce6a92613b3d&v=4", "https://cv.jpheos.fr/assets/images/jpheos.jpg"]
 task_photos = ['https://images.unsplash.com/photo-1581622558667-3419a8dc5f83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80','https://images.unsplash.com/photo-1585421514284-efb74c2b69ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80','https://images.pexels.com/photos/5824498/pexels-photo-5824498.jpeg?auto=compress&cs=tinysrgb&h=650&w=940','https://images.pexels.com/photos/5691488/pexels-photo-5691488.jpeg?auto=compress&cs=tinysrgb&h=650&w=940','https://images.pexels.com/photos/5824498/pexels-photo-5824498.jpeg?auto=compress&cs=tinysrgb&h=650&w=940','https://5.imimg.com/data5/JK/PW/KM/SELLER-37907573/cat-litter-bentonite-pet-litter-bentonite-powder--500x500.png']
-
 thomas = User.new(first_name: 'Thomas', email: 'th.farre@gmail.com', password: '123456')
 lior = User.new(first_name: 'Lior', email: 'levy.lior.pro@gmail.com', password: '123456')
 franck = User.new(first_name: 'Franck', email: 'franck.siguier@gmail.com', password: '123456')
@@ -64,6 +63,10 @@ assignation27 = Assignation.new(statut: true, date: "Thu, 3 Dec 2020")
 assignation28 = Assignation.new(statut: true, date: "Thu, 3 Dec 2020")
 assignation29 = Assignation.new(statut: true, date: "Thu, 3 Dec 2020")
 assignation30 = Assignation.new(statut: true, date: "Thu, 3 Dec 2020")
+assignation31 = Assignation.new(statut: true, date: "Thu, 3 Dec 2020")
+assignation31.task = vaisselle
+assignation31.user = thomas
+assignation31.save!
 assignation2.task = courses
 assignation2.user = thomas
 assignation2.save!
@@ -101,7 +104,7 @@ assignation23.task = ménage
 assignation23.user = lior
 assignation23.save!
 assignation24.task = cuisine
-assignation24.user = lior
+assignation24.user = franck
 assignation24.save!
 assignation26.task = litiere
 assignation26.user = lior
@@ -128,10 +131,10 @@ assignation14.task = cuisine
 assignation14.user = thomas
 assignation14.save!
 assignation15.task = vaisselle
-assignation15.user = thomas
+assignation15.user = lior
 assignation15.save!
 assignation16.task = vaisselle
-assignation16.user = thomas
+assignation16.user = franck
 assignation16.save!
 assignation17.task = vaisselle
 assignation17.user = franck
@@ -155,7 +158,7 @@ assignation23.task = ménage
 assignation23.user = lior
 assignation23.save!
 assignation24.task = cuisine
-assignation24.user = lior
+assignation24.user = franck
 assignation24.save!
 assignation26.task = litiere
 assignation26.user = lior
@@ -164,7 +167,7 @@ assignation27.task = ménage
 assignation27.user = lior
 assignation27.save!
 assignation28.task = vaisselle
-assignation28.user = lior
+assignation28.user = thomas
 assignation28.save!
 assignation29.task = vaisselle
 assignation29.user = thomas
@@ -177,7 +180,7 @@ assignation5.task = vaisselle
 assignation5.user = thomas
 assignation5.save!
 assignation10.task = ménage
-assignation10.user = franck
+assignation10.user = thomas
 assignation10.save!
 assignation7.photo.attach(io: URI.open(task_photos[3]), filename: 'photo.jpg', content_type: 'image/jpg')
 assignation7.task = ménage
