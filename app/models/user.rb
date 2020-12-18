@@ -19,6 +19,14 @@ class User < ApplicationRecord
     @name = first_name
   end
 
+  def profil
+    if self.photo.attached?
+      self.photo.key
+    else
+      'profil_qk9l7e'
+    end
+  end
+
   private
 
   def send_welcome_email

@@ -41,6 +41,9 @@ class ColocationsController < ApplicationController
 
   def create
     @colocation = Colocation.new(set_params_coloc)
+
+    default_tasks
+
     if @colocation.save
       current_user.colocation = @colocation
       current_user.save
@@ -256,6 +259,35 @@ class ColocationsController < ApplicationController
       '#4D8066', '#E6FF80', '#999933',
       '#FF3380', '#CCCC00', '#4D80CC', '#9900B3',
       '#E64D66', '#4DB380', '#FF4D4D', '#6666FF']
+  end
+
+  def default_tasks
+    vaisselle = Task.new(name: 'Faire la Vaisselle', description: 'Il faut faire la vaisselle', duration: 20, recurrence: "quotidien")
+    ménage = Task.new(name: 'Faire le Ménage', description: 'Il faut faire le ménage', duration: 60, recurrence: "hebdomadaire")
+    courses = Task.new(name: 'Faire les Courses', description: 'La liste des courses est sur le frigo', duration: 90, recurrence: "hebdomadaire")
+
+    vaisselle.colocation = @colocation
+    ménage.colocation = @colocation
+    courses.colocation = @colocation
+
+    vaisselle.save!
+    ménage.save!
+    courses.save!
+
+    preference0 = Preference.new(position: 0)
+    preference1 = Preference.new(position: 1)
+    preference2 = Preference.new(position: 2)
+
+    preference0.user = current_user
+    preference0.task = vaisselle
+    preference1.user = current_user
+    preference1.task = ménage
+    preference2.user = current_user
+    preference2.task = courses
+
+    preference0.save!
+    preference1.save!
+    preference2.save!
   end
 
 end

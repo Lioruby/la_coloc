@@ -19,7 +19,7 @@
                     label_html: { class: 'text-gray-700 text-sm' }%>
 
         <%= f.association :user, as: :radio_buttons, legend_tag: false,
-                               label_method: lambda {|user| cl_image_tag user.photo.key, class: 'w-16  rounded-full'}
+                               label_method: lambda {|user| cl_image_tag user.profil, class: 'w-16  rounded-full'}
 
       %>
       </div>

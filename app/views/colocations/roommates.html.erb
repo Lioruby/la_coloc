@@ -32,7 +32,7 @@
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                   <div class="flex items-center">
                                     <div class="flex-shrink-0 w-10 h-10">
-                                      <%= cl_image_tag user.photo.key, class:'w-full h-full rounded-full' %>
+                                      <%= cl_image_tag user.profil, class:'w-full h-full rounded-full' %>
                                     </div>
                                     <div class="ml-3">
                                         <p class="text-gray-900 whitespace-no-wrap">
@@ -81,7 +81,7 @@
     <h1 class='text-center font-bold text-lg my-3 pb-2'>Statistiques</h1>
     <% i = 1 %>
     <% @points.each do |key, value| %>
-      <%= cl_image_tag User.find(key).photo.key, class:"-ml-2 -mt-2 w-8 rounded-full" %>
+      <%= cl_image_tag User.find(key).profil, class:"-ml-2 -mt-2 w-8 rounded-full" %>
       <div class='text-gray-700 statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-10 py-4 mb-2 -mt-6 flex justify-between'>
         <h2 class="font-semibold"> <%= User.find(key).first_name.capitalize %> </h2>
         <h2> <%= "#{value} pts"%> </h2>
@@ -102,17 +102,17 @@
   <%#= image_tag "stats_fun.svg", class:"w-15 text-center" %>
   <div id="leaderboard">
     <h1 class='text-center font-bold text-lg my-3 pb-2'>Mur de la honte</h1>
-      <%= cl_image_tag User.find(@least.keys.first).photo.key, class:"-ml-2 w-8 rounded-full" %>
+      <%= cl_image_tag User.find(@least.keys.first).profil, class:"-ml-2 w-8 rounded-full" %>
       <div class='text-gray-700 items-baseline statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-2 -mt-6  flex justify-between'>
         <div class="px-6 w-50 font-semibold text-sm">Le mytho d'or</div>
         <h2 class="text-xs"> <%= User.find(@least.keys.first).name %> a validé <%= @least.values.first %> tâches sans prendre de photo </h2>
       </div>
-      <%= cl_image_tag User.find(@faineant.keys.first).photo.key, class:"-ml-2 w-8 rounded-full" %>
+      <%= cl_image_tag User.find(@faineant.keys.first).profil, class:"-ml-2 w-8 rounded-full" %>
       <div class='text-gray-700 items-baseline statRow bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-2 -mt-6 flex justify-between'>
         <div class="px-6 w-50 font-semibold text-sm">L'attentiste</div>
         <h2 class="text-xs"> <%= User.find(@faineant.keys.first).first_name.capitalize %> à <%= "#{@faineant.values.first} tâches en attente"%></h2>
       </div>
-      <%= cl_image_tag User.find(@radin.keys.first).photo.key, class:"-ml-2 w-8 rounded-full" %>
+      <%= cl_image_tag User.find(@radin.keys.first).profil, class:"-ml-2 w-8 rounded-full" %>
       <div class='text-gray-700 statRow items-baseline bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-lg w-80 px-2 py-4 mb-12 -mt-6  flex justify-between'>
         <div class="px-6 w-50 font-semibold text-sm">Le radin</div>
         <h2 class="text-xs"> <%= User.find(@radin.keys.first).name %> est en retard sur le tricount </h2>
