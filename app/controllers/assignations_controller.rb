@@ -15,7 +15,7 @@ class AssignationsController < ApplicationController
     @assignation = Assignation.new(assignation_params)
 
     if @assignation.save
-      redirect_to occasionnel_tasks_path, notice: 'Assignation crée avec succès'
+      redirect_to colocation_path(current_colocation), notice: 'Assignation crée avec succès'
     else
       redirect_to occasionnel_tasks_path, notice: 'Erreur, veuillez recommencer'
     end

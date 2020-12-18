@@ -24,7 +24,7 @@ class TasksController < ApplicationController
           preference.save
         end
       end
-      assign_task_after_create
+      assign_task_after_create if current_colocation.users.count > 1
       redirect_to user_path(current_user), notice: 'La tâche a été crée avec succès'
     else
       redirect_to new_task_path, notice: 'Erreur, veuillez recommencer'
