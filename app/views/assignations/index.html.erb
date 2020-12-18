@@ -5,7 +5,7 @@
 </div>
 
 <div class="px-6">
-  <% @assignations.reverse.each do |assignation| %>
+  <% current_colocation.assignations.reverse.each do |assignation| %>
     <% if assignation.statut == true %>
       <div class="px-2 my-4 border-2 bg-blue-200 rounded-lg">
         <div class="history-avatar">
