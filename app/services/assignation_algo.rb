@@ -13,8 +13,8 @@ class AssignationAlgo
     hash_working_time = working_time
     task_for = faineants(hash_working_time)
 
-    user1 = User.find(task_for.keys.first)
-    user2 = User.find(task_for.keys.second)
+    user1 = @colocation.users.find(task_for.keys.first)
+    user2 = @colocation.users.find(task_for.keys.second)
 
     if task_for.values.second - task_for.values.first < 20
       pref_user_1 = preference(user1, @task)
