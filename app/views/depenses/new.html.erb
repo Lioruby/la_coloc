@@ -18,8 +18,8 @@
                     input_html: { class: "block bg-gray-100 px-3 py-2 text-sm mb-10 border border-gray-200 rounded w-80" },
                     label_html: { class: 'text-gray-700 text-sm' }%>
 
-        <%= f.association :user, as: :radio_buttons, legend_tag: false,
-                               label_method: lambda {|user| cl_image_tag user.profil, class: 'w-16  rounded-full'}
+        <%= f.association :user, as: :radio_buttons, collection: current_colocation.users, legend_tag: false,
+                               label_method: lambda {|user| cl_image_tag user.profil, class: 'w-16  rounded-full' }
 
       %>
       </div>
