@@ -12,8 +12,9 @@ class User < ApplicationRecord
   has_many :preferences, dependent: :destroy
   has_many :assignations, dependent: :destroy
   has_many :depenses, dependent: :destroy
-
   has_many :tasks, through: :assignations
+
+  validates :first_name, presence: true
 
   def name
     @name = first_name
@@ -32,5 +33,4 @@ class User < ApplicationRecord
   def send_welcome_email
     UserMailer.welcome(self).deliver_now
   end
-
 end
